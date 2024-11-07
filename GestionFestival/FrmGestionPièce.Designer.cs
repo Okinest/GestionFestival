@@ -1,7 +1,7 @@
 ﻿
 namespace GestionFestival
 {
-    partial class Form2
+    partial class FrmGestionPièce
     {
         /// <summary>
         /// Required designer variable.

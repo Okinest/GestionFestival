@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace TheatreBO
 {
-    public class Authentification
+    public class Users
     {
         private int id;
-        private string name;
-        private string password;
+        protected string name;
+        protected string password;
 
         //CONSTRUCTEUR
 
-        public Authentification(int Id, string Name, string Password)
+        public Users(int Id, string Name, string Password)
         {
             id = Id;
             name = Name;
@@ -35,8 +35,8 @@ namespace TheatreBO
         {
             return password;
         }
-        //SET
-        public void SetId(int id)
+        //SET (EN COMMENTAIRE CAR AUCUNE GESTION DES UTILISATEURS
+        /*public void SetId(int id)
         {
             this.id = id;
         }
@@ -49,6 +49,6 @@ namespace TheatreBO
         public void SetPassword(string password)
         {
             this.password = password;
-        }
+        }*/
     }
 }

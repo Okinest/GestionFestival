@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GestionFestival
 {
-    public partial class Form2 : Form
+    public partial class FrmGestionPièce : Form
     {
-        public Form2()
+        public FrmGestionPièce()
         {
             InitializeComponent();
         }

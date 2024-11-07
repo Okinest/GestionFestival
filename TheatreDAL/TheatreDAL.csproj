@@ -41,8 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GestionAuthentification.cs" />
+    <Compile Include="UtilisateurDAO.cs" />
+    <Compile Include="ConnexionBD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TheatreBO\TheatreBO.csproj">
+      <Project>{3382e537-927b-465a-b4f8-b4f9e23aa4c8}</Project>
+      <Name>TheatreBO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
