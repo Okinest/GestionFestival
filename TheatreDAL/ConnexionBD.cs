@@ -13,10 +13,14 @@ namespace TheatreDAL
         private static ConnexionBD uneConnexionBD; // instance d'une connexion
         private string chaineConnexion; // chaîne de connexion à la BD
                                         // Accesseur en lecture de la chaîne de connexion
+
+
+
         public string GetchaineConnexion()
         {
             return chaineConnexion;
         }
+
         // Accesseur en écriture de la chaîne de connexion
         public void SetchaineConnexion(string ch)
         {
@@ -34,6 +38,7 @@ namespace TheatreDAL
         // Constructeur privé
         private ConnexionBD()
         {
+            SetchaineConnexion("Persist Security Info=False;Trusted_Connection=True;database=TheatreFestivalDB;server=localhost");
         }
         //OUVERTURE CONNEXION
         public SqlConnection GetSqlConnexion()
@@ -44,6 +49,7 @@ namespace TheatreDAL
             }
             maConnexion.ConnectionString = chaineConnexion;
 
+            //Si Chaine de connexion n'est pas défini.
             if (string.IsNullOrEmpty(chaineConnexion))
             {
                 throw new InvalidOperationException("La chaîne de connexion n'a pas été initialisée.");

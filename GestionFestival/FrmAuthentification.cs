@@ -32,10 +32,10 @@ namespace GestionFestival
                 this.Hide();
                 GestionForm.Show();
             }
-            else if(resultat == GestionUtilisateurs.ConnexionResultat.UtilisateurInexistant)
+            else if (resultat == GestionUtilisateurs.ConnexionResultat.UtilisateurIncorrect)
             {
                 lblUtilisteurs.Visible = true;
-                
+
             }
             else if (resultat == GestionUtilisateurs.ConnexionResultat.MotDePasseIncorrect)
             {
@@ -45,6 +45,13 @@ namespace GestionFestival
             else if (resultat == GestionUtilisateurs.ConnexionResultat.ErreurInconnue)
             {
                 lblinconnu.Visible = true;
+            }
+            //SI C'EST VIDE
+            else if (string.IsNullOrEmpty(txtUsername.Text) && string.IsNullOrEmpty(txtPassword.Text))
+            {
+                lblinconnu.Visible = true;
+                lblpassword.Visible = true;
+                lblUtilisteurs.Visible = true;
             }
 
 

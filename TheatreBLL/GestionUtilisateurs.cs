@@ -16,9 +16,9 @@ namespace TheatreBLL
         public enum ConnexionResultat
         {
             Reussi,            
-            UtilisateurInexistant,
+            UtilisateurIncorrect,
             MotDePasseIncorrect,
-            ErreurInconnue
+            ErreurInconnue,
         }
 
         // Accesseur en lecture
@@ -59,13 +59,14 @@ namespace TheatreBLL
                 //SI USERNAME INCORRECT
                 else if(utilisateur.GetName()!= NameUsers)
                 {
-                    return ConnexionResultat.UtilisateurInexistant;
+                    return ConnexionResultat.UtilisateurIncorrect;
                 }
                 //SI PASSWORD INCORRECT
                 else if(utilisateur.GetPassword() != PasswordUsers)
                 {
                     return ConnexionResultat.MotDePasseIncorrect;
                 }
+                
             }
             //CONNEXION ECHOUÉ + Affichage message d'erreur
             return ConnexionResultat.ErreurInconnue;
