@@ -11,8 +11,15 @@ namespace TheatreBLL
 {
     public class GestionUtilisateurs
     {
-            private static GestionUtilisateurs uneGestionUtilisateurs;
-            private List<Users> listeAuthentifications = new List<Users>();
+        private static GestionUtilisateurs uneGestionUtilisateurs;
+        private List<Users> listeAuthentifications = new List<Users>();
+        public enum ConnexionResultat
+        {
+            Reussi,            
+            UtilisateurInexistant,
+            MotDePasseIncorrect,
+            ErreurInconnue
+        }
 
         // Accesseur en lecture
         public static GestionUtilisateurs GetGestionUtilisateurs()
@@ -38,7 +45,7 @@ namespace TheatreBLL
         }
 
         // Vérifie la connexion d'un utilisateur
-        public bool CheckConnexion(string NameUsers, string PasswordUsers)
+        public ConnexionResultat CheckConnexion(string NameUsers, string PasswordUsers)
         {
             GetListeUtilisateurs();
             foreach (var utilisateur in listeAuthentifications)
@@ -46,12 +53,22 @@ namespace TheatreBLL
                 if (utilisateur.GetName() == NameUsers && utilisateur.GetPassword() == PasswordUsers)
                 {
                     //CONNEXION REUSSI + Redirection de la page vers "gestion des pièces de théâtres"
-                    return true;
-                   
+                    return ConnexionResultat.Reussi;
+
+                }
+                //SI USERNAME INCORRECT
+                else if(utilisateur.GetName()!= NameUsers)
+                {
+                    return ConnexionResultat.UtilisateurInexistant;
+                }
+                //SI PASSWORD INCORRECT
+                else if(utilisateur.GetPassword() != PasswordUsers)
+                {
+                    return ConnexionResultat.MotDePasseIncorrect;
                 }
             }
             //CONNEXION ECHOUÉ + Affichage message d'erreur
-            return false; // Connexion échouée
+            return ConnexionResultat.ErreurInconnue;
         }
 
 

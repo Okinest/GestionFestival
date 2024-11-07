@@ -30,12 +30,12 @@
         {
             this.btnConnexion = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtNom = new System.Windows.Forms.TextBox();
-            this.Txtpassword = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblUtilisteurs = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblpassword = new System.Windows.Forms.Label();
+            this.lblinconnu = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnConnexion
@@ -46,6 +46,7 @@
             this.btnConnexion.TabIndex = 0;
             this.btnConnexion.Text = "Connexion";
             this.btnConnexion.UseVisualStyleBackColor = true;
+            this.btnConnexion.Click += new System.EventHandler(this.btnConnexion_Click);
             // 
             // label1
             // 
@@ -55,24 +56,23 @@
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Nom d\'utilisateur";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // txtNom
+            // txtUsername
             // 
-            this.txtNom.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.txtNom.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtNom.Location = new System.Drawing.Point(297, 151);
-            this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(181, 20);
-            this.txtNom.TabIndex = 2;
+            this.txtUsername.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtUsername.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtUsername.Location = new System.Drawing.Point(297, 151);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(181, 20);
+            this.txtUsername.TabIndex = 2;
             // 
-            // Txtpassword
+            // txtPassword
             // 
-            this.Txtpassword.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.Txtpassword.Location = new System.Drawing.Point(297, 245);
-            this.Txtpassword.Name = "Txtpassword";
-            this.Txtpassword.Size = new System.Drawing.Size(181, 20);
-            this.Txtpassword.TabIndex = 3;
+            this.txtPassword.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtPassword.Location = new System.Drawing.Point(297, 245);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(181, 20);
+            this.txtPassword.TabIndex = 3;
             // 
             // label2
             // 
@@ -82,7 +82,6 @@
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Mot de passe";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // lblUtilisteurs
             // 
@@ -94,41 +93,40 @@
             this.lblUtilisteurs.TabIndex = 5;
             this.lblUtilisteurs.Text = "Le champ utilisateur est obligatoire *";
             this.lblUtilisteurs.Visible = false;
-            this.lblUtilisteurs.Click += new System.EventHandler(this.lblUtilisteurs_Click);
             // 
-            // label3
+            // lblpassword
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(305, 268);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(176, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Le champ utilisateur est obligatoire *";
-            this.label3.Visible = false;
+            this.lblpassword.AutoSize = true;
+            this.lblpassword.ForeColor = System.Drawing.Color.Red;
+            this.lblpassword.Location = new System.Drawing.Point(286, 268);
+            this.lblpassword.Name = "lblpassword";
+            this.lblpassword.Size = new System.Drawing.Size(195, 13);
+            this.lblpassword.TabIndex = 6;
+            this.lblpassword.Text = "Le champ mot de passe est obligatoire *";
+            this.lblpassword.Visible = false;
             // 
-            // label4
+            // lblinconnu
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(266, 358);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(256, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Le nom d\'utilisateur ou le mot de passe est incorrecte";
-            this.label4.Visible = false;
+            this.lblinconnu.AutoSize = true;
+            this.lblinconnu.ForeColor = System.Drawing.Color.Red;
+            this.lblinconnu.Location = new System.Drawing.Point(266, 358);
+            this.lblinconnu.Name = "lblinconnu";
+            this.lblinconnu.Size = new System.Drawing.Size(256, 13);
+            this.lblinconnu.TabIndex = 7;
+            this.lblinconnu.Text = "Le nom d\'utilisateur ou le mot de passe est incorrecte";
+            this.lblinconnu.Visible = false;
             // 
             // FrmAuthentification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 465);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblinconnu);
+            this.Controls.Add(this.lblpassword);
             this.Controls.Add(this.lblUtilisteurs);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.Txtpassword);
-            this.Controls.Add(this.txtNom);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnConnexion);
             this.Name = "FrmAuthentification";
@@ -142,12 +140,12 @@
 
         private System.Windows.Forms.Button btnConnexion;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNom;
-        private System.Windows.Forms.TextBox Txtpassword;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblUtilisteurs;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblpassword;
+        private System.Windows.Forms.Label lblinconnu;
     }
 }
 

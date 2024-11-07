@@ -44,6 +44,10 @@ namespace TheatreDAL
             }
             maConnexion.ConnectionString = chaineConnexion;
 
+            if (string.IsNullOrEmpty(chaineConnexion))
+            {
+                throw new InvalidOperationException("La chaîne de connexion n'a pas été initialisée.");
+            }
             // Si la connexion est fermée, on l’ouvre
             if (maConnexion.State == System.Data.ConnectionState.Closed)
             {
