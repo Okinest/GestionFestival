@@ -17,7 +17,7 @@ Un guide d’utilisation de l’application doit être fourni au client.
 
 ## Découpage des sprints :
  **Sprint 1** :
-  - [ ]  Module d’authentification = Adrien
+  - [x]  Module d’authentification = Adrien
   - [x] Gestion des compagnies et des comédiens = Théo
   - [x]  Cahier de recette = Myriam
   - [x]  Jeu d'essai dans la base de donnée = Théo
