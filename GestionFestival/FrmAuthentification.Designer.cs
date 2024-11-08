@@ -36,6 +36,7 @@
             this.lblUtilisteurs = new System.Windows.Forms.Label();
             this.lblpassword = new System.Windows.Forms.Label();
             this.lblinconnu = new System.Windows.Forms.Label();
+            this.lblconnexion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnConnexion
@@ -71,6 +72,7 @@
             this.txtPassword.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtPassword.Location = new System.Drawing.Point(297, 245);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(181, 20);
             this.txtPassword.TabIndex = 3;
             // 
@@ -116,11 +118,23 @@
             this.lblinconnu.Text = "Le nom d\'utilisateur ou le mot de passe est incorrecte";
             this.lblinconnu.Visible = false;
             // 
+            // lblconnexion
+            // 
+            this.lblconnexion.AutoSize = true;
+            this.lblconnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblconnexion.Location = new System.Drawing.Point(281, 59);
+            this.lblconnexion.Name = "lblconnexion";
+            this.lblconnexion.Size = new System.Drawing.Size(213, 46);
+            this.lblconnexion.TabIndex = 8;
+            this.lblconnexion.Text = "Connexion";
+            this.lblconnexion.Click += new System.EventHandler(this.label3_Click);
+            // 
             // FrmAuthentification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 465);
+            this.Controls.Add(this.lblconnexion);
             this.Controls.Add(this.lblinconnu);
             this.Controls.Add(this.lblpassword);
             this.Controls.Add(this.lblUtilisteurs);
@@ -146,6 +160,7 @@
         private System.Windows.Forms.Label lblUtilisteurs;
         private System.Windows.Forms.Label lblpassword;
         private System.Windows.Forms.Label lblinconnu;
+        private System.Windows.Forms.Label lblconnexion;
     }
 }
 

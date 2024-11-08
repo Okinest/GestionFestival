@@ -42,15 +42,19 @@ namespace GestionFestival
             else if (resultat == GestionUtilisateurs.ConnexionResultat.UtilisateurIncorrect)
             {
                 lblUtilisteurs.Visible = true;
+                lblpassword.Visible = false;
 
             }
             else if (resultat == GestionUtilisateurs.ConnexionResultat.MotDePasseIncorrect)
             {
+                lblUtilisteurs.Visible = false;
                 lblpassword.Visible = true;
             }
 
             else if (resultat == GestionUtilisateurs.ConnexionResultat.ErreurInconnue)
             {
+                lblUtilisteurs.Visible = false;
+                lblpassword.Visible = false;
                 lblinconnu.Visible = true;
             }
             //SI C'EST VIDE
@@ -59,5 +63,9 @@ namespace GestionFestival
 
         }
 
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

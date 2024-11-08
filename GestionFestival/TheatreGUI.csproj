@@ -64,6 +64,9 @@
     <EmbeddedResource Include="FrmAuthentification.resx">
       <DependentUpon>FrmAuthentification.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmGestionPièce.resx">
+      <DependentUpon>FrmGestionPièce.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
