@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,14 +47,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FrmAuthentification.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FrmAuthentification.Designer.cs">
+      <DependentUpon>FrmAuthentification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGestionPièce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGestionPièce.Designer.cs">
+      <DependentUpon>FrmGestionPièce.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAuthentification.resx">
+      <DependentUpon>FrmAuthentification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGestionPièce.resx">
+      <DependentUpon>FrmGestionPièce.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +88,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TheatreBLL\TheatreBLL.csproj">
+      <Project>{80220a5f-742a-452e-8211-d7704c02d46b}</Project>
+      <Name>TheatreBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TheatreBO\TheatreBO.csproj">
+      <Project>{3382e537-927b-465a-b4f8-b4f9e23aa4c8}</Project>
+      <Name>TheatreBO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
