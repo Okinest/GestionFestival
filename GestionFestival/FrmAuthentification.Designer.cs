@@ -34,9 +34,9 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblUtilisteurs = new System.Windows.Forms.Label();
-            this.lblpassword = new System.Windows.Forms.Label();
             this.lblinconnu = new System.Windows.Forms.Label();
             this.lblconnexion = new System.Windows.Forms.Label();
+            this.lblpassword = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnConnexion
@@ -89,23 +89,12 @@
             // 
             this.lblUtilisteurs.AutoSize = true;
             this.lblUtilisteurs.ForeColor = System.Drawing.Color.Red;
-            this.lblUtilisteurs.Location = new System.Drawing.Point(305, 174);
+            this.lblUtilisteurs.Location = new System.Drawing.Point(302, 174);
             this.lblUtilisteurs.Name = "lblUtilisteurs";
             this.lblUtilisteurs.Size = new System.Drawing.Size(176, 13);
             this.lblUtilisteurs.TabIndex = 5;
             this.lblUtilisteurs.Text = "Le champ utilisateur est obligatoire *";
             this.lblUtilisteurs.Visible = false;
-            // 
-            // lblpassword
-            // 
-            this.lblpassword.AutoSize = true;
-            this.lblpassword.ForeColor = System.Drawing.Color.Red;
-            this.lblpassword.Location = new System.Drawing.Point(286, 268);
-            this.lblpassword.Name = "lblpassword";
-            this.lblpassword.Size = new System.Drawing.Size(195, 13);
-            this.lblpassword.TabIndex = 6;
-            this.lblpassword.Text = "Le champ mot de passe est obligatoire *";
-            this.lblpassword.Visible = false;
             // 
             // lblinconnu
             // 
@@ -128,6 +117,17 @@
             this.lblconnexion.TabIndex = 8;
             this.lblconnexion.Text = "Connexion";
             this.lblconnexion.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // lblpassword
+            // 
+            this.lblpassword.AutoSize = true;
+            this.lblpassword.ForeColor = System.Drawing.Color.Red;
+            this.lblpassword.Location = new System.Drawing.Point(294, 268);
+            this.lblpassword.Name = "lblpassword";
+            this.lblpassword.Size = new System.Drawing.Size(195, 13);
+            this.lblpassword.TabIndex = 6;
+            this.lblpassword.Text = "Le champ mot de passe est obligatoire *";
+            this.lblpassword.Visible = false;
             // 
             // FrmAuthentification
             // 
@@ -158,9 +158,9 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblUtilisteurs;
-        private System.Windows.Forms.Label lblpassword;
         private System.Windows.Forms.Label lblinconnu;
         private System.Windows.Forms.Label lblconnexion;
+        private System.Windows.Forms.Label lblpassword;
     }
 }
 
