@@ -23,11 +23,11 @@ Un guide d’utilisation de l’application doit être fourni au client.
   - [x]  Jeu d'essai dans la base de donnée = Théo
 
 **Sprint 2** :
-  - [ ] Liste pièces de théâtres = ??
-  - [ ] Ajout pièces de théâtres = ??
-  - [ ] Modification pièces de théâtres = ??
-  - [ ] Suppression pièces de théâtres = ??
-  - [ ] Cahier de recette = ??
+  - [ ] Liste pièces de théâtres = Adrien
+  - [ ] Ajout pièces de théâtres = Adrien | Myriam
+  - [ ] Modification pièces de théâtres = Myriam
+  - [ ] Suppression pièces de théâtres = Théo
+  - [ ] Cahier de recette = Théo
 
 **Sprint 3** :
   - [ ] Liste représentations = ??
