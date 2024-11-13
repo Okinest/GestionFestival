@@ -116,7 +116,6 @@
             this.lblconnexion.Size = new System.Drawing.Size(213, 46);
             this.lblconnexion.TabIndex = 8;
             this.lblconnexion.Text = "Connexion";
-            this.lblconnexion.Click += new System.EventHandler(this.label3_Click);
             // 
             // lblpassword
             // 

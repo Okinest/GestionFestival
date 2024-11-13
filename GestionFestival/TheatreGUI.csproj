@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMenu.Designer.cs">
+      <DependentUpon>FrmMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAuthentification.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGestionPièce.resx">
       <DependentUpon>FrmGestionPièce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMenu.resx">
+      <DependentUpon>FrmMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -97,6 +106,10 @@
     <ProjectReference Include="..\TheatreBO\TheatreBO.csproj">
       <Project>{3382e537-927b-465a-b4f8-b4f9e23aa4c8}</Project>
       <Name>TheatreBO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TheatreDAL\TheatreDAL.csproj">
+      <Project>{1ba23372-6ec1-4224-b3b8-bc7654d83baa}</Project>
+      <Name>TheatreDAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

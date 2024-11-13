@@ -15,7 +15,6 @@ namespace TheatreDAL
                                         // Accesseur en lecture de la chaîne de connexion
 
 
-
         public string GetchaineConnexion()
         {
             return chaineConnexion;
