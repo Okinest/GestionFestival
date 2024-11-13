@@ -32,34 +32,28 @@ namespace GestionFestival
                 this.Hide();
                 GestionForm.Show();
             }
-
+            //SI C'EST VIDE
             else if (string.IsNullOrEmpty(txtUsername.Text) && string.IsNullOrEmpty(txtPassword.Text))
             {
-                lblinconnu.Visible = true;
+                lblinconnu.Visible = false;
                 lblpassword.Visible = true;
                 lblUtilisteurs.Visible = true;
             }
-            else if (resultat == GestionUtilisateurs.ConnexionResultat.UtilisateurIncorrect)
-            {
-                lblUtilisteurs.Visible = true;
-                lblpassword.Visible = false;
-
-            }
-            else if (resultat == GestionUtilisateurs.ConnexionResultat.MotDePasseIncorrect)
+            //SI INCORRECTE
+            else if (resultat == GestionUtilisateurs.ConnexionResultat.UtilisateurIncorrect || resultat == GestionUtilisateurs.ConnexionResultat.MotDePasseIncorrect)
             {
                 lblUtilisteurs.Visible = false;
-                lblpassword.Visible = true;
+                lblpassword.Visible = false;
+                lblinconnu.Visible = true;
+
             }
 
-            else if (resultat == GestionUtilisateurs.ConnexionResultat.ErreurInconnue)
+            else
             {
                 lblUtilisteurs.Visible = false;
                 lblpassword.Visible = false;
                 lblinconnu.Visible = true;
             }
-            //SI C'EST VIDE
-            
-
 
         }
 
