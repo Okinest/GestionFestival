@@ -38,7 +38,7 @@ namespace TheatreDAL
                         reader.GetString(1), // play_name
                         reader.GetString(2), // play_description
                         reader.GetInt32(3),  // play_duration
-                        reader.GetDecimal(4),  // play_price
+                        reader.GetDouble(4),  // play_price
                         reader.GetInt32(5),  // auth_id
                         reader.GetInt32(6),  // theme_id
                         reader.GetInt32(7),  // aud_id

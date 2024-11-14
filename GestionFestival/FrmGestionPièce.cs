@@ -21,17 +21,6 @@ namespace GestionFestival
             List<Pieces> listePieces = gestionPieces.GetListePieces();
             InitializeComponent();
             dtgPieces.Columns.Clear();
-            // Ajouter les colonnes manuellement avec les noms appropriés
-            dtgPieces.Columns.Add("play_id", "ID");
-            dtgPieces.Columns.Add("play_name", "Nom");
-            dtgPieces.Columns.Add("play_description", "Description");
-            dtgPieces.Columns.Add("play_duration", "Durée");
-            dtgPieces.Columns.Add("play_price", "Prix");
-            dtgPieces.Columns.Add("auth_id", "Auteur");
-            dtgPieces.Columns.Add("theme_id", "Thème");
-            dtgPieces.Columns.Add("aud_id", "Public");
-            dtgPieces.Columns.Add("comp_id", "Compagnie");
-
             // Lier la liste des pièces au DataGridView
             dtgPieces.DataSource = listePieces;
         }

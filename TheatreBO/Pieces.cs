@@ -14,7 +14,7 @@ namespace TheatreBO
         private string play_name;
         private string play_description;
         private int play_duration;
-        private decimal play_price;
+        private double play_price;
         private int auth_id;
         private int theme_id;
         private int aud_id;
@@ -24,7 +24,7 @@ namespace TheatreBO
 
         //CONSTRUCTEUR
 
-        public Pieces(int play_id, string play_name, string play_description, int play_duration, decimal play_price, int auth_id, int theme_id, int aud_id, int comp_id)
+        public Pieces(int play_id, string play_name, string play_description, int play_duration, double play_price, int auth_id, int theme_id, int aud_id, int comp_id)
         {
             this.play_id = play_id;
             this.play_name = play_name;
@@ -41,7 +41,7 @@ namespace TheatreBO
         public string Play_name { get => play_name; set => play_name = value; }
         public string Play_description { get => play_description; set => play_description = value; }
         public int Play_duration { get => play_duration; set => play_duration = value; }
-        public decimal Play_price { get => play_price; set => play_price = value; }
+        public double Play_price { get => play_price; set => play_price = value; }
         public int Auth_id { get => auth_id; set => auth_id = value; }
         public int Theme_id { get => theme_id; set => theme_id = value; }
         public int Aud_id { get => aud_id; set => aud_id = value; }
