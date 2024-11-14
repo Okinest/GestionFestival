@@ -33,14 +33,15 @@ namespace GestionFestival
             this.btnmodifier = new System.Windows.Forms.Button();
             this.btnsupprimer = new System.Windows.Forms.Button();
             this.btnretour = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtgPieces = new System.Windows.Forms.DataGridView();
             this.colNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTheme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDuree = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAudience = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCompagnie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.colAuteur = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgPieces)).BeginInit();
             this.SuspendLayout();
             // 
             // btnajout
@@ -90,22 +91,23 @@ namespace GestionFestival
             this.btnretour.UseVisualStyleBackColor = true;
             this.btnretour.Click += new System.EventHandler(this.btnretour_Click);
             // 
-            // dataGridView1
+            // dtgPieces
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtgPieces.BackgroundColor = System.Drawing.Color.White;
+            this.dtgPieces.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgPieces.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNom,
             this.colDescription,
             this.colTheme,
             this.colDuree,
             this.colAudience,
-            this.colCompagnie});
-            this.dataGridView1.Location = new System.Drawing.Point(84, 117);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(644, 133);
-            this.dataGridView1.TabIndex = 4;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.colCompagnie,
+            this.colAuteur});
+            this.dtgPieces.Location = new System.Drawing.Point(23, 117);
+            this.dtgPieces.Name = "dtgPieces";
+            this.dtgPieces.Size = new System.Drawing.Size(743, 133);
+            this.dtgPieces.TabIndex = 4;
+            this.dtgPieces.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgPieces_CellContentClick);
             // 
             // colNom
             // 
@@ -137,19 +139,25 @@ namespace GestionFestival
             this.colCompagnie.HeaderText = "Compagnie";
             this.colCompagnie.Name = "colCompagnie";
             // 
+            // colAuteur
+            // 
+            this.colAuteur.HeaderText = "Auteur";
+            this.colAuteur.Name = "colAuteur";
+            // 
             // FrmGestionPièce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dtgPieces);
             this.Controls.Add(this.btnretour);
             this.Controls.Add(this.btnsupprimer);
             this.Controls.Add(this.btnmodifier);
             this.Controls.Add(this.btnajout);
             this.Name = "FrmGestionPièce";
             this.Text = "Gestion des pièces de théâtre";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FrmGestionPièce_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgPieces)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -160,12 +168,13 @@ namespace GestionFestival
         private System.Windows.Forms.Button btnmodifier;
         private System.Windows.Forms.Button btnsupprimer;
         private System.Windows.Forms.Button btnretour;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtgPieces;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNom;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTheme;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDuree;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAudience;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCompagnie;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAuteur;
     }
 }

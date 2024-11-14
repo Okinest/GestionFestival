@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
+using TheatreBO;
+using TheatreBLL;
 
 namespace GestionFestival
 {
@@ -14,7 +17,23 @@ namespace GestionFestival
     {
         public FrmGestionPièce()
         {
+            GestionPieces gestionPieces = new GestionPieces();
+            List<Pieces> listePieces = gestionPieces.GetListePieces();
             InitializeComponent();
+            dtgPieces.Columns.Clear();
+            // Ajouter les colonnes manuellement avec les noms appropriés
+            dtgPieces.Columns.Add("play_id", "ID");
+            dtgPieces.Columns.Add("play_name", "Nom");
+            dtgPieces.Columns.Add("play_description", "Description");
+            dtgPieces.Columns.Add("play_duration", "Durée");
+            dtgPieces.Columns.Add("play_price", "Prix");
+            dtgPieces.Columns.Add("auth_id", "Auteur");
+            dtgPieces.Columns.Add("theme_id", "Thème");
+            dtgPieces.Columns.Add("aud_id", "Public");
+            dtgPieces.Columns.Add("comp_id", "Compagnie");
+
+            // Lier la liste des pièces au DataGridView
+            dtgPieces.DataSource = listePieces;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,7 +57,13 @@ namespace GestionFestival
             frmAjoutPièce.Show();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void FrmGestionPièce_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtgPieces_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
