@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmAjoutPièce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAjoutPièce.Designer.cs">
+      <DependentUpon>FrmAjoutPièce.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,12 @@
     </Compile>
     <Compile Include="FrmGestionPièce.Designer.cs">
       <DependentUpon>FrmGestionPièce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmModifierPièce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmModifierPièce.Designer.cs">
+      <DependentUpon>FrmModifierPièce.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

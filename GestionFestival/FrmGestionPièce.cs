@@ -19,7 +19,9 @@ namespace GestionFestival
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            FrmModifierPièce frmModifierPièce = new FrmModifierPièce();
+            this.Hide();
+            frmModifierPièce.Show();
         }
 
         private void btnretour_Click(object sender, EventArgs e)
@@ -27,6 +29,13 @@ namespace GestionFestival
             FrmMenu FrmMenu = new FrmMenu();
             this.Hide();
             FrmMenu.Show();
+        }
+
+        private void btnajout_Click(object sender, EventArgs e)
+        {
+            FrmAjoutPièce frmAjoutPièce = new FrmAjoutPièce();
+            this.Hide();
+            frmAjoutPièce.Show();
         }
     }
 }

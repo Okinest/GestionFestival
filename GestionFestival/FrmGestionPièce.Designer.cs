@@ -45,6 +45,7 @@ namespace GestionFestival
             this.btnajout.TabIndex = 0;
             this.btnajout.Text = "Ajouter";
             this.btnajout.UseVisualStyleBackColor = true;
+            this.btnajout.Click += new System.EventHandler(this.btnajout_Click);
             // 
             // btnmodifier
             // 
