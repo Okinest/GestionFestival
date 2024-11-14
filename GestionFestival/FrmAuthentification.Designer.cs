@@ -57,6 +57,7 @@
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Nom d\'utilisateur";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtUsername
             // 
@@ -84,6 +85,7 @@
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Mot de passe";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // lblUtilisteurs
             // 
@@ -116,7 +118,7 @@
             this.lblconnexion.Size = new System.Drawing.Size(213, 46);
             this.lblconnexion.TabIndex = 8;
             this.lblconnexion.Text = "Connexion";
-            this.lblconnexion.Click += new System.EventHandler(this.label3_Click);
+            this.lblconnexion.Click += new System.EventHandler(this.lblconnexion_Click);
             // 
             // lblpassword
             // 
@@ -145,6 +147,7 @@
             this.Controls.Add(this.btnConnexion);
             this.Name = "FrmAuthentification";
             this.Text = "Authentification";
+            this.Load += new System.EventHandler(this.FrmAuthentification_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
