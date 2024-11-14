@@ -31,6 +31,15 @@ namespace GestionFestival
             {
                 btnConnexion_Click(sender, e);
             }
+
+            else if(e.KeyCode == Keys.Down)
+            {
+                txtPassword.Select();
+            }
+
+            else if(e.KeyCode == Keys.Up){
+                txtUsername.Select();
+            }
         }
 
 
@@ -70,6 +79,26 @@ namespace GestionFestival
                 lblinconnu.Visible = true;
             }
 
+        }
+
+        private void FrmAuthentification_Load(object sender, EventArgs e)
+        {
+            txtUsername.Select();
+        }
+
+        private void lblconnexion_Click(object sender, EventArgs e)
+        {
+            txtUsername.Select();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            txtUsername.Select();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            txtPassword.Select();
         }
     }
 }

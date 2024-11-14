@@ -16,5 +16,13 @@ namespace GestionFestival
         {
             InitializeComponent();
         }
+
+        private void btnretour_Click(object sender, EventArgs e)
+        {
+            FrmGestionPièce frmGestionPièce = new FrmGestionPièce();
+            this.Hide();
+            frmGestionPièce.Show();
+            
+        }
     }
 }

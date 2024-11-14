@@ -79,6 +79,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAjoutPièce.resx">
+      <DependentUpon>FrmAjoutPièce.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAuthentification.resx">
       <DependentUpon>FrmAuthentification.cs</DependentUpon>
     </EmbeddedResource>
@@ -87,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMenu.resx">
       <DependentUpon>FrmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmModifierPièce.resx">
+      <DependentUpon>FrmModifierPièce.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -29,12 +29,35 @@ namespace GestionFestival
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.btnretour = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // btnretour
+            // 
+            this.btnretour.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnretour.FlatAppearance.BorderSize = 2;
+            this.btnretour.Location = new System.Drawing.Point(319, 284);
+            this.btnretour.Name = "btnretour";
+            this.btnretour.Size = new System.Drawing.Size(133, 38);
+            this.btnretour.TabIndex = 4;
+            this.btnretour.Text = "Revenir en arrière";
+            this.btnretour.UseVisualStyleBackColor = true;
+            this.btnretour.Click += new System.EventHandler(this.btnretour_Click);
+            // 
+            // FrmModifierPièce
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnretour);
+            this.Name = "FrmModifierPièce";
             this.Text = "FrmModifierPièce";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnretour;
     }
 }
