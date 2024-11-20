@@ -37,7 +37,6 @@ namespace TheatreDAL
                         reader.GetString(1),  
                         reader.GetString(2)  
                     );
-
                     utilisateurs.Add(utilisateur);
                 }
                 reader.Close();
