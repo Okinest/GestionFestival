@@ -41,15 +41,15 @@ namespace GestionFestival
             Price_column.HeaderText = "Prix";
             // Création d'une en-tête de colonne pour la colonne Auteur
             DataGridViewTextBoxColumn Auth_column = new DataGridViewTextBoxColumn();
-            Auth_column.DataPropertyName = "auth_name";
+            Auth_column.DataPropertyName = "Auth_name";
             Auth_column.HeaderText = "Auteur";
             // Création d'une en-tête de colonne pour la colonne Theme
             DataGridViewTextBoxColumn Theme_column = new DataGridViewTextBoxColumn();
-            Theme_column.DataPropertyName = "theme_name";
+            Theme_column.DataPropertyName = "Theme_name";
             Theme_column.HeaderText = "Thème";
             // Création d'une en-tête de colonne pour la colonne Audience
             DataGridViewTextBoxColumn Audience_column = new DataGridViewTextBoxColumn();
-            Audience_column.DataPropertyName = "aud_categ";
+            Audience_column.DataPropertyName = "Aud_categ";
             Audience_column.HeaderText = "Audience";
 
             //AJOUT DE CHAQUE COLUMN
