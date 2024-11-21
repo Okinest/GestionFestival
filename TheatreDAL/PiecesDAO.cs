@@ -11,6 +11,7 @@ namespace TheatreDAL
     public class PiecesDAO
     {
         private static PiecesDAO unePieceDAO;
+        private static PiecesDAO ThemeDAO;
 
         // Accesseur en lecture, renvoi une instance
         public static PiecesDAO GetPièceDAO()
@@ -20,6 +21,14 @@ namespace TheatreDAL
                 unePieceDAO = new PiecesDAO();
             }
             return unePieceDAO;
+        }
+        public static PiecesDAO GetThemeDAO()
+        {
+            if (ThemeDAO == null)
+            {
+                ThemeDAO = new PiecesDAO();
+            }
+            return ThemeDAO;
         }
         public List<Pieces> GetPieceInfos()
         {
@@ -55,6 +64,55 @@ namespace TheatreDAL
                 reader.Close();
             }
             return Pièces;
+        }
+        public static int AjoutPieces(Pieces unePiece)
+        {
+            int nbr;
+            string queryAddPieces = "INSERT INTO PLAY SET PLAY.play_name, PLAY.play_description, PLAY.play_duration, PLAY.play_price, AUTHOR.auth_name, THEME.theme_name, AUDIENCE.aud_categ VALUES(@play_name, @play_description," +
+                "@play_duration, @play_price, @auth_name, @theme_name, @aud_categ";
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand command = new SqlCommand(queryAddPieces, connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+                command.Parameters.AddWithValue("@play_name", unePiece.Play_name);
+                command.Parameters.AddWithValue("@play_description", unePiece.Play_description);
+                command.Parameters.AddWithValue("@play_duration", unePiece.Play_duration);
+                command.Parameters.AddWithValue("@play_price", unePiece.Play_price);
+                command.Parameters.AddWithValue("@auth_name", unePiece.Auth_name);
+                command.Parameters.AddWithValue("@theme_name", unePiece.Theme_name);
+                command.Parameters.AddWithValue("@aud_categ", unePiece.Aud_categ);
+
+                nbr = command.ExecuteNonQuery();
+                reader.Close();
+            }
+            return nbr;
+
+        }
+
+        public List<Theme> GetThemes()
+        {
+            string queryTheme = "SELECT theme_name FROM THEME";
+            List<Theme> Theme = new List<Theme>();
+
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand command = new SqlCommand(queryTheme, connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Theme UnTheme = new Theme(
+                        //reader.GetInt32(0),
+                        reader.GetString(1)
+                        );
+                    Theme.Add(UnTheme);
+                }
+                reader.Close();
+                
+            }
+            return Theme;
+
         }
     }
 }
