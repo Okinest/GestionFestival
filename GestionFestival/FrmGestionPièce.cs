@@ -15,11 +15,11 @@ namespace GestionFestival
 {
     public partial class FrmGestionPièce : Form
     {
+        private GestionPieces gestionPieces;
         public FrmGestionPièce()
         {
-            GestionPieces gestionPieces = new GestionPieces();
-            List<Pieces> listePieces = gestionPieces.GetListePieces();
             InitializeComponent();
+            gestionPieces = new GestionPieces();
             dtgPieces.Columns.Clear();
             dtgPieces.AutoGenerateColumns = false;
 
@@ -61,42 +61,61 @@ namespace GestionFestival
             dtgPieces.Columns.Add(Theme_column);
             dtgPieces.Columns.Add(Audience_column);
 
+        }
+        private void FrmGestionPièce_Load(object sender, EventArgs e)
+        {
+            List<Pieces> listePieces = gestionPieces.GetListePieces();
             // Lier la liste des pièces au DataGridView
             dtgPieces.DataSource = listePieces;
-
-
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void BtnModifier_Click(object sender, EventArgs e)
         {
             FrmModifierPièce frmModifierPièce = new FrmModifierPièce();
             this.Hide();
             frmModifierPièce.Show();
         }
 
-        private void btnretour_Click(object sender, EventArgs e)
+        private void BtnRetour_Click(object sender, EventArgs e)
         {
             FrmMenu FrmMenu = new FrmMenu();
             this.Hide();
             FrmMenu.Show();
         }
 
-        private void btnajout_Click(object sender, EventArgs e)
+        private void BtnAjout_Click(object sender, EventArgs e)
         {
             FrmAjoutPièce frmAjoutPièce = new FrmAjoutPièce();
             this.Hide();
             frmAjoutPièce.Show();
         }
 
-
-        private void FrmGestionPièce_Load(object sender, EventArgs e)
+        private void BtnSupprimer_Click(object sender, EventArgs e)
         {
+            if (dtgPieces.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dtgPieces.SelectedRows[0];
+                Pieces selectedPiece = (Pieces)selectedRow.DataBoundItem;
 
-        }
-
-        private void dtgPieces_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+                // Demande de confirmation
+                DialogResult dialogResult = MessageBox.Show($"Êtes-vous sûr de vouloir supprimer la pièce '{selectedPiece.Play_name}' ?", "Confirmation de suppression", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    int result = GestionPieces.SupprimerPiece(selectedPiece.Play_id);
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Pièce supprimée avec succès.", "Suppression de la pièce", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        FrmGestionPièce_Load(sender, e); // Recharger les pièces après suppression
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erreur lors de la suppression de la pièce.", "Erreur de suppression", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une pièce à supprimer.","Sélection d'une pièce",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
