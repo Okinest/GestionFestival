@@ -100,5 +100,10 @@ namespace GestionFestival
         {
             txtPassword.Select();
         }
+
+        private void btnQuitter_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
