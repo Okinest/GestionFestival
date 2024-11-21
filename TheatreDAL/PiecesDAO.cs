@@ -94,67 +94,69 @@ namespace TheatreDAL
 
         }
 
-        public static List<Theme> GetThemes()
-        {
-            List<Theme> Themes = new List<Theme>();
-            string query_theme = "SELECT * FROM THEME";
-            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
-            {
-                SqlCommand command = new SqlCommand(query_theme, connection);
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    Theme theme = new Theme(
-                           reader.GetInt32(0),
-                           reader.GetString(1)
-                        );
-                    Themes.Add(theme);
-                }
-                reader.Close();
-            }
-            return Themes;
-        }
-
-        public static List<Audience> GetAudiences()
-        {
-            List<Audience> Audiences = new List<Audience>();
-            string query_audience = "SELECT * FROM AUDIENCE";
-            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
-            {
-                SqlCommand command = new SqlCommand(query_audience, connection);
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    Audience audience = new Audience(
-                           reader.GetInt32(0),
-                           reader.GetString(1)
-                        );
-                    Audiences.Add(audience);
-                }
-                reader.Close();
-            }
-            return Audiences;
-        }
-
         public static List<Author> GetAuthors()
         {
-            List<Author> Authors= new List<Author>();
-            string query_author = "SELECT * FROM AUTHOR";
+            List<Author> authors = new List<Author>();
+            string query = "SELECT * FROM AUTHOR";  // Requête pour récupérer les auteurs
             using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
             {
-                SqlCommand command = new SqlCommand(query_author, connection);
+                SqlCommand command = new SqlCommand(query, connection);
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
                     Author author = new Author(
-                           reader.GetInt32(0),
-                           reader.GetString(1)
-                        );
-                    Authors.Add(author);
+                        reader.GetInt32(0),  // Auth_id
+                        reader.GetString(1)  // Auth_name
+                    );
+                    authors.Add(author);
                 }
                 reader.Close();
             }
-            return Authors;
+            return authors;
+        }
+
+        // Méthode pour récupérer les thèmes
+        public static List<Theme> GetThemes()
+        {
+            List<Theme> themes = new List<Theme>();
+            string query = "SELECT * FROM THEME";  // Requête pour récupérer les thèmes
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Theme theme = new Theme(
+                        reader.GetInt32(0),  // Theme_id
+                        reader.GetString(1)  // Theme_name
+                    );
+                    themes.Add(theme);
+                }
+                reader.Close();
+            }
+            return themes;
+        }
+
+        // Méthode pour récupérer les audiences
+        public static List<Audience> GetAudiences()
+        {
+            List<Audience> audiences = new List<Audience>();
+            string query = "SELECT * FROM AUDIENCE";  // Requête pour récupérer les audiences
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Audience audience = new Audience(
+                        reader.GetInt32(0),  // Aud_id
+                        reader.GetString(1)  // Aud_categ
+                    );
+                    audiences.Add(audience);
+                }
+                reader.Close();
+            }
+            return audiences;
         }
     }
 }

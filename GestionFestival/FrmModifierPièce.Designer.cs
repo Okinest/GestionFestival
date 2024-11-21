@@ -1,5 +1,4 @@
-﻿
-namespace GestionFestival
+﻿namespace GestionFestival
 {
     partial class FrmModifierPièce
     {
@@ -137,4 +136,3 @@ namespace GestionFestival
         }
     }
 }
-

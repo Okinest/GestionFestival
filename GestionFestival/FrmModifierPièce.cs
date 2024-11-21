@@ -14,9 +14,12 @@ namespace GestionFestival
             InitializeComponent();
             pieceCourante = piece;
 
+            // Charger les données dans les ComboBox
+            ChargerCombos();
+
             if (pieceCourante != null)
             {
-                ChargerDonnées();
+                ChargerDonnées(); // Charger les informations de la pièce dans les champs
             }
             else
             {
@@ -24,30 +27,49 @@ namespace GestionFestival
             }
         }
 
+        private void ChargerCombos()
+        {
+            // Charger les auteurs dans cmbAuteur
+            cmbAuteur.DataSource = GestionPieces.GetPieces().GetListeAuthors();  // Récupérer les auteurs
+            cmbAuteur.DisplayMember = "Auth_name";  // Afficher le nom de l'auteur
+            cmbAuteur.ValueMember = "Auth_id";     // Utiliser l'ID de l'auteur
+            cmbAuteur.SelectedIndex = -1;          // Initialiser sans sélection
+
+            // Charger les thèmes dans cmbTheme
+            cmbTheme.DataSource = GestionPieces.GetPieces().GetListeThemes();  // Récupérer les thèmes
+            cmbTheme.DisplayMember = "Theme_name";  // Afficher le nom du thème
+            cmbTheme.ValueMember = "Theme_id";      // Utiliser l'ID du thème
+            cmbTheme.SelectedIndex = -1;            // Initialiser sans sélection
+
+            // Charger les audiences dans cmbAudience
+            cmbAudience.DataSource = GestionPieces.GetPieces().GetListeAudiences();  // Récupérer les audiences
+            cmbAudience.DisplayMember = "Aud_categ"; // Afficher la catégorie d'audience
+            cmbAudience.ValueMember = "Aud_id";      // Utiliser l'ID de l'audience
+            cmbAudience.SelectedIndex = -1;          // Initialiser sans sélection
+        }
+
         private void ChargerDonnées()
         {
-            // Charger les données de la pièce dans les contrôles
+            // Charger les données de la pièce dans les champs de texte
             txtNom.Text = pieceCourante.Play_name;
             txtDescription.Text = pieceCourante.Play_description;
             txtDuree.Text = pieceCourante.Play_duration.ToString();
             txtPrix.Text = pieceCourante.Play_price.ToString();
 
-            // Vérifier si les données pour les auteurs sont disponibles
+            // Charger les ComboBox avec les valeurs de la pièce (sélectionner l'élément correspondant)
             if (pieceCourante.Auth != null)
             {
-                cmbAuteur.SelectedValue = pieceCourante.Auth.Auth_id;
+                cmbAuteur.SelectedValue = pieceCourante.Auth.Auth_id;  // Sélectionner l'auteur associé à la pièce
             }
 
-            // Vérifier si les données pour les thèmes sont disponibles
             if (pieceCourante.Theme != null)
             {
-                cmbTheme.SelectedValue = pieceCourante.Theme.Theme_id;
+                cmbTheme.SelectedValue = pieceCourante.Theme.Theme_id;  // Sélectionner le thème associé à la pièce
             }
 
-            // Vérifier si les données pour l'audience sont disponibles
             if (pieceCourante.Aud != null)
             {
-                cmbAudience.SelectedValue = pieceCourante.Aud.Aud_id;
+                cmbAudience.SelectedValue = pieceCourante.Aud.Aud_id;  // Sélectionner l'audience associée à la pièce
             }
         }
 
