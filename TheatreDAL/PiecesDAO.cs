@@ -68,8 +68,6 @@ namespace TheatreDAL
 
 
                 nbr = command.ExecuteNonQuery();
-                SqlDataReader reader = command.ExecuteReader();
-                reader.Close();
             }
             return nbr;
 

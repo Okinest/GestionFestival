@@ -38,7 +38,7 @@ namespace GestionFestival
             cmbAuteur.ValueMember = "Auth_id";
          }
 
-        private void btnretour_Click(object sender, EventArgs e)
+        private void BtnRetour_Click(object sender, EventArgs e)
         {
             FrmGestionPièce frmGestionPièce = new FrmGestionPièce();
             this.Hide();
@@ -46,16 +46,14 @@ namespace GestionFestival
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BtnAjout_Click(object sender, EventArgs e)
         {
-            int playDurationConvert;
-            float playPriceConvert;
             string playName = txtNom.Text;
             string playDescription = txtDescription.Text;
             string playDuration = txtDuree.Text;
             string playPrice = txtPrix.Text;
-            int.TryParse(playDuration, out playDurationConvert);
-            float.TryParse(playPrice, out playPriceConvert);
+            int.TryParse(playDuration, out int playDurationConvert);
+            float.TryParse(playPrice, out float playPriceConvert);
 
             bool isValid = true;
 
