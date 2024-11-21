@@ -21,6 +21,27 @@ namespace TheatreDAL
             }
             return unePieceDAO;
         }
+        public static void ModifierPiece(Pieces piece)
+        {
+            string query = "UPDATE PLAY SET play_name = @play_name, play_description = @play_description, play_duration = @play_duration, " +
+                           "play_price = @play_price, auth_id = @auth_id, theme_id = @theme_id, aud_id = @aud_id WHERE play_name = @old_play_name";
+
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@play_name", piece.Play_name);
+                command.Parameters.AddWithValue("@play_description", piece.Play_description);
+                command.Parameters.AddWithValue("@play_duration", piece.Play_duration);
+                command.Parameters.AddWithValue("@play_price", piece.Play_price);
+                command.Parameters.AddWithValue("@auth_id", piece.Auth.Auth_id);
+                command.Parameters.AddWithValue("@theme_id", piece.Theme.Theme_id);
+                command.Parameters.AddWithValue("@aud_id", piece.Aud.Aud_id);
+                command.Parameters.AddWithValue("@old_play_name", piece.Play_name);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
         public List<Pieces> GetPieceInfos()
         {
 

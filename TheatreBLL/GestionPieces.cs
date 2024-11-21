@@ -27,17 +27,21 @@ namespace TheatreBLL
             ErreurInconnue,
         }
 
+        public void ModifierPiece(Pieces piece)
+        {
+            PiecesDAO.ModifierPiece(piece);
+        }
 
         //Ascesseur lecture
-        private static GestionPieces GetPieces()
+        public static GestionPieces GetPieces()
         {
             if (uneGestionPiece == null)
             {
                 uneGestionPiece = new GestionPieces();
             }
-
             return uneGestionPiece;
         }
+
         public AjoutPieceResultat AjouterPiece(Pieces unePiece)
         {
             if (string.IsNullOrEmpty(unePiece.Play_name))

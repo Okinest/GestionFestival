@@ -65,7 +65,7 @@ namespace GestionFestival
             this.btnmodifier.TabIndex = 1;
             this.btnmodifier.Text = "Modifier";
             this.btnmodifier.UseVisualStyleBackColor = true;
-            this.btnmodifier.Click += new System.EventHandler(this.button1_Click);
+            this.btnmodifier.Click += new System.EventHandler(this.btnmodifier_Click);
             // 
             // btnsupprimer
             // 
