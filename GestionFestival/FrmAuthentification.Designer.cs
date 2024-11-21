@@ -37,6 +37,7 @@
             this.lblinconnu = new System.Windows.Forms.Label();
             this.lblconnexion = new System.Windows.Forms.Label();
             this.lblpassword = new System.Windows.Forms.Label();
+            this.btnQuitter = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnConnexion
@@ -131,11 +132,22 @@
             this.lblpassword.Text = "Le champ mot de passe est obligatoire *";
             this.lblpassword.Visible = false;
             // 
+            // btnQuitter
+            // 
+            this.btnQuitter.Location = new System.Drawing.Point(40, 388);
+            this.btnQuitter.Name = "btnQuitter";
+            this.btnQuitter.Size = new System.Drawing.Size(124, 38);
+            this.btnQuitter.TabIndex = 9;
+            this.btnQuitter.Text = "Quitter";
+            this.btnQuitter.UseVisualStyleBackColor = true;
+            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
+            // 
             // FrmAuthentification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 465);
+            this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.lblconnexion);
             this.Controls.Add(this.lblinconnu);
             this.Controls.Add(this.lblpassword);
@@ -164,6 +176,7 @@
         private System.Windows.Forms.Label lblinconnu;
         private System.Windows.Forms.Label lblconnexion;
         private System.Windows.Forms.Label lblpassword;
+        private System.Windows.Forms.Button btnQuitter;
     }
 }
 
