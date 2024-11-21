@@ -53,22 +53,22 @@ namespace TheatreDAL
         public static int AjoutPieces(Pieces unePiece)
         {
             int nbr;
-            string queryAddPieces = "INSERT INTO PLAY SET PLAY.play_name, PLAY.play_description, PLAY.play_duration, PLAY.play_price, AUTHOR.auth_name, THEME.theme_name, AUDIENCE.aud_categ VALUES(@play_name, @play_description," +
-                "@play_duration, @play_price, @auth_name, @theme_name, @aud_categ";
+            string queryAddPieces = "INSERT INTO PLAY (play_name, play_description, play_duration, play_price, auth_id, theme_id, aud_id) VALUES (@play_name, @play_description, @play_duration, @play_price, @auth_id, @theme_id, @aud_id)";
             using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
             {
                 SqlCommand command = new SqlCommand(queryAddPieces, connection);
-                SqlDataReader reader = command.ExecuteReader();
 
                 command.Parameters.AddWithValue("@play_name", unePiece.Play_name);
                 command.Parameters.AddWithValue("@play_description", unePiece.Play_description);
                 command.Parameters.AddWithValue("@play_duration", unePiece.Play_duration);
                 command.Parameters.AddWithValue("@play_price", unePiece.Play_price);
-                command.Parameters.AddWithValue("@auth_name", unePiece.Auth.Auth_id);
-                command.Parameters.AddWithValue("@theme_name", unePiece.Theme.Theme_id);
-                command.Parameters.AddWithValue("@aud_categ", unePiece.Aud.Aud_id);
+                command.Parameters.AddWithValue("@auth_id", unePiece.Auth.Auth_id);
+                command.Parameters.AddWithValue("@theme_id", unePiece.Theme.Theme_id);
+                command.Parameters.AddWithValue("@aud_id", unePiece.Auth.Auth_id);
+
 
                 nbr = command.ExecuteNonQuery();
+                SqlDataReader reader = command.ExecuteReader();
                 reader.Close();
             }
             return nbr;

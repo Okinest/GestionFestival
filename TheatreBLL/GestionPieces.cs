@@ -17,6 +17,16 @@ namespace TheatreBLL
         private List<Theme> listeThemes = new List<Theme>();
         private List<Audience> listeAudience= new List<Audience>();
         private List<Author> listeAuthor = new List<Author>();
+        public enum AjoutPieceResultat
+        {
+            Reussi,
+            PrixIncorrect,
+            DureeIncorrect,
+            NomVide,
+            DescriptionVide,
+            ErreurInconnue,
+        }
+
 
         //Ascesseur lecture
         private static GestionPieces GetPieces()
@@ -28,14 +38,47 @@ namespace TheatreBLL
 
             return uneGestionPiece;
         }
+        public AjoutPieceResultat AjouterPiece(Pieces unePiece)
+        {
+            if (string.IsNullOrEmpty(unePiece.Play_name))
+            {
+                return AjoutPieceResultat.NomVide;
+            }
 
+            if (string.IsNullOrEmpty(unePiece.Play_description))
+            {
+                return AjoutPieceResultat.DescriptionVide;
+            }
+
+            if (unePiece.Play_price <= 0)
+            {
+                return AjoutPieceResultat.PrixIncorrect;
+            }
+
+            if (unePiece.Play_duration <= 0)
+            {
+                return AjoutPieceResultat.DureeIncorrect;
+            }
+
+            try
+            {
+                // Insérer la pièce dans la base de données...
+                return AjoutPieceResultat.Reussi;
+            }
+            catch (Exception)
+            {
+                return AjoutPieceResultat.ErreurInconnue;
+            }
+        }
+
+        //Récupère la liste des pièces
         public List<Pieces> GetListePieces()
         {
             listePieces = PiecesDAO.GetPièceDAO().GetPieceInfos();
             return listePieces;
         }
 
-        /*Récupère les thèmes*/
+        //Récupère les thèmes
         public List<Theme> GetListeThemes()
         {
             listeThemes = PiecesDAO.GetThemes();
