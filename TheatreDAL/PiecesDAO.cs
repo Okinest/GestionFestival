@@ -34,19 +34,13 @@ namespace TheatreDAL
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    // FORMATAGE DATE
-                    int rawDuration = reader.GetInt32(2); // play_duration
-                    TimeSpan duration = TimeSpan.FromMinutes(rawDuration);
-                    string formattedDuration = duration.ToString(@"hh\:mm");
-                    //AJOUT D'EURO
-                    string formattedPrice = reader.GetDouble(3) + "€";
                     //CONSTRUCTEUR CREATION D'UTILISATEUR
                     Pieces Pièce = new Pieces(
                         reader.GetString(0), // play_name
                         reader.GetString(1), // play_description
-                        formattedDuration,  // play_duration + heures
-                        formattedPrice,  // play_price + €
-                        new Author(reader.GetInt32(4),reader.GetString(5)),  // auth_name
+                        reader.GetInt32(2),
+                        reader.GetDouble(3),
+                        new Author(reader.GetInt32(4), reader.GetString(5)),  // auth_name
                         new Theme(reader.GetInt32(6), reader.GetString(7)),  // theme_name
                         new Audience(reader.GetInt32(8), reader.GetString(9))  // aud_name
                     );
@@ -81,6 +75,67 @@ namespace TheatreDAL
 
         }
 
-       
+        public static List<Theme> GetThemes()
+        {
+            List<Theme> Themes = new List<Theme>();
+            string query_theme = "SELECT * FROM THEME";
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand command = new SqlCommand(query_theme, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Theme theme = new Theme(
+                           reader.GetInt32(0),
+                           reader.GetString(1)
+                        );
+                    Themes.Add(theme);
+                }
+                reader.Close();
+            }
+            return Themes;
+        }
+
+        public static List<Audience> GetAudiences()
+        {
+            List<Audience> Audiences = new List<Audience>();
+            string query_audience = "SELECT * FROM AUDIENCE";
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand command = new SqlCommand(query_audience, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Audience audience = new Audience(
+                           reader.GetInt32(0),
+                           reader.GetString(1)
+                        );
+                    Audiences.Add(audience);
+                }
+                reader.Close();
+            }
+            return Audiences;
+        }
+
+        public static List<Author> GetAuthors()
+        {
+            List<Author> Authors= new List<Author>();
+            string query_author = "SELECT * FROM AUTHOR";
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand command = new SqlCommand(query_author, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Author author = new Author(
+                           reader.GetInt32(0),
+                           reader.GetString(1)
+                        );
+                    Authors.Add(author);
+                }
+                reader.Close();
+            }
+            return Authors;
+        }
     }
 }

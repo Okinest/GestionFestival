@@ -14,10 +14,18 @@ namespace GestionFestival
 {
     public partial class FrmAjoutPièce : Form
     {
+        private static GestionPieces uneGestionPiece = new GestionPieces();
         public FrmAjoutPièce()
         {
             InitializeComponent();
         }
+        private void FrmAjoutPièce_Load(object sender, EventArgs e)
+        {
+            List<Audience> audienceList = uneGestionPiece.GetListeAudiences();
+            cmbAudience.DataSource = audienceList;
+            cmbAudience.DisplayMember = "Aud_categ";
+            cmbAudience.ValueMember = "Aud_id";
+         }
 
         private void btnretour_Click(object sender, EventArgs e)
         {
@@ -32,9 +40,5 @@ namespace GestionFestival
 
         }
 
-        private void lstAudience_SelectedIndexChanged(object sender, EventArgs e)
-        {
-          
-        }
     }
 }

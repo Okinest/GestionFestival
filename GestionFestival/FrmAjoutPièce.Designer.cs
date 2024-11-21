@@ -34,15 +34,16 @@ namespace GestionFestival
             this.btnAjout = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.lblTitreAjout = new System.Windows.Forms.Label();
             this.lblNom = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblTheme = new System.Windows.Forms.Label();
             this.lblDuree = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.lstAudience = new System.Windows.Forms.ListBox();
+            this.lblAuteur = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbAudience = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnretour
@@ -96,15 +97,6 @@ namespace GestionFestival
             this.textBox3.Size = new System.Drawing.Size(140, 20);
             this.textBox3.TabIndex = 12;
             // 
-            // textBox4
-            // 
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(419, 185);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(83, 20);
-            this.textBox4.TabIndex = 13;
-            // 
             // lblTitreAjout
             // 
             this.lblTitreAjout.AutoSize = true;
@@ -139,7 +131,7 @@ namespace GestionFestival
             // 
             this.lblTheme.AutoSize = true;
             this.lblTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTheme.Location = new System.Drawing.Point(318, 162);
+            this.lblTheme.Location = new System.Drawing.Point(431, 162);
             this.lblTheme.Name = "lblTheme";
             this.lblTheme.Size = new System.Drawing.Size(58, 20);
             this.lblTheme.TabIndex = 18;
@@ -149,7 +141,7 @@ namespace GestionFestival
             // 
             this.lblDuree.AutoSize = true;
             this.lblDuree.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDuree.Location = new System.Drawing.Point(430, 162);
+            this.lblDuree.Location = new System.Drawing.Point(330, 162);
             this.lblDuree.Name = "lblDuree";
             this.lblDuree.Size = new System.Drawing.Size(53, 20);
             this.lblDuree.TabIndex = 19;
@@ -159,46 +151,61 @@ namespace GestionFestival
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(536, 162);
+            this.label2.Location = new System.Drawing.Point(529, 162);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 20);
             this.label2.TabIndex = 20;
             this.label2.Text = "Public visé";
             // 
-            // textBox6
+            // lblAuteur
             // 
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(635, 185);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(140, 20);
-            this.textBox6.TabIndex = 21;
+            this.lblAuteur.AutoSize = true;
+            this.lblAuteur.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAuteur.Location = new System.Drawing.Point(661, 162);
+            this.lblAuteur.Name = "lblAuteur";
+            this.lblAuteur.Size = new System.Drawing.Size(57, 20);
+            this.lblAuteur.TabIndex = 23;
+            this.lblAuteur.Text = "Auteur";
             // 
-            // lstAudience
+            // comboBox1
             // 
-            this.lstAudience.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lstAudience.FormattingEnabled = true;
-            this.lstAudience.IntegralHeight = false;
-            this.lstAudience.Location = new System.Drawing.Point(499, 185);
-            this.lstAudience.Name = "lstAudience";
-            this.lstAudience.Size = new System.Drawing.Size(140, 20);
-            this.lstAudience.TabIndex = 22;
-            this.lstAudience.SelectedIndexChanged += new System.EventHandler(this.lstAudience_SelectedIndexChanged);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(420, 184);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(103, 21);
+            this.comboBox1.TabIndex = 24;
+            // 
+            // cmbAudience
+            // 
+            this.cmbAudience.FormattingEnabled = true;
+            this.cmbAudience.Location = new System.Drawing.Point(529, 185);
+            this.cmbAudience.Name = "cmbAudience";
+            this.cmbAudience.Size = new System.Drawing.Size(106, 21);
+            this.cmbAudience.TabIndex = 25;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(641, 185);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(108, 21);
+            this.comboBox3.TabIndex = 26;
             // 
             // FrmAjoutPièce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lstAudience);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.cmbAudience);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.lblAuteur);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblDuree);
             this.Controls.Add(this.lblTheme);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblNom);
             this.Controls.Add(this.lblTitreAjout);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.btnAjout);
@@ -206,6 +213,7 @@ namespace GestionFestival
             this.Controls.Add(this.btnretour);
             this.Name = "FrmAjoutPièce";
             this.Text = "FrmAjoutpièce";
+            this.Load += new System.EventHandler(this.FrmAjoutPièce_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,14 +226,15 @@ namespace GestionFestival
         private System.Windows.Forms.Button btnAjout;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label lblTitreAjout;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Label lblTheme;
         private System.Windows.Forms.Label lblDuree;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.ListBox lstAudience;
+        private System.Windows.Forms.Label lblAuteur;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbAudience;
+        private System.Windows.Forms.ComboBox comboBox3;
     }
 }

@@ -15,6 +15,8 @@ namespace TheatreBLL
         private static GestionPieces uneGestionPiece;
         private List<Pieces> listePieces = new List<Pieces>();
         private List<Theme> listeThemes = new List<Theme>();
+        private List<Audience> listeAudience= new List<Audience>();
+        private List<Author> listeAuthor = new List<Author>();
 
         //Ascesseur lecture
         private static GestionPieces GetPieces()
@@ -32,6 +34,28 @@ namespace TheatreBLL
             listePieces = PiecesDAO.GetPièceDAO().GetPieceInfos();
             return listePieces;
         }
+
+        /*Récupère les thèmes*/
+        public List<Theme> GetListeThemes()
+        {
+            listeThemes = PiecesDAO.GetThemes();
+            return listeThemes;
+        }
+
+        //Récupère l'audience
+        public List<Audience> GetListeAudiences()
+        {
+            listeAudience = PiecesDAO.GetAudiences();
+            return listeAudience;
+        }
+
+        //Récupère les auteurs
+        public List<Author> GetListeAuthor()
+        {
+            listeAuthor = PiecesDAO.GetAuthors();
+            return listeAuthor;
+        }
+
         public static int CreerPieces(Pieces piece)
         {
             return PiecesDAO.AjoutPieces(piece);
