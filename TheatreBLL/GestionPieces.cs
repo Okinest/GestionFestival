@@ -32,12 +32,6 @@ namespace TheatreBLL
             listePieces = PiecesDAO.GetPièceDAO().GetPieceInfos();
             return listePieces;
         }
-        public List<Theme> GetListeThemes()
-        {
-            listeThemes = PiecesDAO.GetThemeDAO().GetThemes();
-            return listeThemes;
-        }
-
         public static int CreerPieces(Pieces piece)
         {
             return PiecesDAO.AjoutPieces(piece);

@@ -34,8 +34,7 @@ namespace GestionFestival
 
         private void lstAudience_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            List<Theme> listeThemes = GestionPieces
+          
         }
     }
 }

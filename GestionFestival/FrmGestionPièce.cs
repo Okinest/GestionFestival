@@ -64,6 +64,7 @@ namespace GestionFestival
             // Lier la liste des pièces au DataGridView
             dtgPieces.DataSource = listePieces;
 
+
         }
 
         private void button1_Click(object sender, EventArgs e)

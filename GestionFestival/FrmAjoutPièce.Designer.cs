@@ -114,7 +114,6 @@ namespace GestionFestival
             this.lblTitreAjout.Size = new System.Drawing.Size(517, 46);
             this.lblTitreAjout.TabIndex = 15;
             this.lblTitreAjout.Text = "Ajout d\'une pièce de théâtre";
-            this.lblTitreAjout.Click += new System.EventHandler(this.label1_Click);
             // 
             // lblNom
             // 
