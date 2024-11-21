@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TheatreBO;
+using TheatreBLL;
 
 namespace GestionFestival
 {
@@ -23,6 +25,16 @@ namespace GestionFestival
             this.Hide();
             frmGestionPièce.Show();
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstAudience_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
         }
     }
 }

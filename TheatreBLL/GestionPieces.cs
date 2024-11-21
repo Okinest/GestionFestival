@@ -14,9 +14,9 @@ namespace TheatreBLL
 
         private static GestionPieces uneGestionPiece;
         private List<Pieces> listePieces = new List<Pieces>();
+        private List<Theme> listeThemes = new List<Theme>();
 
-        //Ascesseur écriture/lecture
-
+        //Ascesseur lecture
         private static GestionPieces GetPieces()
         {
             if (uneGestionPiece == null)
@@ -31,6 +31,10 @@ namespace TheatreBLL
         {
             listePieces = PiecesDAO.GetPièceDAO().GetPieceInfos();
             return listePieces;
+        }
+        public static int CreerPieces(Pieces piece)
+        {
+            return PiecesDAO.AjoutPieces(piece);
         }
 
         // Définit la chaîne de connexion grâce à la méthode SetchaineConnexion de la DAL

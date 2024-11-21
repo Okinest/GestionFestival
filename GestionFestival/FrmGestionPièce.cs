@@ -23,10 +23,6 @@ namespace GestionFestival
             dtgPieces.Columns.Clear();
             dtgPieces.AutoGenerateColumns = false;
 
-            // Création d'une en-tête de colonne pour la colonne  Id
-            DataGridViewTextBoxColumn Id_column = new DataGridViewTextBoxColumn();
-            Id_column.DataPropertyName = "play_id";
-            Id_column.HeaderText = "Id";
             // Création d'une en-tête de colonne pour la colonne  Nom
             DataGridViewTextBoxColumn Nom_column = new DataGridViewTextBoxColumn();
             Nom_column.DataPropertyName = "play_name";
@@ -45,23 +41,18 @@ namespace GestionFestival
             Price_column.HeaderText = "Prix";
             // Création d'une en-tête de colonne pour la colonne Auteur
             DataGridViewTextBoxColumn Auth_column = new DataGridViewTextBoxColumn();
-            Auth_column.DataPropertyName = "auth_id";
+            Auth_column.DataPropertyName = "Auth_name";
             Auth_column.HeaderText = "Auteur";
             // Création d'une en-tête de colonne pour la colonne Theme
             DataGridViewTextBoxColumn Theme_column = new DataGridViewTextBoxColumn();
-            Theme_column.DataPropertyName = "theme_id";
+            Theme_column.DataPropertyName = "Theme_name";
             Theme_column.HeaderText = "Thème";
             // Création d'une en-tête de colonne pour la colonne Audience
             DataGridViewTextBoxColumn Audience_column = new DataGridViewTextBoxColumn();
-            Audience_column.DataPropertyName = "aud_id";
+            Audience_column.DataPropertyName = "Aud_categ";
             Audience_column.HeaderText = "Audience";
-            // Création d'une en-tête de colonne pour la colonne Compagnie
-            DataGridViewTextBoxColumn Company_column = new DataGridViewTextBoxColumn();
-            Company_column.DataPropertyName = "comp_id";
-            Company_column.HeaderText = "Compagnie";
 
             //AJOUT DE CHAQUE COLUMN
-            dtgPieces.Columns.Add(Id_column);
             dtgPieces.Columns.Add(Nom_column);
             dtgPieces.Columns.Add(Description_column);
             dtgPieces.Columns.Add(Duration_column);
@@ -69,10 +60,10 @@ namespace GestionFestival
             dtgPieces.Columns.Add(Auth_column);
             dtgPieces.Columns.Add(Theme_column);
             dtgPieces.Columns.Add(Audience_column);
-            dtgPieces.Columns.Add(Company_column);
 
             // Lier la liste des pièces au DataGridView
             dtgPieces.DataSource = listePieces;
+
 
         }
 
