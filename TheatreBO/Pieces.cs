@@ -10,7 +10,7 @@ namespace TheatreBO
     {
 
         //ATTRIBUT
-        private int play_id;
+        //private int play_id;
         private string play_name;
         private string play_description;
         private string play_duration;
@@ -18,15 +18,14 @@ namespace TheatreBO
         private string auth_name;
         private string theme_name;
         private string aud_categ;
-        private string comp_name;
+        //private string comp_name;
 
 
 
         //CONSTRUCTEUR
 
-        public Pieces(int play_id, string play_name, string play_description, string play_duration, string play_price, string auth_name, string theme_name, string aud_categ, string comp_name)
+        public Pieces(string play_name, string play_description, string play_duration, string play_price, string auth_name, string theme_name, string aud_categ)
         {
-            this.play_id = play_id;
             this.play_name = play_name;
             this.play_description = play_description;
             this.play_duration = play_duration;
@@ -34,10 +33,8 @@ namespace TheatreBO
             this.auth_name = auth_name;
             this.theme_name = theme_name;
             this.aud_categ = aud_categ;
-            this.comp_name = comp_name;
         }
 
-        public int Play_id { get => play_id; set => play_id = value; }
         public string Play_name { get => play_name; set => play_name = value; }
         public string Play_description { get => play_description; set => play_description = value; }
         public string Play_duration { get => play_duration; set => play_duration = value; }
@@ -45,7 +42,6 @@ namespace TheatreBO
         public string Auth_name { get => auth_name; set => auth_name = value; }
         public string Theme_name { get => theme_name; set => theme_name = value; }
         public string Aud_categ { get => aud_categ; set => aud_categ = value; }
-        public string Comp_name { get => comp_name; set => comp_name = value; }
 
 
     }

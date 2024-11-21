@@ -39,7 +39,6 @@ namespace GestionFestival
             this.colTheme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDuree = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAudience = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCompagnie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAuteur = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgPieces)).BeginInit();
             this.SuspendLayout();
@@ -101,7 +100,6 @@ namespace GestionFestival
             this.colTheme,
             this.colDuree,
             this.colAudience,
-            this.colCompagnie,
             this.colAuteur});
             this.dtgPieces.Location = new System.Drawing.Point(23, 117);
             this.dtgPieces.Name = "dtgPieces";
@@ -133,11 +131,6 @@ namespace GestionFestival
             // 
             this.colAudience.HeaderText = "Audience";
             this.colAudience.Name = "colAudience";
-            // 
-            // colCompagnie
-            // 
-            this.colCompagnie.HeaderText = "Compagnie";
-            this.colCompagnie.Name = "colCompagnie";
             // 
             // colAuteur
             // 
@@ -174,7 +167,6 @@ namespace GestionFestival
         private System.Windows.Forms.DataGridViewTextBoxColumn colTheme;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDuree;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAudience;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCompagnie;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAuteur;
     }
 }
