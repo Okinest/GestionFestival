@@ -35,9 +35,9 @@ namespace TheatreBLL
         }
 
         // Méthode pour modifier une pièce
-        public void ModifierPiece(Pieces piece)
+        public static int ModifierPiece(Pieces piece)
         {
-            PiecesDAO.ModifierPiece(piece);
+            return PiecesDAO.ModifierPiece(piece);
         }
 
         // Méthode pour ajouter une pièce

@@ -29,10 +29,10 @@ namespace GestionFestival
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnajout = new System.Windows.Forms.Button();
-            this.btnmodifier = new System.Windows.Forms.Button();
-            this.btnsupprimer = new System.Windows.Forms.Button();
-            this.btnretour = new System.Windows.Forms.Button();
+            this.BtnAjout = new System.Windows.Forms.Button();
+            this.BtnModifier = new System.Windows.Forms.Button();
+            this.BtnSupprimer = new System.Windows.Forms.Button();
+            this.BtnRetour = new System.Windows.Forms.Button();
             this.dtgPieces = new System.Windows.Forms.DataGridView();
             this.colNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,52 +43,56 @@ namespace GestionFestival
             ((System.ComponentModel.ISupportInitialize)(this.dtgPieces)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnajout
+            // BtnAjout
             // 
-            this.btnajout.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.btnajout.FlatAppearance.BorderSize = 2;
-            this.btnajout.Location = new System.Drawing.Point(131, 274);
-            this.btnajout.Name = "btnajout";
-            this.btnajout.Size = new System.Drawing.Size(133, 38);
-            this.btnajout.TabIndex = 0;
-            this.btnajout.Text = "Ajouter";
-            this.btnajout.UseVisualStyleBackColor = true;
-            this.btnajout.Click += new System.EventHandler(this.btnajout_Click);
+            this.BtnAjout.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.BtnAjout.FlatAppearance.BorderSize = 2;
+            this.BtnAjout.Location = new System.Drawing.Point(175, 337);
+            this.BtnAjout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnAjout.Name = "BtnAjout";
+            this.BtnAjout.Size = new System.Drawing.Size(177, 47);
+            this.BtnAjout.TabIndex = 0;
+            this.BtnAjout.Text = "Ajouter";
+            this.BtnAjout.UseVisualStyleBackColor = true;
+            this.BtnAjout.Click += new System.EventHandler(this.BtnAjout_Click);
             // 
-            // btnmodifier
+            // BtnModifier
             // 
-            this.btnmodifier.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.btnmodifier.FlatAppearance.BorderSize = 2;
-            this.btnmodifier.Location = new System.Drawing.Point(325, 274);
-            this.btnmodifier.Name = "btnmodifier";
-            this.btnmodifier.Size = new System.Drawing.Size(133, 38);
-            this.btnmodifier.TabIndex = 1;
-            this.btnmodifier.Text = "Modifier";
-            this.btnmodifier.UseVisualStyleBackColor = true;
-            this.btnmodifier.Click += new System.EventHandler(this.btnmodifier_Click);
+            this.BtnModifier.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.BtnModifier.FlatAppearance.BorderSize = 2;
+            this.BtnModifier.Location = new System.Drawing.Point(433, 337);
+            this.BtnModifier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnModifier.Name = "BtnModifier";
+            this.BtnModifier.Size = new System.Drawing.Size(177, 47);
+            this.BtnModifier.TabIndex = 1;
+            this.BtnModifier.Text = "Modifier";
+            this.BtnModifier.UseVisualStyleBackColor = true;
+            this.BtnModifier.Click += new System.EventHandler(this.BtnModifier_Click);
             // 
-            // btnsupprimer
+            // BtnSupprimer
             // 
-            this.btnsupprimer.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.btnsupprimer.FlatAppearance.BorderSize = 2;
-            this.btnsupprimer.Location = new System.Drawing.Point(509, 274);
-            this.btnsupprimer.Name = "btnsupprimer";
-            this.btnsupprimer.Size = new System.Drawing.Size(133, 38);
-            this.btnsupprimer.TabIndex = 2;
-            this.btnsupprimer.Text = "Supprimer";
-            this.btnsupprimer.UseVisualStyleBackColor = true;
+            this.BtnSupprimer.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.BtnSupprimer.FlatAppearance.BorderSize = 2;
+            this.BtnSupprimer.Location = new System.Drawing.Point(679, 337);
+            this.BtnSupprimer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnSupprimer.Name = "BtnSupprimer";
+            this.BtnSupprimer.Size = new System.Drawing.Size(177, 47);
+            this.BtnSupprimer.TabIndex = 2;
+            this.BtnSupprimer.Text = "Supprimer";
+            this.BtnSupprimer.UseVisualStyleBackColor = true;
             // 
-            // btnretour
+            // BtnRetour
             // 
-            this.btnretour.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.btnretour.FlatAppearance.BorderSize = 2;
-            this.btnretour.Location = new System.Drawing.Point(325, 336);
-            this.btnretour.Name = "btnretour";
-            this.btnretour.Size = new System.Drawing.Size(133, 38);
-            this.btnretour.TabIndex = 3;
-            this.btnretour.Text = "Revenir en arrière";
-            this.btnretour.UseVisualStyleBackColor = true;
-            this.btnretour.Click += new System.EventHandler(this.btnretour_Click);
+            this.BtnRetour.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.BtnRetour.FlatAppearance.BorderSize = 2;
+            this.BtnRetour.Location = new System.Drawing.Point(433, 414);
+            this.BtnRetour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnRetour.Name = "BtnRetour";
+            this.BtnRetour.Size = new System.Drawing.Size(177, 47);
+            this.BtnRetour.TabIndex = 3;
+            this.BtnRetour.Text = "Revenir en arrière";
+            this.BtnRetour.UseVisualStyleBackColor = true;
+            this.BtnRetour.Click += new System.EventHandler(this.BtnRetour_Click);
             // 
             // dtgPieces
             // 
@@ -101,52 +105,66 @@ namespace GestionFestival
             this.colDuree,
             this.colAudience,
             this.colAuteur});
-            this.dtgPieces.Location = new System.Drawing.Point(23, 117);
+            this.dtgPieces.Location = new System.Drawing.Point(31, 144);
+            this.dtgPieces.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtgPieces.Name = "dtgPieces";
-            this.dtgPieces.Size = new System.Drawing.Size(743, 133);
+            this.dtgPieces.RowHeadersWidth = 51;
+            this.dtgPieces.Size = new System.Drawing.Size(991, 164);
             this.dtgPieces.TabIndex = 4;
-            this.dtgPieces.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgPieces_CellContentClick);
             // 
             // colNom
             // 
             this.colNom.HeaderText = "Nom";
+            this.colNom.MinimumWidth = 6;
             this.colNom.Name = "colNom";
+            this.colNom.Width = 125;
             // 
             // colDescription
             // 
             this.colDescription.HeaderText = "Description";
+            this.colDescription.MinimumWidth = 6;
             this.colDescription.Name = "colDescription";
+            this.colDescription.Width = 125;
             // 
             // colTheme
             // 
             this.colTheme.HeaderText = "Thème";
+            this.colTheme.MinimumWidth = 6;
             this.colTheme.Name = "colTheme";
+            this.colTheme.Width = 125;
             // 
             // colDuree
             // 
             this.colDuree.HeaderText = "Durée";
+            this.colDuree.MinimumWidth = 6;
             this.colDuree.Name = "colDuree";
+            this.colDuree.Width = 125;
             // 
             // colAudience
             // 
             this.colAudience.HeaderText = "Audience";
+            this.colAudience.MinimumWidth = 6;
             this.colAudience.Name = "colAudience";
+            this.colAudience.Width = 125;
             // 
             // colAuteur
             // 
             this.colAuteur.HeaderText = "Auteur";
+            this.colAuteur.MinimumWidth = 6;
             this.colAuteur.Name = "colAuteur";
+            this.colAuteur.Width = 125;
             // 
             // FrmGestionPièce
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.dtgPieces);
-            this.Controls.Add(this.btnretour);
-            this.Controls.Add(this.btnsupprimer);
-            this.Controls.Add(this.btnmodifier);
-            this.Controls.Add(this.btnajout);
+            this.Controls.Add(this.BtnRetour);
+            this.Controls.Add(this.BtnSupprimer);
+            this.Controls.Add(this.BtnModifier);
+            this.Controls.Add(this.BtnAjout);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmGestionPièce";
             this.Text = "Gestion des pièces de théâtre";
             this.Load += new System.EventHandler(this.FrmGestionPièce_Load);
@@ -157,10 +175,10 @@ namespace GestionFestival
 
         #endregion
 
-        private System.Windows.Forms.Button btnajout;
-        private System.Windows.Forms.Button btnmodifier;
-        private System.Windows.Forms.Button btnsupprimer;
-        private System.Windows.Forms.Button btnretour;
+        private System.Windows.Forms.Button BtnAjout;
+        private System.Windows.Forms.Button BtnModifier;
+        private System.Windows.Forms.Button BtnSupprimer;
+        private System.Windows.Forms.Button BtnRetour;
         private System.Windows.Forms.DataGridView dtgPieces;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNom;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;

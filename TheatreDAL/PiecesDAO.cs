@@ -21,11 +21,11 @@ namespace TheatreDAL
             }
             return unePieceDAO;
         }
-        public static void ModifierPiece(Pieces piece)
+        public static int ModifierPiece(Pieces piece)
         {
+            int nbr;
             string query = "UPDATE PLAY SET play_name = @play_name, play_description = @play_description, play_duration = @play_duration, " +
-                           "play_price = @play_price, auth_id = @auth_id, theme_id = @theme_id, aud_id = @aud_id WHERE play_name = @old_play_name";
-
+                           "play_price = @play_price, auth_id = @auth_id, theme_id = @theme_id, aud_id = @aud_id WHERE play_id = @play_id";
             using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
             {
                 SqlCommand command = new SqlCommand(query, connection);
@@ -36,17 +36,18 @@ namespace TheatreDAL
                 command.Parameters.AddWithValue("@auth_id", piece.Auth.Auth_id);
                 command.Parameters.AddWithValue("@theme_id", piece.Theme.Theme_id);
                 command.Parameters.AddWithValue("@aud_id", piece.Aud.Aud_id);
-                command.Parameters.AddWithValue("@old_play_name", piece.Play_name);
+                command.Parameters.AddWithValue("@play_id", piece.Play_id);
 
-                command.ExecuteNonQuery();
+                nbr = command.ExecuteNonQuery();
             }
+            return nbr;
         }
 
         public List<Pieces> GetPieceInfos()
         {
 
             List<Pieces> Pièces = new List<Pieces>();
-            string query_pieces = "SELECT PLAY.play_name, PLAY.play_description, PLAY.play_duration, PLAY.play_price, AUTHOR.auth_id, AUTHOR.auth_name,THEME.theme_id, THEME.theme_name," +
+            string query_pieces = "SELECT PLAY.play_id, PLAY.play_name, PLAY.play_description, PLAY.play_duration, PLAY.play_price, AUTHOR.auth_id, AUTHOR.auth_name,THEME.theme_id, THEME.theme_name," +
                 "AUDIENCE.aud_id, AUDIENCE.aud_categ FROM PLAY JOIN AUTHOR ON PLAY.auth_id = AUTHOR.auth_id JOIN THEME ON PLAY.theme_id = THEME.theme_id" +
                 " JOIN AUDIENCE ON PLAY.aud_id = AUDIENCE.aud_id";
             using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
@@ -57,13 +58,14 @@ namespace TheatreDAL
                 {
                     //CONSTRUCTEUR CREATION D'UTILISATEUR
                     Pieces Pièce = new Pieces(
-                        reader.GetString(0), // play_name
-                        reader.GetString(1), // play_description
-                        reader.GetInt32(2),
-                        reader.GetDouble(3),
-                        new Author(reader.GetInt32(4), reader.GetString(5)),  // auth_name
-                        new Theme(reader.GetInt32(6), reader.GetString(7)),  // theme_name
-                        new Audience(reader.GetInt32(8), reader.GetString(9))  // aud_name
+                        reader.GetInt32(0), // play_id
+                        reader.GetString(1), // play_name
+                        reader.GetString(2), // play_description
+                        reader.GetInt32(3),
+                        reader.GetDouble(4),
+                        new Author(reader.GetInt32(5), reader.GetString(6)),  // auth_name
+                        new Theme(reader.GetInt32(7), reader.GetString(8)),  // theme_name
+                        new Audience(reader.GetInt32(9), reader.GetString(10))  // aud_name
                     );
                     Pièces.Add(Pièce);
                 }

@@ -60,7 +60,7 @@ namespace GestionFestival
             }
         }
 
-        private void btnModifier_Click(object sender, EventArgs e)
+        private void BtnModifier_Click(object sender, EventArgs e)
         {
             if (pieceCourante == null)
             {
@@ -79,9 +79,17 @@ namespace GestionFestival
 
             try
             {
-                GestionPieces.GetPieces().ModifierPiece(pieceCourante);
-                MessageBox.Show("Pièce modifiée avec succès !");
-                this.Close();
+                int result = GestionPieces.ModifierPiece(pieceCourante);
+                Console.WriteLine("id :" + pieceCourante.Play_id);
+                if (result > 0)
+                {
+                    MessageBox.Show("Pièce modifiée avec succès !");
+                    BtnRetour_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Erreur lors de la modification.");
+                }
             }
             catch (Exception ex)
             {
@@ -89,9 +97,11 @@ namespace GestionFestival
             }
         }
 
-        private void btnRetour_Click(object sender, EventArgs e)
+        private void BtnRetour_Click(object sender, EventArgs e)
         {
-            this.Close();
+            FrmGestionPièce frmGestionPièce = new FrmGestionPièce();
+            this.Hide();
+            frmGestionPièce.Show();
         }
     }
 }
