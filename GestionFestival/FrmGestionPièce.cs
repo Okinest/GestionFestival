@@ -60,7 +60,6 @@ namespace GestionFestival
             dtgPieces.Columns.Add(Auth_column);
             dtgPieces.Columns.Add(Theme_column);
             dtgPieces.Columns.Add(Audience_column);
-
         }
         private void FrmGestionPièce_Load(object sender, EventArgs e)
         {
@@ -77,9 +76,9 @@ namespace GestionFestival
 
         private void BtnRetour_Click(object sender, EventArgs e)
         {
-            FrmMenu FrmMenu = new FrmMenu();
+            FrmMeu FrmMenu = new FrmMenu();
             this.Hide();
-            FrmMenu.Show();
+            FrmMenu.show();
         }
 
         private void BtnAjout_Click(object sender, EventArgs e)
@@ -88,6 +87,23 @@ namespace GestionFestival
             this.Hide();
             frmAjoutPièce.Show();
         }
+        
+        private void BtnModifier_Click(object sender, EventArgs e)
+        {
+            if (dtgPieces.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dtgPieces.SelectedRows[0];
+                Pieces selectedPiece = (Pieces)row.DataBoundItem;
+
+                // Exemple : Afficher les informations de la pièce dans une nouvelle fenêtre
+                if (selectedPiece != null)
+                {
+                    FrmModifierPièce frmModifier = new FrmModifierPièce(selectedPiece);
+                    this.Hide();
+                    frmModifier.Show();
+                }
+            }
+          }
 
         private void BtnSupprimer_Click(object sender, EventArgs e)
         {

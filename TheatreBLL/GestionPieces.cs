@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TheatreBO;
 using TheatreDAL;
 using System.Configuration;
@@ -11,12 +8,12 @@ namespace TheatreBLL
 {
     public class GestionPieces
     {
-
         private static GestionPieces uneGestionPiece;
         private List<Pieces> listePieces = new List<Pieces>();
         private List<Theme> listeThemes = new List<Theme>();
-        private List<Audience> listeAudience= new List<Audience>();
+        private List<Audience> listeAudience = new List<Audience>();
         private List<Author> listeAuthor = new List<Author>();
+
         public enum AjoutPieceResultat
         {
             Reussi,
@@ -27,17 +24,23 @@ namespace TheatreBLL
             ErreurInconnue,
         }
 
-
-        //Ascesseur lecture
-        private static GestionPieces GetPieces()
+        // Accesseur en lecture pour obtenir une instance unique de GestionPieces
+        public static GestionPieces GetPieces()
         {
             if (uneGestionPiece == null)
             {
                 uneGestionPiece = new GestionPieces();
             }
-
             return uneGestionPiece;
         }
+
+        // Méthode pour modifier une pièce
+        public static int ModifierPiece(Pieces piece)
+        {
+            return PiecesDAO.ModifierPiece(piece);
+        }
+
+        // Méthode pour ajouter une pièce
         public AjoutPieceResultat AjouterPiece(Pieces unePiece)
         {
             if (string.IsNullOrEmpty(unePiece.Play_name))
@@ -71,34 +74,35 @@ namespace TheatreBLL
             }
         }
 
-        //Récupère la liste des pièces
+        // Récupère la liste des pièces
         public List<Pieces> GetListePieces()
         {
             listePieces = PiecesDAO.GetPièceDAO().GetPieceInfos();
             return listePieces;
         }
 
-        //Récupère les thèmes
+        // Récupère la liste des thèmes
         public List<Theme> GetListeThemes()
         {
             listeThemes = PiecesDAO.GetThemes();
             return listeThemes;
         }
 
-        //Récupère l'audience
+        // Récupère la liste des audiences
         public List<Audience> GetListeAudiences()
         {
             listeAudience = PiecesDAO.GetAudiences();
             return listeAudience;
         }
 
-        //Récupère les auteurs
-        public List<Author> GetListeAuthor()
+        // Récupère la liste des auteurs
+        public List<Author> GetListeAuthors()
         {
             listeAuthor = PiecesDAO.GetAuthors();
             return listeAuthor;
         }
 
+        // Méthode pour créer une pièce dans la base de données
         public static int CreerPieces(Pieces piece)
         {
             return PiecesDAO.AjoutPieces(piece);

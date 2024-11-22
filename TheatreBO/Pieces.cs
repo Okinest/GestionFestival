@@ -32,7 +32,7 @@ namespace TheatreBO
             this.play_price = play_price;
             this.auth = auth;
             this.theme = theme;
-            this.aud = aud; 
+            this.aud = aud;
         }
 
         //CONSTRUCTEUR AVEC ID

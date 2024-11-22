@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TheatreBO;
 using TheatreBLL;
@@ -15,11 +9,12 @@ namespace GestionFestival
     public partial class FrmAjoutPièce : Form
     {
         private static GestionPieces uneGestionPiece = new GestionPieces();
-       
+
         public FrmAjoutPièce()
         {
             InitializeComponent();
         }
+
         private void FrmAjoutPièce_Load(object sender, EventArgs e)
         {
             List<Theme> themeList = uneGestionPiece.GetListeThemes();
@@ -32,18 +27,17 @@ namespace GestionFestival
             cmbAudience.DisplayMember = "Aud_categ";
             cmbAudience.ValueMember = "Aud_id";
 
-            List<Author> authorList = uneGestionPiece.GetListeAuthor();
+            List<Author> authorList = uneGestionPiece.GetListeAuthors(); // Correction ici
             cmbAuteur.DataSource = authorList;
             cmbAuteur.DisplayMember = "Auth_name";
             cmbAuteur.ValueMember = "Auth_id";
-         }
+        }
 
         private void BtnRetour_Click(object sender, EventArgs e)
         {
             FrmGestionPièce frmGestionPièce = new FrmGestionPièce();
             this.Hide();
             frmGestionPièce.Show();
-            
         }
 
         private void BtnAjout_Click(object sender, EventArgs e)
@@ -57,8 +51,7 @@ namespace GestionFestival
 
             bool isValid = true;
 
-
-            // RÉINITALISER MESSAGE D'ERREUR
+            // Réinitialisation des messages d'erreur
             lblErreurNom.Visible = false;
             lblErreurDescription.Visible = false;
             lblErreurPrix.Visible = false;
@@ -89,7 +82,7 @@ namespace GestionFestival
                 isValid = false;
             }
 
-            //SI TOUTE EST VIDE
+            // Vérification si tous les champs sont vides
             if (string.IsNullOrEmpty(playName) && string.IsNullOrEmpty(playDescription) && string.IsNullOrEmpty(playPrice) && string.IsNullOrEmpty(playDuration))
             {
                 lblErreurNom.Visible = true;
@@ -99,7 +92,7 @@ namespace GestionFestival
                 isValid = false;
             }
 
-            // VRAI, ALORS INSERTION SINON FAUX
+            // Si tous les champs sont valides
             if (isValid)
             {
                 try
@@ -108,10 +101,8 @@ namespace GestionFestival
                     Theme selectedTheme = (Theme)cmbThemes.SelectedItem;
                     Audience selectedAudience = (Audience)cmbAudience.SelectedItem;
 
-                    // CREATION DE LA PIECE : Convert pour convertir du type string à float et int !
                     Pieces newPiece = new Pieces(playName, playDescription, playDurationConvert, playPriceConvert, selectedAuthor, selectedTheme, selectedAudience);
 
-                    //POUR MESSAGE BOX
                     int result = GestionPieces.CreerPieces(newPiece);
 
                     if (result > 0)
