@@ -108,6 +108,7 @@ namespace GestionFestival
                     if (result > 0)
                     {
                         MessageBox.Show("Pièce ajoutée avec succès !");
+                        BtnRetour_Click(sender, e);
                     }
                     else
                     {

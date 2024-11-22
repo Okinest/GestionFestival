@@ -107,7 +107,10 @@ namespace TheatreBLL
         {
             return PiecesDAO.AjoutPieces(piece);
         }
-
+        public static int SupprimerPiece(int id)
+        {
+            return PiecesDAO.SupprimerPieces(id);
+        }
         // Définit la chaîne de connexion grâce à la méthode SetchaineConnexion de la DAL
         public static void SetchaineConnexion(ConnectionStringSettings chset)
         {

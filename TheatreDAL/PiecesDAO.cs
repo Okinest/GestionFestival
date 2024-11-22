@@ -61,8 +61,8 @@ namespace TheatreDAL
                         reader.GetInt32(0), // play_id
                         reader.GetString(1), // play_name
                         reader.GetString(2), // play_description
-                        reader.GetInt32(3),
-                        reader.GetDouble(4),
+                        reader.GetInt32(3), // play_duration
+                        reader.GetDouble(4), // play_price
                         new Author(reader.GetInt32(5), reader.GetString(6)),  // auth_name
                         new Theme(reader.GetInt32(7), reader.GetString(8)),  // theme_name
                         new Audience(reader.GetInt32(9), reader.GetString(10))  // aud_name
@@ -94,6 +94,18 @@ namespace TheatreDAL
             }
             return nbr;
 
+        }
+        public static int SupprimerPieces(int id)
+        {
+            int nbr;
+            string queryDeletePiece = "DELETE FROM PLAY WHERE play_id = @play_id";
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand command = new SqlCommand(queryDeletePiece, connection);
+                command.Parameters.AddWithValue("@play_id", id);
+                nbr = command.ExecuteNonQuery();
+            }
+            return nbr;
         }
 
         public static List<Author> GetAuthors()
