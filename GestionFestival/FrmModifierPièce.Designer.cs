@@ -8,6 +8,7 @@
         private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.TextBox txtDuree;
+        private System.Windows.Forms.TextBox txtPrix;  // Nouvelle textbox pour le prix
         private System.Windows.Forms.ComboBox cmbAuteur;
         private System.Windows.Forms.ComboBox cmbTheme;
         private System.Windows.Forms.ComboBox cmbAudience;
@@ -28,12 +29,13 @@
             this.txtNom = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtDuree = new System.Windows.Forms.TextBox();
+            this.txtPrix = new System.Windows.Forms.TextBox();  // Initialisation du prix
             this.cmbAuteur = new System.Windows.Forms.ComboBox();
             this.cmbTheme = new System.Windows.Forms.ComboBox();
             this.cmbAudience = new System.Windows.Forms.ComboBox();
 
             // Form layout
-            this.ClientSize = new System.Drawing.Size(600, 400);
+            this.ClientSize = new System.Drawing.Size(600, 450);  // Augmenter la taille du formulaire pour le prix
             this.Name = "FrmModifierPièce";
             this.Text = "Modifier une pièce de théâtre";
 
@@ -44,8 +46,8 @@
             int spacing = 120;
 
             // Étiquettes et TextBoxes en ligne
-            string[] labels = { "Nom", "Description", "Durée", "Thème", "Audience", "Auteur" };
-            System.Windows.Forms.TextBox[] textBoxes = { txtNom, txtDescription, txtDuree };
+            string[] labels = { "Nom", "Description", "Durée", "Prix", "Thème", "Audience", "Auteur" }; // Ajout du prix
+            System.Windows.Forms.TextBox[] textBoxes = { txtNom, txtDescription, txtDuree, txtPrix }; // Ajout du textbox pour le prix
             System.Windows.Forms.ComboBox[] comboBoxes = { cmbTheme, cmbAudience, cmbAuteur };
 
             for (int i = 0; i < labels.Length; i++)
@@ -72,13 +74,13 @@
 
             // Bouton Modifier
             this.btnModifier.Text = "Modifier";
-            this.btnModifier.Location = new System.Drawing.Point(250, 200);
+            this.btnModifier.Location = new System.Drawing.Point(250, 280);
             this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
             this.Controls.Add(this.btnModifier);
 
             // Bouton Retour
             this.btnRetour.Text = "Revenir en arrière";
-            this.btnRetour.Location = new System.Drawing.Point(250, 250);
+            this.btnRetour.Location = new System.Drawing.Point(250, 320);
             this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             this.Controls.Add(this.btnRetour);
 

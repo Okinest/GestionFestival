@@ -9,16 +9,14 @@ namespace GestionFestival
     {
         private Pieces pieceCourante;
 
-        // Modifie le constructeur pour inclure une vérification de null
         public FrmModifierPièce(Pieces piece)
         {
             InitializeComponent();
 
-            // Vérifie si la pièce passée en paramètre est null
             if (piece == null)
             {
                 MessageBox.Show("Aucune pièce sélectionnée pour la modification.");
-                this.Close(); // Ferme le formulaire si aucune pièce n'est fournie
+                this.Close();
                 return;
             }
 
@@ -44,12 +42,12 @@ namespace GestionFestival
 
         private void ChargerDonnées()
         {
-            // Vérifie que pieceCourante n'est pas null avant d'accéder à ses propriétés
             if (pieceCourante != null)
             {
                 txtNom.Text = pieceCourante.Play_name;
                 txtDescription.Text = pieceCourante.Play_description;
                 txtDuree.Text = pieceCourante.Play_duration.ToString();
+                txtPrix.Text = pieceCourante.Play_price.ToString();  // Afficher le prix dans le textbox
 
                 if (pieceCourante.Auth != null)
                     cmbAuteur.SelectedValue = pieceCourante.Auth.Auth_id;
@@ -64,7 +62,6 @@ namespace GestionFestival
 
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            // Vérification de nullité de pieceCourante avant modification
             if (pieceCourante == null)
             {
                 MessageBox.Show("Erreur : aucune pièce à modifier.");
@@ -75,6 +72,7 @@ namespace GestionFestival
             pieceCourante.Play_name = txtNom.Text;
             pieceCourante.Play_description = txtDescription.Text;
             pieceCourante.Play_duration = int.Parse(txtDuree.Text);
+            pieceCourante.Play_price = double.Parse(txtPrix.Text);  // Récupérer le prix depuis la textbox
             pieceCourante.Auth.Auth_id = (int)cmbAuteur.SelectedValue;
             pieceCourante.Theme.Theme_id = (int)cmbTheme.SelectedValue;
             pieceCourante.Aud.Aud_id = (int)cmbAudience.SelectedValue;
