@@ -71,10 +71,9 @@ namespace GestionFestival
         }
         private void btnajout_Click(object sender, EventArgs e)
         {
-            // Logique pour ajouter une nouvelle pièce
-            FrmModifierPièce frmAjouter = new FrmModifierPièce(null); // null si c'est pour ajouter
+            FrmAjoutPièce frmAjoutPièce = new FrmAjoutPièce();
             this.Hide();
-            frmAjouter.Show();
+            frmAjoutPièce.Show();
         }
         private void btnmodifier_Click(object sender, EventArgs e)
         {
