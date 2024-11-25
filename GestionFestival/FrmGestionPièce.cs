@@ -67,18 +67,11 @@ namespace GestionFestival
             // Lier la liste des pièces au DataGridView
             dtgPieces.DataSource = listePieces;
         }
-        private void BtnModifier_Click(object sender, EventArgs e)
-        {
-            FrmModifierPièce frmModifierPièce = new FrmModifierPièce();
-            this.Hide();
-            frmModifierPièce.Show();
-        }
-
         private void BtnRetour_Click(object sender, EventArgs e)
         {
-            FrmMeu FrmMenu = new FrmMenu();
+            FrmMenu frmMenu = new FrmMenu();
             this.Hide();
-            FrmMenu.show();
+            frmMenu.Show();
         }
 
         private void BtnAjout_Click(object sender, EventArgs e)
