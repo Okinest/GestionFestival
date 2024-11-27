@@ -15,6 +15,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombrePlaces;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRatePeriod;  // Nouvelle colonne
 
         protected override void Dispose(bool disposing)
         {
@@ -37,6 +38,8 @@
             this.colNombrePlaces = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRatePeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();  // Nouvelle colonne
+
             ((System.ComponentModel.ISupportInitialize)(this.dtgRepresentations)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +50,6 @@
             this.BtnAjout.Size = new System.Drawing.Size(177, 47);
             this.BtnAjout.TabIndex = 0;
             this.BtnAjout.Text = "Ajouter";
-            // L'événement Click a été supprimé pour ce bouton
             // 
             // BtnModifier
             // 
@@ -56,7 +58,6 @@
             this.BtnModifier.Size = new System.Drawing.Size(177, 47);
             this.BtnModifier.TabIndex = 1;
             this.BtnModifier.Text = "Modifier";
-            // L'événement Click a été supprimé pour ce bouton
             // 
             // BtnSupprimer
             // 
@@ -65,7 +66,6 @@
             this.BtnSupprimer.Size = new System.Drawing.Size(177, 47);
             this.BtnSupprimer.TabIndex = 2;
             this.BtnSupprimer.Text = "Supprimer";
-            // L'événement Click a été supprimé pour ce bouton
             // 
             // BtnRetour
             // 
@@ -85,7 +85,8 @@
             this.colHeure,
             this.colNombrePlaces,
             this.colLieu,
-            this.colNom});
+            this.colNom,
+            this.colRatePeriod});  // Ajout de la nouvelle colonne
             this.dtgRepresentations.Location = new System.Drawing.Point(31, 144);
             this.dtgRepresentations.Name = "dtgRepresentations";
             this.dtgRepresentations.Size = new System.Drawing.Size(991, 164);
