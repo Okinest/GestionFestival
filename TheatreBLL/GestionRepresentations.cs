@@ -25,6 +25,10 @@ namespace TheatreBLL
         {
             return RepresentationDAO.AjoutRepresentation(rep);
         }
+        public static int ModifierRepresentation(Representation rep)
+        {
+            return RepresentationDAO.ModifierRepresentation(rep);
+        }
 
         // Récupère la liste des représentations
         public List<Representation> GetListeRepresentations()

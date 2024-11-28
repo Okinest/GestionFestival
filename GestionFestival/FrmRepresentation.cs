@@ -70,6 +70,21 @@ namespace GestionFestival
             this.Hide();
             frmAjoutRepresentation.Show();
         }
+        private void BtnModifier_Click(object sender, EventArgs e)
+        {
+            if(dtgRepresentations.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dtgRepresentations.SelectedRows[0];
+                Representation rep = (Representation)row.DataBoundItem;
+
+                if (rep != null)
+                {
+                    FrmModifierRepresentation frmModifierRepresentation = new FrmModifierRepresentation(rep);
+                    this.Hide();
+                    frmModifierRepresentation.Show();
+                }
+            }
+        }
 
         // Retourne à FrmMenu
         private void BtnRetour_Click(object sender, EventArgs e)

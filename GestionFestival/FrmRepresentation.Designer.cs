@@ -58,6 +58,7 @@
             this.BtnModifier.Size = new System.Drawing.Size(177, 47);
             this.BtnModifier.TabIndex = 1;
             this.BtnModifier.Text = "Modifier";
+            this.BtnModifier.Click += new System.EventHandler(this.BtnModifier_Click);
             // 
             // BtnSupprimer
             // 
@@ -90,6 +91,7 @@
             this.dtgRepresentations.Location = new System.Drawing.Point(31, 144);
             this.dtgRepresentations.Name = "dtgRepresentations";
             this.dtgRepresentations.RowHeadersWidth = 51;
+            this.dtgRepresentations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgRepresentations.Size = new System.Drawing.Size(991, 164);
             this.dtgRepresentations.TabIndex = 4;
             // 
