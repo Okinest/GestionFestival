@@ -38,8 +38,7 @@
             this.colNombrePlaces = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRatePeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();  // Nouvelle colonne
-
+            this.colRatePeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgRepresentations)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,6 +65,7 @@
             this.BtnSupprimer.Size = new System.Drawing.Size(177, 47);
             this.BtnSupprimer.TabIndex = 2;
             this.BtnSupprimer.Text = "Supprimer";
+            this.BtnSupprimer.Click += new System.EventHandler(this.BtnSupprimer_Click);
             // 
             // BtnRetour
             // 
@@ -86,11 +86,35 @@
             this.colNombrePlaces,
             this.colLieu,
             this.colNom,
-            this.colRatePeriod});  // Ajout de la nouvelle colonne
+            this.colRatePeriod});
             this.dtgRepresentations.Location = new System.Drawing.Point(31, 144);
             this.dtgRepresentations.Name = "dtgRepresentations";
             this.dtgRepresentations.Size = new System.Drawing.Size(991, 164);
             this.dtgRepresentations.TabIndex = 4;
+            // 
+            // colDate
+            // 
+            this.colDate.Name = "colDate";
+            // 
+            // colHeure
+            // 
+            this.colHeure.Name = "colHeure";
+            // 
+            // colNombrePlaces
+            // 
+            this.colNombrePlaces.Name = "colNombrePlaces";
+            // 
+            // colLieu
+            // 
+            this.colLieu.Name = "colLieu";
+            // 
+            // colNom
+            // 
+            this.colNom.Name = "colNom";
+            // 
+            // colRatePeriod
+            // 
+            this.colRatePeriod.Name = "colRatePeriod";
             // 
             // FrmGestionRepresentation
             // 
@@ -105,6 +129,7 @@
             this.Load += new System.EventHandler(this.FrmGestionRepresentation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgRepresentations)).EndInit();
             this.ResumeLayout(false);
+
         }
     }
 }

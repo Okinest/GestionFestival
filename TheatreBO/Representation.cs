@@ -11,6 +11,7 @@ namespace TheatreBO
         private int rep_max_seats;
         private Pieces piece;
         private Rate rate;
+        //private Reserver rep; AJOUT DE L'OBJET Reserver
 
         public Representation(int rep_id, DateTime rep_date, TimeSpan rep_time, string rep_lieu, int rep_max_seats, Pieces piece, Rate rate)
         {
@@ -31,7 +32,11 @@ namespace TheatreBO
         public Pieces Piece { get { return piece; } set { piece = value; } }
         public Rate Rate { get { return rate; } set { rate = value; } }
 
+        //public Reserver Rep { get => rep; set => rep = value; }
+
         public string Piece_name => piece != null ? piece.Play_name : string.Empty; // Expose le nom de la pièce
         public string Rate_period => rate != null ? rate.Rate_period : string.Empty; // Expose la valeur du tarif
+
+        //public int Rep_id => rep !=null ? rep.Rep_id : int.Empty; 
     }
 }
