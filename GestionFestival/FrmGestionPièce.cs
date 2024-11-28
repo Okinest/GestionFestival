@@ -60,6 +60,9 @@ namespace GestionFestival
             dtgPieces.Columns.Add(Auth_column);
             dtgPieces.Columns.Add(Theme_column);
             dtgPieces.Columns.Add(Audience_column);
+
+
+            dtgPieces.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
         private void FrmGestionPièce_Load(object sender, EventArgs e)
         {
@@ -126,5 +129,7 @@ namespace GestionFestival
                 MessageBox.Show("Veuillez sélectionner une pièce à supprimer.","Sélection d'une pièce",MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        
     }
 }

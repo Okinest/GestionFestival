@@ -54,6 +54,8 @@ namespace GestionFestival
             dtgRepresentations.Columns.Add(NombrePlaces_column);
             dtgRepresentations.Columns.Add(Lieu_column);
             dtgRepresentations.Columns.Add(RatePeriod_column);  // Ajouter la colonne "Période du tarif"
+
+            dtgRepresentations.SelectionMode = DataGridViewSelectionMode.FullRowSelect; //POUR SELECTIONNER TOUTES LA LIGNE
         }
 
         private void FrmGestionRepresentation_Load(object sender, EventArgs e)
