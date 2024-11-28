@@ -4,23 +4,34 @@ namespace TheatreBO
 {
     public class Representation
     {
-        public int Rep_id { get; set; }
-        public DateTime Rep_date { get; set; }
-        public TimeSpan Rep_time { get; set; }
-        public int Rep_max_seats { get; set; }
-        public string Rep_lieu { get; set; }
-        public Pieces Play { get; set; }
-        public string Rate_period { get; set; }  // Nouvelle propriété pour rate_period
+        private int rep_id;
+        private DateTime rep_date;
+        private TimeSpan rep_time;
+        private string rep_lieu;
+        private int rep_max_seats;
+        private Pieces piece;
+        private Rate rate;
 
-        public Representation(int rep_id, DateTime rep_date, TimeSpan rep_time, int rep_max_seats, string rep_lieu, Pieces play, string rate_period)
+        public Representation(int rep_id, DateTime rep_date, TimeSpan rep_time, string rep_lieu, int rep_max_seats, Pieces piece, Rate rate)
         {
-            Rep_id = rep_id;
-            Rep_date = rep_date;
-            Rep_time = rep_time;
-            Rep_max_seats = rep_max_seats;
-            Rep_lieu = rep_lieu;
-            Play = play;
-            Rate_period = rate_period;  // Initialiser rate_period
+            this.rep_id = rep_id;
+            this.rep_date = rep_date;
+            this.rep_time = rep_time;
+            this.rep_lieu = rep_lieu;
+            this.rep_max_seats = rep_max_seats;
+            this.piece = piece;
+            this.rate = rate;
         }
+
+        public int Rep_id { get { return rep_id; } set { rep_id = value; } }
+        public DateTime Rep_date { get { return rep_date; } set { rep_date = value; } }
+        public TimeSpan Rep_time { get { return rep_time; } set { rep_time = value; } }
+        public string Rep_lieu { get { return rep_lieu; } set { rep_lieu = value; } }
+        public int Rep_max_seats { get { return rep_max_seats; } set { rep_max_seats = value; } }
+        public Pieces Piece { get { return piece; } set { piece = value; } }
+        public Rate Rate { get { return rate; } set { rate = value; } }
+
+        public string Piece_name => piece != null ? piece.Play_name : string.Empty; // Expose le nom de la pièce
+        public int Rate_value => rate != null ? rate.Rate_value : 0; // Expose la valeur du tarif
     }
 }

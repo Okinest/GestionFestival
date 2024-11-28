@@ -11,44 +11,59 @@ namespace TheatreDAL
         public static List<Representation> GetRepresentations()
         {
             List<Representation> representations = new List<Representation>();
-            string query = "SELECT r.rep_id, r.rep_date, r.rep_time, r.rep_max_seats, " +
-                           "p.play_id, p.play_name, r.rep_lieu, rt.rate_period " +  // Ajout de rate_period
-                           "FROM REPRESENTATION r " +
-                           "JOIN PLAY p ON r.play_id = p.play_id " +  // Jointure avec PLAY
-                           "JOIN RATE rt ON r.rate_id = rt.rate_id"; // Jointure avec RATE
+            string query = "SELECT r.rep_id, r.rep_date, r.rep_time, r.rep_lieu, r.rep_max_seats, p.play_id, rt.rate_id FROM REPRESENTATION r JOIN PLAY p ON r.play_id = p.play_id JOIN RATE rt ON r.rate_id = rt.rate_id;"; // Jointure avec RATE
 
             using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 SqlDataReader reader = command.ExecuteReader();
+
                 while (reader.Read())
                 {
-                    int playId = reader.IsDBNull(4) ? 0 : reader.GetInt32(4);  // play_id est à l'index 4
-                    string playName = reader.IsDBNull(5) ? string.Empty : reader.GetString(5); // play_name est à l'index 5
-
-                    // Créer l'objet Pieces (Pièce) associé à la représentation
-                    Pieces play = new Pieces(playId, playName, "", 0, 0.0, null, null, null);
-
-                    // Récupérer le rate_period
-                    string ratePeriod = reader.IsDBNull(7) ? string.Empty : reader.GetString(7); // rate_period est à l'index 7
+                    // Créer l'objet Pièce associé à la représentation
+                    Pieces piece = PiecesDAO.GetPieceById((int)reader["play_id"]);
+                    Rate rate = GetRateById((int)reader["rate_id"]);
 
                     // Créer l'objet Representation et ajouter à la liste
                     Representation representation = new Representation(
                         reader.GetInt32(0),    // rep_id
                         reader.GetDateTime(1), // rep_date
                         reader.GetTimeSpan(2), // rep_time
-                        reader.GetInt32(3),    // rep_max_seats
-                        "",                    // rep_lieu (non utilisé ici)
-                        play,                  // Pièce associée
-                        ratePeriod             // Ajouter rate_period
+                        reader.GetString(3),    // rep_lieu
+                        reader.GetInt32(4),                    // rep_max_seats
+                        piece,                  // Pièce associée
+                        rate         // Ajouter rate_period
                     );
 
                     representations.Add(representation);
                 }
-                reader.Close();
+
+                reader.Close(); // Fermeture explicite du SqlDataReader ici
             }
 
             return representations;
+        }
+
+
+        public static Rate GetRateById(int id)
+        {
+            Rate rate = null;
+            string query = "SELECT * FROM Rates WHERE rate_id = @rate_id";
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@rate_id", id);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    rate = new Rate(reader.GetInt32(0), // rate_id
+                                    reader.GetString(1), // rate_period
+                                    reader.GetInt32(2) // rate_value
+                                    );
+                }
+                reader.Close();
+            }
+            return rate;
         }
     }
 }
