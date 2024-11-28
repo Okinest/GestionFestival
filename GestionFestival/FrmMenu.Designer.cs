@@ -1,17 +1,9 @@
-﻿
-namespace GestionFestival
+﻿namespace GestionFestival
 {
     partial class FrmMenu
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -23,10 +15,6 @@ namespace GestionFestival
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.btnPiece = new System.Windows.Forms.Button();
@@ -43,7 +31,7 @@ namespace GestionFestival
             this.btnPiece.Name = "btnPiece";
             this.btnPiece.Size = new System.Drawing.Size(137, 34);
             this.btnPiece.TabIndex = 0;
-            this.btnPiece.Text = "Pièce de théâtres";
+            this.btnPiece.Text = "Pièces de théâtre";
             this.btnPiece.UseVisualStyleBackColor = true;
             this.btnPiece.Click += new System.EventHandler(this.btnPiece_Click);
             // 
@@ -56,6 +44,7 @@ namespace GestionFestival
             this.btnRepresentations.TabIndex = 1;
             this.btnRepresentations.Text = "Représentations";
             this.btnRepresentations.UseVisualStyleBackColor = true;
+            this.btnRepresentations.Click += new System.EventHandler(this.btnRepresentations_Click);
             // 
             // btnReservations
             // 
@@ -66,6 +55,7 @@ namespace GestionFestival
             this.btnReservations.TabIndex = 2;
             this.btnReservations.Text = "Réservations";
             this.btnReservations.UseVisualStyleBackColor = true;
+            this.btnReservations.Click += new System.EventHandler(this.btnReservations_Click);
             // 
             // btnSynthese
             // 
@@ -76,6 +66,7 @@ namespace GestionFestival
             this.btnSynthese.TabIndex = 3;
             this.btnSynthese.Text = "Synthèse";
             this.btnSynthese.UseVisualStyleBackColor = true;
+            this.btnSynthese.Click += new System.EventHandler(this.btnSynthese_Click);
             // 
             // btnDeconnexion
             // 
@@ -101,7 +92,6 @@ namespace GestionFestival
             this.Name = "FrmMenu";
             this.Text = "Menu";
             this.ResumeLayout(false);
-
         }
 
         #endregion

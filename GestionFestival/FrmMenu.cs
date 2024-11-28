@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TheatreDAL;
-
 
 namespace GestionFestival
 {
@@ -21,19 +13,34 @@ namespace GestionFestival
 
         private void btnPiece_Click(object sender, EventArgs e)
         {
-            FrmGestionPièce FrmGestionPièce = new FrmGestionPièce();
+            FrmGestionPièce frmGestionPièce = new FrmGestionPièce();
             this.Hide();
-            FrmGestionPièce.Show();
+            frmGestionPièce.Show();
+        }
+
+        private void btnRepresentations_Click(object sender, EventArgs e)
+        {
+            FrmGestionRepresentation frmListeRepresentations = new FrmGestionRepresentation();
+            this.Hide();
+            frmListeRepresentations.Show();
+        }
+
+        private void btnReservations_Click(object sender, EventArgs e)
+        {
+            // Logique pour accéder aux réservations (si nécessaire)
+        }
+
+        private void btnSynthese_Click(object sender, EventArgs e)
+        {
+            // Logique pour accéder à la synthèse (si nécessaire)
         }
 
         private void btnDeconnexion_Click(object sender, EventArgs e)
         {
-
-
             ConnexionBD.GetConnexionBD().CloseConnexion();
-            FrmAuthentification FrmAuthentification = new FrmAuthentification();
+            FrmAuthentification frmAuthentification = new FrmAuthentification();
             this.Hide();
-            FrmAuthentification.Show();
+            frmAuthentification.Show();
         }
     }
 }

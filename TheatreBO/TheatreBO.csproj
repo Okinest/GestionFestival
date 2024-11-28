@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Audience.cs" />
     <Compile Include="Author.cs" />
+    <Compile Include="Rate.cs" />
+    <Compile Include="Representation.cs" />
     <Compile Include="Theme.cs" />
     <Compile Include="Pieces.cs" />
     <Compile Include="Users.cs" />
