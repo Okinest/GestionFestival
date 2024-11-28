@@ -63,6 +63,14 @@ namespace GestionFestival
             dtgRepresentations.DataSource = listeRepresentations;
         }
 
+        // Ouvre FrmAjoutRepresentation
+        private void BtnAjout_Click(object sender, EventArgs e)
+        {
+            FrmAjoutRepresentation frmAjoutRepresentation = new FrmAjoutRepresentation();
+            this.Hide();
+            frmAjoutRepresentation.Show();
+        }
+
         // Retourne à FrmMenu
         private void BtnRetour_Click(object sender, EventArgs e)
         {
@@ -70,5 +78,6 @@ namespace GestionFestival
             this.Hide();
             frmMenu.Show();
         }
+
     }
 }

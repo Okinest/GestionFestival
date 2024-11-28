@@ -38,8 +38,7 @@
             this.colNombrePlaces = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRatePeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();  // Nouvelle colonne
-
+            this.colRatePeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgRepresentations)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,6 +49,7 @@
             this.BtnAjout.Size = new System.Drawing.Size(177, 47);
             this.BtnAjout.TabIndex = 0;
             this.BtnAjout.Text = "Ajouter";
+            this.BtnAjout.Click += new System.EventHandler(this.BtnAjout_Click);
             // 
             // BtnModifier
             // 
@@ -86,11 +86,48 @@
             this.colNombrePlaces,
             this.colLieu,
             this.colNom,
-            this.colRatePeriod});  // Ajout de la nouvelle colonne
+            this.colRatePeriod});
             this.dtgRepresentations.Location = new System.Drawing.Point(31, 144);
             this.dtgRepresentations.Name = "dtgRepresentations";
+            this.dtgRepresentations.RowHeadersWidth = 51;
             this.dtgRepresentations.Size = new System.Drawing.Size(991, 164);
             this.dtgRepresentations.TabIndex = 4;
+            // 
+            // colDate
+            // 
+            this.colDate.MinimumWidth = 6;
+            this.colDate.Name = "colDate";
+            this.colDate.Width = 125;
+            // 
+            // colHeure
+            // 
+            this.colHeure.MinimumWidth = 6;
+            this.colHeure.Name = "colHeure";
+            this.colHeure.Width = 125;
+            // 
+            // colNombrePlaces
+            // 
+            this.colNombrePlaces.MinimumWidth = 6;
+            this.colNombrePlaces.Name = "colNombrePlaces";
+            this.colNombrePlaces.Width = 125;
+            // 
+            // colLieu
+            // 
+            this.colLieu.MinimumWidth = 6;
+            this.colLieu.Name = "colLieu";
+            this.colLieu.Width = 125;
+            // 
+            // colNom
+            // 
+            this.colNom.MinimumWidth = 6;
+            this.colNom.Name = "colNom";
+            this.colNom.Width = 125;
+            // 
+            // colRatePeriod
+            // 
+            this.colRatePeriod.MinimumWidth = 6;
+            this.colRatePeriod.Name = "colRatePeriod";
+            this.colRatePeriod.Width = 125;
             // 
             // FrmGestionRepresentation
             // 
@@ -105,6 +142,7 @@
             this.Load += new System.EventHandler(this.FrmGestionRepresentation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgRepresentations)).EndInit();
             this.ResumeLayout(false);
+
         }
     }
 }
