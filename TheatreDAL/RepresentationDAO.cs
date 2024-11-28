@@ -77,6 +77,29 @@ namespace TheatreDAL
             }
             return result;
         }
+      
+        public static int ModifierRepresentation(Representation rep)
+        {
+            int result = 0;
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                string query = "UPDATE REPRESENTATION SET rep_date = @rep_date, rep_time = @rep_time, rep_max_seats = @rep_max_seats, play_id = @play_id, rate_id = @rate_id, rep_lieu = @rep_lieu " +
+                               "WHERE rep_id = @rep_id";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                
+                command.Parameters.AddWithValue("@rep_date", rep.Rep_date);
+                command.Parameters.AddWithValue("@rep_time", rep.Rep_time);
+                command.Parameters.AddWithValue("@rep_max_seats", rep.Rep_max_seats);
+                command.Parameters.AddWithValue("@play_id", rep.Piece.Play_id);
+                command.Parameters.AddWithValue("@rate_id", rep.Rate.Rate_id);
+                command.Parameters.AddWithValue("@rep_lieu", rep.Rep_lieu);
+                command.Parameters.AddWithValue("@rep_id", rep.Rep_id);
+                
+                result = command.ExecuteNonQuery();
+            }
+            return result;
+        }
 
         public static List<Rate> GetRates()
         {

@@ -117,6 +117,13 @@ namespace GestionFestival
                 isValid = false;
             }
 
+            string timeString = txtHeure.Text;
+            if (!TimeSpan.TryParseExact(timeString, "hh\\:mm", null, out _))
+            {
+                errorProvider.SetError(txtHeure, "Veuillez entrer l'horaire au format HH:MM.");
+                isValid = false;
+            }
+
             return isValid;
         }
 
