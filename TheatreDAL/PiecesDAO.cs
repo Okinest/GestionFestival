@@ -151,33 +151,29 @@ namespace TheatreDAL
             return themes;
         }
 
-        public static Pieces GetPieceById(int id)
+        public static Pieces GetPieceById(int id, SqlConnection connection)
         {
             Pieces piece = null;
             string query = "SELECT PLAY.play_id, PLAY.play_name, PLAY.play_description, PLAY.play_duration, PLAY.play_price, AUTHOR.auth_id, AUTHOR.auth_name,THEME.theme_id, THEME.theme_name," +
                 "AUDIENCE.aud_id, AUDIENCE.aud_categ FROM PLAY JOIN AUTHOR ON PLAY.auth_id = AUTHOR.auth_id JOIN THEME ON PLAY.theme_id = THEME.theme_id" +
                 " JOIN AUDIENCE ON PLAY.aud_id = AUDIENCE.aud_id" + "WHERE play_id = @play_id";
-
-            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            SqlCommand command2 = new SqlCommand(query, connection);
+            command2.Parameters.AddWithValue("@play_id", id);
+            SqlDataReader reader2 = command2.ExecuteReader();
+            if (reader2.Read())
             {
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@play_id", id);
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
-                {
-                    Pieces Pièce = new Pieces(
-                        reader.GetInt32(0), // play_id
-                        reader.GetString(1), // play_name
-                        reader.GetString(2), // play_description
-                        reader.GetInt32(3), // play_duration
-                        reader.GetDouble(4), // play_price
-                        new Author(reader.GetInt32(5), reader.GetString(6)),  // auth_name
-                        new Theme(reader.GetInt32(7), reader.GetString(8)),  // theme_name
-                        new Audience(reader.GetInt32(9), reader.GetString(10))  // aud_name
-                    );
-                }
-                reader.Close();
+                Pieces Pièce = new Pieces(
+                    reader2.GetInt32(0), // play_id
+                    reader2.GetString(1), // play_name
+                    reader2.GetString(2), // play_description
+                    reader2.GetInt32(3), // play_duration
+                    reader2.GetDouble(4), // play_price
+                    new Author(reader2.GetInt32(5), reader2.GetString(6)),  // auth_name
+                    new Theme(reader2.GetInt32(7), reader2.GetString(8)),  // theme_name
+                    new Audience(reader2.GetInt32(9), reader2.GetString(10))  // aud_name
+                );
             }
+            reader2.Close();
             return piece;
         }
 

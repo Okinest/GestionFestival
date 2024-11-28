@@ -17,6 +17,11 @@ namespace GestionFestival
             dtgRepresentations.Columns.Clear();
             dtgRepresentations.AutoGenerateColumns = false;
 
+            // Création d'une en-tête de colonne pour la colonne Nom (Pièce associée)
+            DataGridViewTextBoxColumn Nom_column = new DataGridViewTextBoxColumn();
+            Nom_column.DataPropertyName = "Piece_name";  // Lier à Play_name dans l'objet Play
+            Nom_column.HeaderText = "Nom";
+
             // Création d'une en-tête de colonne pour la colonne Date
             DataGridViewTextBoxColumn Date_column = new DataGridViewTextBoxColumn();
             Date_column.DataPropertyName = "Rep_date";  // Lier à Rep_date
@@ -37,22 +42,17 @@ namespace GestionFestival
             Lieu_column.DataPropertyName = "Rep_lieu";  // Lier à Rep_lieu
             Lieu_column.HeaderText = "Lieu";
 
-            // Création d'une en-tête de colonne pour la colonne Nom (Pièce associée)
-            DataGridViewTextBoxColumn Nom_column = new DataGridViewTextBoxColumn();
-            Nom_column.DataPropertyName = "Play.Play_name";  // Lier à Play_name dans l'objet Play
-            Nom_column.HeaderText = "Nom";
-
             // Création d'une en-tête de colonne pour la colonne Rate_period
             DataGridViewTextBoxColumn RatePeriod_column = new DataGridViewTextBoxColumn();
             RatePeriod_column.DataPropertyName = "Rate_period";  // Lier à Rate_period
-            RatePeriod_column.HeaderText = "Période du tarif";
+            RatePeriod_column.HeaderText = "Tarif";
 
             // AJOUT DE CHAQUE COLONNE
+            dtgRepresentations.Columns.Add(Nom_column);  // Ajouter la colonne "Nom"
             dtgRepresentations.Columns.Add(Date_column);
             dtgRepresentations.Columns.Add(Heure_column);
             dtgRepresentations.Columns.Add(NombrePlaces_column);
             dtgRepresentations.Columns.Add(Lieu_column);
-            dtgRepresentations.Columns.Add(Nom_column);  // Ajouter la colonne "Nom"
             dtgRepresentations.Columns.Add(RatePeriod_column);  // Ajouter la colonne "Période du tarif"
         }
 

@@ -32,6 +32,6 @@ namespace TheatreBO
         public Rate Rate { get { return rate; } set { rate = value; } }
 
         public string Piece_name => piece != null ? piece.Play_name : string.Empty; // Expose le nom de la pièce
-        public int Rate_value => rate != null ? rate.Rate_value : 0; // Expose la valeur du tarif
+        public string Rate_period => rate != null ? rate.Rate_period : string.Empty; // Expose la valeur du tarif
     }
 }
