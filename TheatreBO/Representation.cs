@@ -12,9 +12,21 @@ namespace TheatreBO
         private Pieces piece;
         private Rate rate;
 
+        // Constructeur avec ID
         public Representation(int rep_id, DateTime rep_date, TimeSpan rep_time, string rep_lieu, int rep_max_seats, Pieces piece, Rate rate)
         {
             this.rep_id = rep_id;
+            this.rep_date = rep_date;
+            this.rep_time = rep_time;
+            this.rep_lieu = rep_lieu;
+            this.rep_max_seats = rep_max_seats;
+            this.piece = piece;
+            this.rate = rate;
+        }
+
+        // Constructeur sans ID
+        public Representation(DateTime rep_date, TimeSpan rep_time, string rep_lieu, int rep_max_seats, Pieces piece, Rate rate)
+        {
             this.rep_date = rep_date;
             this.rep_time = rep_time;
             this.rep_lieu = rep_lieu;
