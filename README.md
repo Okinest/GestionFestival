@@ -23,18 +23,18 @@ Un guide d’utilisation de l’application doit être fourni au client.
   - [x]  Jeu d'essai dans la base de donnée = Théo
 
 **Sprint 2** :
-  - [ ] Liste pièces de théâtres = Adrien
-  - [ ] Ajout pièces de théâtres = Adrien | Myriam
-  - [ ] Modification pièces de théâtres = Myriam
-  - [ ] Suppression pièces de théâtres = Théo
-  - [ ] Cahier de recette = Théo
+  - [x] Liste pièces de théâtres = Adrien
+  - [x] Ajout pièces de théâtres = Adrien | Théo
+  - [x] Modification pièces de théâtres = Myriam
+  - [x] Suppression pièces de théâtres = Théo
+  - [x] Cahier de recette = Théo
 
 **Sprint 3** :
-  - [ ] Liste représentations = ??
-  - [ ] Ajout représentations = ??
-  - [ ] Modification représentations = ??
-  - [ ] Suppression représentations = ??
-  - [ ] Cahier de recette = ??
+  - [x] Liste représentations = Myriam | Théo
+  - [x] Ajout représentations = Théo
+  - [x] Modification représentations = Théo
+  - [x] Suppression représentations = Adrien
+  - [x] Cahier de recette = Adrien
 
 **Sprint 4** :
   - [ ] Liste réservations = ??
