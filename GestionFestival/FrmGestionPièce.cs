@@ -23,6 +23,12 @@ namespace GestionFestival
             dtgPieces.Columns.Clear();
             dtgPieces.AutoGenerateColumns = false;
 
+            // Empêcher la modification de la taille des colonnes
+            dtgPieces.AllowUserToResizeColumns = false;
+
+            // Définir le mode de redimensionnement automatique des colonnes
+            dtgPieces.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             // Création d'une en-tête de colonne pour la colonne  Nom
             DataGridViewTextBoxColumn Nom_column = new DataGridViewTextBoxColumn();
             Nom_column.DataPropertyName = "play_name";
