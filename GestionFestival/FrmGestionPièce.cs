@@ -126,7 +126,7 @@ namespace GestionFestival
                     }
                     else
                     {
-                        MessageBox.Show("Erreur lors de la suppression de la pièce.", "Erreur de suppression", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Erreur : Cette pièce est lié à une représentation.", "Erreur de suppression", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
