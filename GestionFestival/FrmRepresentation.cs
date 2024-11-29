@@ -65,6 +65,29 @@ namespace GestionFestival
             dtgRepresentations.DataSource = listeRepresentations;
         }
 
+        // Ouvre FrmAjoutRepresentation
+        private void BtnAjout_Click(object sender, EventArgs e)
+        {
+            FrmAjoutRepresentation frmAjoutRepresentation = new FrmAjoutRepresentation();
+            this.Hide();
+            frmAjoutRepresentation.Show();
+        }
+        private void BtnModifier_Click(object sender, EventArgs e)
+        {
+            if(dtgRepresentations.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dtgRepresentations.SelectedRows[0];
+                Representation rep = (Representation)row.DataBoundItem;
+
+                if (rep != null)
+                {
+                    FrmModifierRepresentation frmModifierRepresentation = new FrmModifierRepresentation(rep);
+                    this.Hide();
+                    frmModifierRepresentation.Show();
+                }
+            }
+        }
+
         // Retourne à FrmMenu
         private void BtnRetour_Click(object sender, EventArgs e)
         {
@@ -75,7 +98,7 @@ namespace GestionFestival
 
         private void BtnSupprimer_Click(object sender, EventArgs e)
         {
-            //SI UNE LIGNE EST SELECTIONNER
+            //SI UNE LIGNE EST SELECTIONNÉE
             if(dtgRepresentations.Rows.Count > 0)
             {
                 DataGridViewRow selectedRow = dtgRepresentations.SelectedRows[0];

@@ -56,24 +56,70 @@ namespace TheatreDAL
 
             return representations;
         }
-
-
-        public static Rate GetRateById(int id , SqlConnection connection)
+        public static int AjoutRepresentation(Representation rep)
         {
-            Rate rate = null;
-            string query = "SELECT * FROM Rates WHERE rate_id = @rate_id";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@rate_id", id);
-            SqlDataReader reader2 = command.ExecuteReader();
-            if (reader2.Read())
+            int result = 0;
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
             {
-                rate = new Rate(reader2.GetInt32(0), // rate_id
-                                reader2.GetString(1), // rate_period
-                                reader2.GetInt32(2) // rate_value
-                                );
+                string query = "INSERT INTO REPRESENTATION (rep_date, rep_time, rep_max_seats, play_id, rate_id, rep_lieu) " +
+                               "VALUES (@rep_date, @rep_time, @rep_max_seats, @play_id, @rate_id, @rep_lieu)";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                
+                command.Parameters.AddWithValue("@rep_date", rep.Rep_date);
+                command.Parameters.AddWithValue("@rep_time", rep.Rep_time);
+                command.Parameters.AddWithValue("@rep_max_seats", rep.Rep_max_seats);
+                command.Parameters.AddWithValue("@play_id", rep.Piece.Play_id);
+                command.Parameters.AddWithValue("@rate_id", rep.Rate.Rate_id);
+                command.Parameters.AddWithValue("@rep_lieu", rep.Rep_lieu);
+                
+                result = command.ExecuteNonQuery();
             }
-            reader2.Close();
-            return rate;
+            return result;
+        }
+      
+        public static int ModifierRepresentation(Representation rep)
+        {
+            int result = 0;
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                string query = "UPDATE REPRESENTATION SET rep_date = @rep_date, rep_time = @rep_time, rep_max_seats = @rep_max_seats, play_id = @play_id, rate_id = @rate_id, rep_lieu = @rep_lieu " +
+                               "WHERE rep_id = @rep_id";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                
+                command.Parameters.AddWithValue("@rep_date", rep.Rep_date);
+                command.Parameters.AddWithValue("@rep_time", rep.Rep_time);
+                command.Parameters.AddWithValue("@rep_max_seats", rep.Rep_max_seats);
+                command.Parameters.AddWithValue("@play_id", rep.Piece.Play_id);
+                command.Parameters.AddWithValue("@rate_id", rep.Rate.Rate_id);
+                command.Parameters.AddWithValue("@rep_lieu", rep.Rep_lieu);
+                command.Parameters.AddWithValue("@rep_id", rep.Rep_id);
+                
+                result = command.ExecuteNonQuery();
+            }
+            return result;
+        }
+
+        public static List<Rate> GetRates()
+        {
+            List<Rate> rates = new List<Rate>();
+            string query = "SELECT * FROM RATE";
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Rate rate = new Rate(reader.GetInt32(0), // rate_id
+                                    reader.GetString(1), // rate_period
+                                    reader.GetInt32(2) // rate_value
+                                    );
+                    rates.Add(rate);
+                }
+                reader.Close();
+            }
+            return rates;
         }
 
 

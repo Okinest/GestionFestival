@@ -53,6 +53,18 @@
     <Compile Include="FrmAjoutPièce.Designer.cs">
       <DependentUpon>FrmAjoutPièce.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAjoutRepresentation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAjoutRepresentation.Designer.cs">
+      <DependentUpon>FrmAjoutRepresentation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmModifierRepresentation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmModifierRepresentation.Designer.cs">
+      <DependentUpon>FrmModifierRepresentation.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmRepresentation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,11 +100,17 @@
     <EmbeddedResource Include="FrmAjoutPièce.resx">
       <DependentUpon>FrmAjoutPièce.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmAjoutRepresentation.resx">
+      <DependentUpon>FrmAjoutRepresentation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAuthentification.resx">
       <DependentUpon>FrmAuthentification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGestionPièce.resx">
       <DependentUpon>FrmGestionPièce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmModifierRepresentation.resx">
+      <DependentUpon>FrmModifierRepresentation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRepresentation.resx">
       <DependentUpon>FrmRepresentation.cs</DependentUpon>
