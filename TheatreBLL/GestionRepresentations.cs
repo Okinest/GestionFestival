@@ -37,6 +37,17 @@ namespace TheatreBLL
             return listeRepresentations;
         }
 
+//         public List<Representation> GetListeRepresentationsWithReservation()
+//         {
+//             listeRepresentations = RepresentationDAO.GetRepresentations(); // Appel au DAO pour récupérer les représentations
+//             return listeRepresentations;
+//         }
+
+        public static int SupprimerRepresentation(int id)
+        {
+            return RepresentationDAO.SupprimerRepresentation(id);
+        }
+
         public List<Rate> GetListeRates()
         {
             listeRates = RepresentationDAO.GetRates();

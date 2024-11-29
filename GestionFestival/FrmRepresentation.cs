@@ -54,6 +54,8 @@ namespace GestionFestival
             dtgRepresentations.Columns.Add(NombrePlaces_column);
             dtgRepresentations.Columns.Add(Lieu_column);
             dtgRepresentations.Columns.Add(RatePeriod_column);  // Ajouter la colonne "Période du tarif"
+
+            dtgRepresentations.SelectionMode = DataGridViewSelectionMode.FullRowSelect; //POUR SELECTIONNER TOUTES LA LIGNE
         }
 
         private void FrmGestionRepresentation_Load(object sender, EventArgs e)
@@ -94,5 +96,34 @@ namespace GestionFestival
             frmMenu.Show();
         }
 
+        private void BtnSupprimer_Click(object sender, EventArgs e)
+        {
+            //SI UNE LIGNE EST SELECTIONNÉE
+            if(dtgRepresentations.Rows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dtgRepresentations.SelectedRows[0];
+                Representation selectedRepresentation = (Representation)selectedRow.DataBoundItem;
+
+                // Demande de confirmation
+                DialogResult dialogResult = MessageBox.Show($"Êtes-vous sûr de vouloir supprimer la représentation '{selectedRepresentation.Rep_id}' ?", "Confirmation de suppression", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    int result = GestionRepresentations.SupprimerRepresentation(selectedRepresentation.Rep_id);
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Pièce supprimée avec succès.", "Suppression de la pièce", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        FrmGestionRepresentation_Load(sender, e); // Recharger les pièces après suppression
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erreur lors de la suppression de la représentation.", "Erreur de suppression", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une représentation à supprimer.", "Sélection d'une représentation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

@@ -67,6 +67,7 @@
             this.BtnSupprimer.Size = new System.Drawing.Size(177, 47);
             this.BtnSupprimer.TabIndex = 2;
             this.BtnSupprimer.Text = "Supprimer";
+            this.BtnSupprimer.Click += new System.EventHandler(this.BtnSupprimer_Click);
             // 
             // BtnRetour
             // 

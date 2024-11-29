@@ -57,9 +57,11 @@ namespace TheatreBO
         public Theme Theme { get => theme; set => theme = value; }
         public Audience Aud { get => aud; set => aud = value; }
 
+
         public string Auth_name => auth != null ? auth.Auth_name : string.Empty; // Expose le nom de l'auteur
         public string Theme_name => theme != null ? theme.Theme_name : string.Empty; // Expose le nom du thème
         public string Aud_categ => aud != null ? aud.Aud_categ : string.Empty; // Expose la catégorie de l'audience
+
     }
 
 }

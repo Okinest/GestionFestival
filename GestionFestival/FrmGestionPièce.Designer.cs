@@ -47,10 +47,9 @@ namespace GestionFestival
             // 
             this.BtnAjout.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.BtnAjout.FlatAppearance.BorderSize = 2;
-            this.BtnAjout.Location = new System.Drawing.Point(175, 337);
-            this.BtnAjout.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnAjout.Location = new System.Drawing.Point(131, 274);
             this.BtnAjout.Name = "BtnAjout";
-            this.BtnAjout.Size = new System.Drawing.Size(177, 47);
+            this.BtnAjout.Size = new System.Drawing.Size(133, 38);
             this.BtnAjout.TabIndex = 0;
             this.BtnAjout.Text = "Ajouter";
             this.BtnAjout.UseVisualStyleBackColor = true;
@@ -60,10 +59,9 @@ namespace GestionFestival
             // 
             this.BtnModifier.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.BtnModifier.FlatAppearance.BorderSize = 2;
-            this.BtnModifier.Location = new System.Drawing.Point(433, 337);
-            this.BtnModifier.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnModifier.Location = new System.Drawing.Point(325, 274);
             this.BtnModifier.Name = "BtnModifier";
-            this.BtnModifier.Size = new System.Drawing.Size(177, 47);
+            this.BtnModifier.Size = new System.Drawing.Size(133, 38);
             this.BtnModifier.TabIndex = 1;
             this.BtnModifier.Text = "Modifier";
             this.BtnModifier.UseVisualStyleBackColor = true;
@@ -73,10 +71,9 @@ namespace GestionFestival
             // 
             this.BtnSupprimer.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.BtnSupprimer.FlatAppearance.BorderSize = 2;
-            this.BtnSupprimer.Location = new System.Drawing.Point(679, 337);
-            this.BtnSupprimer.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnSupprimer.Location = new System.Drawing.Point(509, 274);
             this.BtnSupprimer.Name = "BtnSupprimer";
-            this.BtnSupprimer.Size = new System.Drawing.Size(177, 47);
+            this.BtnSupprimer.Size = new System.Drawing.Size(133, 38);
             this.BtnSupprimer.TabIndex = 2;
             this.BtnSupprimer.Text = "Supprimer";
             this.BtnSupprimer.UseVisualStyleBackColor = true;
@@ -86,10 +83,9 @@ namespace GestionFestival
             // 
             this.BtnRetour.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.BtnRetour.FlatAppearance.BorderSize = 2;
-            this.BtnRetour.Location = new System.Drawing.Point(433, 414);
-            this.BtnRetour.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnRetour.Location = new System.Drawing.Point(325, 336);
             this.BtnRetour.Name = "BtnRetour";
-            this.BtnRetour.Size = new System.Drawing.Size(177, 47);
+            this.BtnRetour.Size = new System.Drawing.Size(133, 38);
             this.BtnRetour.TabIndex = 3;
             this.BtnRetour.Text = "Revenir en arrière";
             this.BtnRetour.UseVisualStyleBackColor = true;
@@ -106,11 +102,10 @@ namespace GestionFestival
             this.colDuree,
             this.colAudience,
             this.colAuteur});
-            this.dtgPieces.Location = new System.Drawing.Point(31, 144);
-            this.dtgPieces.Margin = new System.Windows.Forms.Padding(4);
+            this.dtgPieces.Location = new System.Drawing.Point(23, 117);
             this.dtgPieces.Name = "dtgPieces";
             this.dtgPieces.RowHeadersWidth = 51;
-            this.dtgPieces.Size = new System.Drawing.Size(991, 164);
+            this.dtgPieces.Size = new System.Drawing.Size(743, 133);
             this.dtgPieces.TabIndex = 4;
             // 
             // colNom
@@ -157,15 +152,14 @@ namespace GestionFestival
             // 
             // FrmGestionPièce
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dtgPieces);
             this.Controls.Add(this.BtnRetour);
             this.Controls.Add(this.BtnSupprimer);
             this.Controls.Add(this.BtnModifier);
             this.Controls.Add(this.BtnAjout);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmGestionPièce";
             this.Text = "Gestion des pièces de théâtre";
             this.Load += new System.EventHandler(this.FrmGestionPièce_Load);
