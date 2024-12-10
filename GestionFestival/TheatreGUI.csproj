@@ -36,6 +36,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,11 +60,23 @@
     <Compile Include="FrmAjoutRepresentation.Designer.cs">
       <DependentUpon>FrmAjoutRepresentation.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAjoutReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAjoutReservation.Designer.cs">
+      <DependentUpon>FrmAjoutReservation.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmModifierRepresentation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmModifierRepresentation.Designer.cs">
       <DependentUpon>FrmModifierRepresentation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmModifierReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmModifierReservation.Designer.cs">
+      <DependentUpon>FrmModifierReservation.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmRepresentation.cs">
       <SubType>Form</SubType>
@@ -95,6 +108,12 @@
     <Compile Include="FrmModifierPièce.Designer.cs">
       <DependentUpon>FrmModifierPièce.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReservation.Designer.cs">
+      <DependentUpon>FrmReservation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAjoutPièce.resx">
@@ -102,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAjoutRepresentation.resx">
       <DependentUpon>FrmAjoutRepresentation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAjoutReservation.resx">
+      <DependentUpon>FrmAjoutReservation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAuthentification.resx">
       <DependentUpon>FrmAuthentification.cs</DependentUpon>
@@ -111,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmModifierRepresentation.resx">
       <DependentUpon>FrmModifierRepresentation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmModifierReservation.resx">
+      <DependentUpon>FrmModifierReservation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRepresentation.resx">
       <DependentUpon>FrmRepresentation.cs</DependentUpon>
