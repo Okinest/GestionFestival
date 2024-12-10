@@ -98,13 +98,30 @@ namespace TheatreDAL
         public static int SupprimerPieces(int id)
         {
             int nbr;
+            string queryCheckRep = "SELECT COUNT(*) FROM REPRESENTATION WHERE play_id = @play_id";
             string queryDeletePiece = "DELETE FROM PLAY WHERE play_id = @play_id";
+
             using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
             {
-                SqlCommand command = new SqlCommand(queryDeletePiece, connection);
-                command.Parameters.AddWithValue("@play_id", id);
-                nbr = command.ExecuteNonQuery();
+                // Vérifier s'il y a des réservations liées à la pièce
+                SqlCommand checkRepCommand = new SqlCommand(queryCheckRep, connection);
+                checkRepCommand.Parameters.AddWithValue("@play_id", id);
+                int reservationCount = (int)checkRepCommand.ExecuteScalar();
+
+                if (reservationCount > 0)
+                {
+                    // Ne pas supprimer la pièce si des réservations sont liées
+                    nbr = 0;
+                }
+                else
+                {
+                    // Supprimer la pièce si aucune réservation n'est liée
+                    SqlCommand deletePieceCommand = new SqlCommand(queryDeletePiece, connection);
+                    deletePieceCommand.Parameters.AddWithValue("@play_id", id);
+                    nbr = deletePieceCommand.ExecuteNonQuery();
+                }
             }
+
             return nbr;
         }
 

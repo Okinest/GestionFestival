@@ -26,28 +26,33 @@ namespace TheatreDAL
                 while (reader.Read())
                 {
                     // Créer l'objet Representation et ajouter à la liste
-                    Representation representation = new Representation((int)reader["rep_id"], 
-                                                                       (DateTime)reader["rep_date"], 
-                                                                       (TimeSpan)reader["rep_time"], 
-                                                                       (string)reader["rep_lieu"],  
-                                                                       (int)reader["rep_max_seats"],
-                                                                       new Pieces((int)reader["play_id"],
-                                                                                  (string)reader["play_name"],
-                                                                                  (string)reader["play_description"],
-                                                                                  (int)reader["play_duration"],
-                                                                                  (double)reader["play_price"],
-                                                                                  new Author((int)reader["auth_id"],
-                                                                                             (string)reader["auth_name"]),
-                                                                                  new Theme((int)reader["theme_id"],
-                                                                                            (string)reader["theme_name"]),
-                                                                                  new Audience((int)reader["aud_id"],
-                                                                                               (string)reader["aud_categ"])
-                                                                                  ),
-                                                                                  new Rate((int)reader["rate_id"],
-                                                                                           (string)reader["rate_period"],
-                                                                                           (int)reader["rate_value"])
-
-                                                                        );
+                    Representation representation = new Representation(
+                        (int)reader["rep_id"],
+                        (DateTime)reader["rep_date"],
+                        (TimeSpan)reader["rep_time"],
+                        (string)reader["rep_lieu"],
+                        (int)reader["rep_max_seats"],
+                        new Pieces(
+                            (int)reader["play_id"],
+                            (string)reader["play_name"],
+                            (string)reader["play_description"],
+                            (int)reader["play_duration"],
+                            (double)reader["play_price"],
+                            new Author(
+                                (int)reader["auth_id"],
+                                (string)reader["auth_name"]),
+                            new Theme(
+                                (int)reader["theme_id"],
+                                (string)reader["theme_name"]),
+                            new Audience(
+                                (int)reader["aud_id"],
+                                (string)reader["aud_categ"])
+                            ),
+                        new Rate(
+                            (int)reader["rate_id"],
+                            (string)reader["rate_period"],
+                            (int)reader["rate_value"])
+                        );
                     representations.Add(representation);
                 }
 

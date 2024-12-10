@@ -107,15 +107,17 @@
             // 
             // dtpDate
             // 
-            this.dtpDate.Location = new System.Drawing.Point(229, 209);
+            this.dtpDate.CustomFormat = "dd/MM/yyyy";
+            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDate.Location = new System.Drawing.Point(224, 209);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(108, 22);
+            this.dtpDate.Size = new System.Drawing.Size(117, 22);
             this.dtpDate.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(264, 182);
+            this.label2.Location = new System.Drawing.Point(265, 182);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 16);
             this.label2.TabIndex = 9;

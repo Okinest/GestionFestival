@@ -10,13 +10,6 @@
         private System.Windows.Forms.Button BtnRetour;
         private System.Windows.Forms.DataGridView dtgRepresentations;
 
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colHeure;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNombrePlaces;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colLieu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colRatePeriod;  // Nouvelle colonne
-
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -98,39 +91,57 @@
             // 
             // colDate
             // 
+            this.colDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colDate.HeaderText = "colDate";
             this.colDate.MinimumWidth = 6;
             this.colDate.Name = "colDate";
-            this.colDate.Width = 125;
+            this.colDate.ReadOnly = true;
+            this.colDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // colHeure
             // 
+            this.colHeure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colHeure.HeaderText = "colHeure";
             this.colHeure.MinimumWidth = 6;
             this.colHeure.Name = "colHeure";
-            this.colHeure.Width = 125;
+            this.colHeure.ReadOnly = true;
+            this.colHeure.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // colNombrePlaces
             // 
+            this.colNombrePlaces.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNombrePlaces.HeaderText = "colNombrePlaces";
             this.colNombrePlaces.MinimumWidth = 6;
             this.colNombrePlaces.Name = "colNombrePlaces";
-            this.colNombrePlaces.Width = 125;
+            this.colNombrePlaces.ReadOnly = true;
+            this.colNombrePlaces.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // colLieu
             // 
+            this.colLieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colLieu.HeaderText = "colLieu";
             this.colLieu.MinimumWidth = 6;
             this.colLieu.Name = "colLieu";
-            this.colLieu.Width = 125;
+            this.colLieu.ReadOnly = true;
+            this.colLieu.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // colNom
             // 
+            this.colNom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNom.HeaderText = "colNom";
             this.colNom.MinimumWidth = 6;
             this.colNom.Name = "colNom";
-            this.colNom.Width = 125;
+            this.colNom.ReadOnly = true;
+            this.colNom.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // colRatePeriod
             // 
+            this.colRatePeriod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colRatePeriod.HeaderText = "colRatePeriod";
             this.colRatePeriod.MinimumWidth = 6;
             this.colRatePeriod.Name = "colRatePeriod";
-            this.colRatePeriod.Width = 125;
+            this.colRatePeriod.ReadOnly = true;
+            this.colRatePeriod.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // FrmGestionRepresentation
             // 
@@ -147,5 +158,12 @@
             this.ResumeLayout(false);
 
         }
+
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHeure;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNombrePlaces;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRatePeriod;
     }
 }

@@ -17,6 +17,12 @@ namespace GestionFestival
             dtgRepresentations.Columns.Clear();
             dtgRepresentations.AutoGenerateColumns = false;
 
+            // Empêcher la modification de la taille des colonnes
+            dtgRepresentations.AllowUserToResizeColumns = false;
+
+            // Définir le mode de redimensionnement automatique des colonnes
+            dtgRepresentations.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             // Création d'une en-tête de colonne pour la colonne Nom (Pièce associée)
             DataGridViewTextBoxColumn Nom_column = new DataGridViewTextBoxColumn();
             Nom_column.DataPropertyName = "Piece_name";  // Lier à Play_name dans l'objet Play
@@ -105,7 +111,7 @@ namespace GestionFestival
                 Representation selectedRepresentation = (Representation)selectedRow.DataBoundItem;
 
                 // Demande de confirmation
-                DialogResult dialogResult = MessageBox.Show($"Êtes-vous sûr de vouloir supprimer la représentation '{selectedRepresentation.Rep_id}' ?", "Confirmation de suppression", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult = MessageBox.Show($"Êtes-vous sûr de vouloir supprimer la représentation '{selectedRepresentation.Piece_name}' ?", "Confirmation de suppression", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     int result = GestionRepresentations.SupprimerRepresentation(selectedRepresentation.Rep_id);
