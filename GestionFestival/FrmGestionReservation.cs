@@ -81,7 +81,40 @@ namespace GestionFestival
         }
         private void BtnSupprimer_Click(object sender, EventArgs e)
         {
+            if (dtgReservations.SelectedRows.Count > 0)
+            {
+                // Récupération des identifiants sélectionnés
+                DataGridViewRow selectedRow = dtgReservations.SelectedRows[0];
+                Reservation selectedReservation = (Reservation)selectedRow.DataBoundItem;
 
+                int cusId = selectedReservation.Customer.Cus_id; // Assurez-vous que Customer expose Cus_id
+                int repId = selectedReservation.Representation.Rep_id; // Assurez-vous que Representation expose Rep_id
+
+                DialogResult dialogResult = MessageBox.Show(
+                    "Voulez-vous vraiment supprimer cette réservation ?",
+                    "Confirmation",
+                    MessageBoxButtons.YesNo
+                );
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    bool success = gestionReservations.SupprimerReservation(cusId, repId);
+                    if (success)
+                    {
+                        MessageBox.Show("Réservation supprimée avec succès.");
+                        dtgReservations.DataSource = gestionReservations.GetListeReservations();
+                    }
+                    else
+                    {
+                        MessageBox.Show("La réservation ne peut pas être supprimée car elle est liée à une représentation.");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une réservation à supprimer.");
+            }
         }
+
     }
 }
