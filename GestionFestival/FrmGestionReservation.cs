@@ -85,8 +85,8 @@ namespace GestionFestival
             {
                 DataGridViewRow row = dtgReservations.SelectedRows[0];
                 Reservation res = (Reservation)row.DataBoundItem;
-                Customer cus = (Customer)row.DataBoundItem;
-                Representation rep = (Representation)row.DataBoundItem;
+                Customer cus = res.Customer; 
+                Representation rep = res.Representation;
 
 
                 if (rep != null)
