@@ -45,15 +45,15 @@ namespace GestionFestival
             this.lblTelephone = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grpDetails = new System.Windows.Forms.GroupBox();
-            this.lblPiece = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.txtTarifPlace = new System.Windows.Forms.TextBox();
-            this.txtTarifReservation = new System.Windows.Forms.TextBox();
-            this.cmbPiece = new System.Windows.Forms.ComboBox();
             this.cmbRepresentation = new System.Windows.Forms.ComboBox();
+            this.cmbPiece = new System.Windows.Forms.ComboBox();
+            this.txtTarifReservation = new System.Windows.Forms.TextBox();
+            this.txtTarifPlace = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblPiece = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.grpDetails.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,6 +88,7 @@ namespace GestionFestival
             this.btnRetour.TabIndex = 7;
             this.btnRetour.Text = "Revenir en arrière";
             this.btnRetour.UseVisualStyleBackColor = true;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
             // directorySearcher1
             // 
@@ -204,35 +205,37 @@ namespace GestionFestival
             this.grpDetails.Text = "Détails :";
             this.grpDetails.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // lblPiece
+            // cmbRepresentation
             // 
-            this.lblPiece.AutoSize = true;
-            this.lblPiece.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPiece.Location = new System.Drawing.Point(52, 30);
-            this.lblPiece.Name = "lblPiece";
-            this.lblPiece.Size = new System.Drawing.Size(40, 13);
-            this.lblPiece.TabIndex = 14;
-            this.lblPiece.Text = "Pièce :";
+            this.cmbRepresentation.FormattingEnabled = true;
+            this.cmbRepresentation.Location = new System.Drawing.Point(446, 27);
+            this.cmbRepresentation.Name = "cmbRepresentation";
+            this.cmbRepresentation.Size = new System.Drawing.Size(121, 21);
+            this.cmbRepresentation.TabIndex = 23;
             // 
-            // label2
+            // cmbPiece
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(52, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Tarif par place :";
+            this.cmbPiece.FormattingEnabled = true;
+            this.cmbPiece.Location = new System.Drawing.Point(126, 27);
+            this.cmbPiece.Name = "cmbPiece";
+            this.cmbPiece.Size = new System.Drawing.Size(121, 21);
+            this.cmbPiece.TabIndex = 22;
             // 
-            // label3
+            // txtTarifReservation
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(362, 30);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 13);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Représentation :";
+            this.txtTarifReservation.Location = new System.Drawing.Point(453, 62);
+            this.txtTarifReservation.Name = "txtTarifReservation";
+            this.txtTarifReservation.ReadOnly = true;
+            this.txtTarifReservation.Size = new System.Drawing.Size(100, 20);
+            this.txtTarifReservation.TabIndex = 21;
+            // 
+            // txtTarifPlace
+            // 
+            this.txtTarifPlace.Location = new System.Drawing.Point(139, 62);
+            this.txtTarifPlace.Name = "txtTarifPlace";
+            this.txtTarifPlace.ReadOnly = true;
+            this.txtTarifPlace.Size = new System.Drawing.Size(100, 20);
+            this.txtTarifPlace.TabIndex = 19;
             // 
             // label4
             // 
@@ -244,41 +247,41 @@ namespace GestionFestival
             this.label4.TabIndex = 17;
             this.label4.Text = "Tarif réservation :";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(362, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Représentation :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(52, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Tarif par place :";
+            // 
+            // lblPiece
+            // 
+            this.lblPiece.AutoSize = true;
+            this.lblPiece.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPiece.Location = new System.Drawing.Point(52, 30);
+            this.lblPiece.Name = "lblPiece";
+            this.lblPiece.Size = new System.Drawing.Size(40, 13);
+            this.lblPiece.TabIndex = 14;
+            this.lblPiece.Text = "Pièce :";
+            // 
             // imageList1
             // 
             this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // txtTarifPlace
-            // 
-            this.txtTarifPlace.Location = new System.Drawing.Point(139, 62);
-            this.txtTarifPlace.Name = "txtTarifPlace";
-            this.txtTarifPlace.Size = new System.Drawing.Size(100, 20);
-            this.txtTarifPlace.TabIndex = 19;
-            // 
-            // txtTarifReservation
-            // 
-            this.txtTarifReservation.Location = new System.Drawing.Point(453, 62);
-            this.txtTarifReservation.Name = "txtTarifReservation";
-            this.txtTarifReservation.Size = new System.Drawing.Size(100, 20);
-            this.txtTarifReservation.TabIndex = 21;
-            // 
-            // cmbPiece
-            // 
-            this.cmbPiece.FormattingEnabled = true;
-            this.cmbPiece.Location = new System.Drawing.Point(126, 27);
-            this.cmbPiece.Name = "cmbPiece";
-            this.cmbPiece.Size = new System.Drawing.Size(121, 21);
-            this.cmbPiece.TabIndex = 22;
-            // 
-            // cmbRepresentation
-            // 
-            this.cmbRepresentation.FormattingEnabled = true;
-            this.cmbRepresentation.Location = new System.Drawing.Point(446, 27);
-            this.cmbRepresentation.Name = "cmbRepresentation";
-            this.cmbRepresentation.Size = new System.Drawing.Size(121, 21);
-            this.cmbRepresentation.TabIndex = 23;
             // 
             // FrmAjoutReservation
             // 

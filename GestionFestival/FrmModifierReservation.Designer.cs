@@ -104,6 +104,7 @@ namespace GestionFestival
             // 
             this.txtTarifReservation.Location = new System.Drawing.Point(453, 62);
             this.txtTarifReservation.Name = "txtTarifReservation";
+            this.txtTarifReservation.ReadOnly = true;
             this.txtTarifReservation.Size = new System.Drawing.Size(100, 20);
             this.txtTarifReservation.TabIndex = 21;
             // 
@@ -111,6 +112,7 @@ namespace GestionFestival
             // 
             this.txtTarifPlace.Location = new System.Drawing.Point(139, 62);
             this.txtTarifPlace.Name = "txtTarifPlace";
+            this.txtTarifPlace.ReadOnly = true;
             this.txtTarifPlace.Size = new System.Drawing.Size(100, 20);
             this.txtTarifPlace.TabIndex = 19;
             // 
@@ -253,6 +255,7 @@ namespace GestionFestival
             this.btnRetour.TabIndex = 20;
             this.btnRetour.Text = "Revenir en arrière";
             this.btnRetour.UseVisualStyleBackColor = true;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
             // btnModif
             // 

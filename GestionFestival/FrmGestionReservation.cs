@@ -72,12 +72,20 @@ namespace GestionFestival
 
         private void BtnAjout_Click(object sender, EventArgs e)
         {
+            FrmAjoutReservation frmAjoutReservation = new FrmAjoutReservation();
+            this.Hide();
+            frmAjoutReservation.Show();
 
         }
-
         private void BtnModifier_Click(object sender, EventArgs e)
         {
-          
+
+            FrmModifierReservation frmModifierReservation = new FrmModifierReservation();
+            this.Hide();
+            frmModifierReservation.Show();
+
+
+
         }
         private void BtnSupprimer_Click(object sender, EventArgs e)
         {

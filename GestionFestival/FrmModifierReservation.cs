@@ -21,5 +21,12 @@ namespace GestionFestival
         {
 
         }
+
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            FrmGestionReservation frmGestionReservation = new FrmGestionReservation();
+            this.Hide();
+            frmGestionReservation.Show();
+        }
     }
 }
