@@ -27,7 +27,9 @@ namespace GestionFestival
 
         private void btnReservations_Click(object sender, EventArgs e)
         {
-            // Logique pour accéder aux réservations (si nécessaire)
+            FrmGestionReservation frmGestionReservation = new FrmGestionReservation();
+            this.Hide();
+            frmGestionReservation.Show();
         }
 
         private void btnSynthese_Click(object sender, EventArgs e)

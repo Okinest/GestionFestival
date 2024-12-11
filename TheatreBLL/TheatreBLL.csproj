@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="GestionPieces.cs" />
     <Compile Include="GestionRepresentations.cs" />
+    <Compile Include="GestionReservations.cs" />
     <Compile Include="GestionUtilisateurs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
