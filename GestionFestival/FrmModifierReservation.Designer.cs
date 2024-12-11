@@ -176,6 +176,7 @@ namespace GestionFestival
             this.btnModif.TabIndex = 19;
             this.btnModif.Text = "Modifier";
             this.btnModif.UseVisualStyleBackColor = true;
+            this.btnModif.Click += new System.EventHandler(this.btnModif_Click);
             // 
             // label1
             // 

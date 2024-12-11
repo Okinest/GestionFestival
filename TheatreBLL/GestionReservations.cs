@@ -31,7 +31,7 @@ namespace TheatreBLL
 
         public static int AjoutReservation(Reservation rep)
         {
-            return ReservationDAO.AjoutRepresentation(rep);
+            return ReservationDAO.AjoutReservation(rep);
         }
 
         public static int ModifierReservation(Reservation rep) 

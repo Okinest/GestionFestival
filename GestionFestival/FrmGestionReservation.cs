@@ -81,14 +81,22 @@ namespace GestionFestival
         }
         private void BtnModifier_Click(object sender, EventArgs e)
         {
+            if (dtgReservations.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dtgReservations.SelectedRows[0];
+                Reservation res = (Reservation)row.DataBoundItem;
+                Customer cus = (Customer)row.DataBoundItem;
+                Representation rep = (Representation)row.DataBoundItem;
 
-            FrmModifierReservation frmModifierReservation = new FrmModifierReservation();
-            this.Hide();
-            frmModifierReservation.StartPosition = FormStartPosition.CenterScreen;
-            frmModifierReservation.Show();
 
-
-
+                if (rep != null)
+                {
+                    FrmModifierReservation frmModifierReservation = new FrmModifierReservation(res, cus, rep);
+                    this.Hide();
+                    frmModifierReservation.StartPosition = FormStartPosition.CenterScreen;
+                    frmModifierReservation.Show();
+                }
+            }
         }
         private void BtnSupprimer_Click(object sender, EventArgs e)
         {

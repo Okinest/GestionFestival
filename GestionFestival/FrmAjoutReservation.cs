@@ -121,7 +121,7 @@ namespace GestionFestival
                     Pieces selectedPiece = (Pieces)cmbPiece.SelectedItem;
 
                     //REPRESENTATIO ASSOCIER A LA COMBOBOX
-                    Representation selectedRepresentation = (Representation)cmbPiece.SelectedItem;
+                    Representation selectedRepresentation = (Representation)cmbRepresentation.SelectedItem;
 
                     //OBJET RESERVATION
                     Reservation res = new Reservation(customer, selectedRepresentation, numSeats);

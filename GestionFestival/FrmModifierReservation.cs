@@ -194,5 +194,62 @@ namespace GestionFestival
         {
 
         }
+
+        private void btnModif_Click(object sender, EventArgs e)
+        {
+            if (currentRep == null || currentCus == null || currentRepresentation == null)
+            {
+                MessageBox.Show("Erreur lors de la récupération de la réservation");
+                this.Close();
+                return;
+            }
+
+            if (ValidateForm())
+            {
+                try
+                {
+                    // CUSTOMER
+                    string customerLastName = txtNom.Text;
+                    string customerFirstName = txtPrenom.Text;
+                    string customerEmail = txtEmail.Text;
+                    string customerPhone = txtTelephone.Text;
+
+                    //OBJET CUSTOMER
+                    Customer customer = new Customer(customerFirstName, customerLastName, customerEmail, customerPhone);
+
+                    // RESERVATION
+                    string pieceName = cmbPiece.Text;
+                    string representationName = cmbRepresentation.Text;
+                    int numSeats = int.Parse(txtNbPlace.Text);
+
+                    //PIECE ASSOCIER  A LA COMBOBOX
+                    Pieces selectedPiece = (Pieces)cmbPiece.SelectedItem;
+
+                    //REPRESENTATIO ASSOCIER A LA COMBOBOX
+                    Representation selectedRepresentation = (Representation)cmbPiece.SelectedItem;
+
+                    //OBJET RESERVATION
+                    Reservation res = new Reservation(customer, selectedRepresentation, numSeats);
+
+
+                    int result = GestionReservations.AjoutReservation(res);
+
+                    //VERIF
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Réservation modifier avec succès !");
+                        btnRetour_Click(sender, e);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erreur lors de la modification de la réservation.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de la modification de la réservation : " + ex.Message);
+                }
+            }
+        }
     }
 }
