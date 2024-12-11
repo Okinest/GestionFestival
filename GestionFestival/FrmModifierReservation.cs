@@ -49,6 +49,7 @@ namespace GestionFestival
             cmbRepresentation.DataSource = representations;
             cmbRepresentation.ValueMember = "rep_id";
             cmbRepresentation.DisplayMember = "rep_date";
+
         }
 
         private void LoadData()
