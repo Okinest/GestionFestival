@@ -34,11 +34,11 @@ namespace GestionFestival
             this.btnAjout = new System.Windows.Forms.Button();
             this.btnRetour = new System.Windows.Forms.Button();
             this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
-            this.txtLieu = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtNom = new System.Windows.Forms.TextBox();
+            this.txtPrenom = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtTelephone = new System.Windows.Forms.TextBox();
+            this.txtNbPlace = new System.Windows.Forms.TextBox();
             this.lblNom = new System.Windows.Forms.Label();
             this.lblPrenom = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -67,7 +67,6 @@ namespace GestionFestival
             this.lblReservation.Size = new System.Drawing.Size(428, 46);
             this.lblReservation.TabIndex = 1;
             this.lblReservation.Text = "Ajout d\'une réservation";
-            this.lblReservation.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnAjout
             // 
@@ -96,45 +95,45 @@ namespace GestionFestival
             this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
             this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
             // 
-            // txtLieu
+            // txtNom
             // 
-            this.txtLieu.Location = new System.Drawing.Point(89, 180);
-            this.txtLieu.Margin = new System.Windows.Forms.Padding(2);
-            this.txtLieu.Name = "txtLieu";
-            this.txtLieu.Size = new System.Drawing.Size(102, 20);
-            this.txtLieu.TabIndex = 8;
+            this.txtNom.Location = new System.Drawing.Point(89, 180);
+            this.txtNom.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(102, 20);
+            this.txtNom.TabIndex = 8;
             // 
-            // textBox1
+            // txtPrenom
             // 
-            this.textBox1.Location = new System.Drawing.Point(188, 180);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(101, 20);
-            this.textBox1.TabIndex = 9;
+            this.txtPrenom.Location = new System.Drawing.Point(188, 180);
+            this.txtPrenom.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPrenom.Name = "txtPrenom";
+            this.txtPrenom.Size = new System.Drawing.Size(101, 20);
+            this.txtPrenom.TabIndex = 9;
             // 
-            // textBox2
+            // txtEmail
             // 
-            this.textBox2.Location = new System.Drawing.Point(283, 180);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(193, 20);
-            this.textBox2.TabIndex = 10;
+            this.txtEmail.Location = new System.Drawing.Point(283, 180);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(193, 20);
+            this.txtEmail.TabIndex = 10;
             // 
-            // textBox3
+            // txtTelephone
             // 
-            this.textBox3.Location = new System.Drawing.Point(470, 180);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(86, 20);
-            this.textBox3.TabIndex = 11;
+            this.txtTelephone.Location = new System.Drawing.Point(470, 180);
+            this.txtTelephone.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTelephone.Name = "txtTelephone";
+            this.txtTelephone.Size = new System.Drawing.Size(86, 20);
+            this.txtTelephone.TabIndex = 11;
             // 
-            // textBox4
+            // txtNbPlace
             // 
-            this.textBox4.Location = new System.Drawing.Point(551, 180);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(130, 20);
-            this.textBox4.TabIndex = 12;
+            this.txtNbPlace.Location = new System.Drawing.Point(551, 180);
+            this.txtNbPlace.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNbPlace.Name = "txtNbPlace";
+            this.txtNbPlace.Size = new System.Drawing.Size(130, 20);
+            this.txtNbPlace.TabIndex = 12;
             // 
             // lblNom
             // 
@@ -203,7 +202,6 @@ namespace GestionFestival
             this.grpDetails.TabIndex = 18;
             this.grpDetails.TabStop = false;
             this.grpDetails.Text = "Détails :";
-            this.grpDetails.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // cmbRepresentation
             // 
@@ -294,11 +292,11 @@ namespace GestionFestival
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblPrenom);
             this.Controls.Add(this.lblNom);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.txtLieu);
+            this.Controls.Add(this.txtNbPlace);
+            this.Controls.Add(this.txtTelephone);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtPrenom);
+            this.Controls.Add(this.txtNom);
             this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.btnAjout);
             this.Controls.Add(this.lblReservation);
@@ -318,11 +316,11 @@ namespace GestionFestival
         private System.Windows.Forms.Button btnAjout;
         private System.Windows.Forms.Button btnRetour;
         private System.DirectoryServices.DirectorySearcher directorySearcher1;
-        private System.Windows.Forms.TextBox txtLieu;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtNom;
+        private System.Windows.Forms.TextBox txtPrenom;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtTelephone;
+        private System.Windows.Forms.TextBox txtNbPlace;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.Label lblPrenom;
         private System.Windows.Forms.Label lblEmail;
