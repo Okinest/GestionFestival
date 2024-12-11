@@ -54,6 +54,7 @@ namespace GestionFestival
             {
                 FrmMenu FrmMenu = new FrmMenu();
                 this.Hide();
+                FrmMenu.StartPosition = FormStartPosition.CenterScreen;
                 FrmMenu.Show();
             }
             //SI C'EST VIDE

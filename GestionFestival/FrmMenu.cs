@@ -15,6 +15,7 @@ namespace GestionFestival
         {
             FrmGestionPièce frmGestionPièce = new FrmGestionPièce();
             this.Hide();
+            frmGestionPièce.StartPosition = FormStartPosition.CenterScreen;
             frmGestionPièce.Show();
         }
 
@@ -22,6 +23,7 @@ namespace GestionFestival
         {
             FrmGestionRepresentation frmListeRepresentations = new FrmGestionRepresentation();
             this.Hide();
+            frmListeRepresentations.StartPosition = FormStartPosition.CenterScreen;
             frmListeRepresentations.Show();
         }
 
@@ -29,6 +31,7 @@ namespace GestionFestival
         {
             FrmGestionReservation frmGestionReservation = new FrmGestionReservation();
             this.Hide();
+            frmGestionReservation.StartPosition = FormStartPosition.CenterScreen;
             frmGestionReservation.Show();
         }
 
@@ -42,6 +45,7 @@ namespace GestionFestival
             ConnexionBD.GetConnexionBD().CloseConnexion();
             FrmAuthentification frmAuthentification = new FrmAuthentification();
             this.Hide();
+            frmAuthentification.StartPosition = FormStartPosition.CenterScreen;
             frmAuthentification.Show();
         }
     }

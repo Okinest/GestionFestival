@@ -67,6 +67,7 @@ namespace GestionFestival
         {
             FrmMenu frmMenu = new FrmMenu();
             this.Hide();
+            frmMenu.StartPosition = FormStartPosition.CenterScreen;
             frmMenu.Show();
         }
 
@@ -74,6 +75,7 @@ namespace GestionFestival
         {
             FrmAjoutReservation frmAjoutReservation = new FrmAjoutReservation();
             this.Hide();
+            frmAjoutReservation.StartPosition = FormStartPosition.CenterScreen;
             frmAjoutReservation.Show();
 
         }
@@ -82,6 +84,7 @@ namespace GestionFestival
 
             FrmModifierReservation frmModifierReservation = new FrmModifierReservation();
             this.Hide();
+            frmModifierReservation.StartPosition = FormStartPosition.CenterScreen;
             frmModifierReservation.Show();
 
 

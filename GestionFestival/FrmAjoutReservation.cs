@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TheatreBLL;
+using TheatreBO;
 
 namespace GestionFestival
 {
     public partial class FrmAjoutReservation : Form
     {
 
+        private static GestionPieces uneGestionPiece = new GestionPieces();
+        private static GestionRepresentations GestionRepresentations = new GestionRepresentations();
         // ErrorProvider pour afficher les messages d'erreur
         private ErrorProvider errorProvider = new ErrorProvider();
         public FrmAjoutReservation()
@@ -22,13 +26,24 @@ namespace GestionFestival
 
         private void FrmAjoutReservation_Load(object sender, EventArgs e)
         {
+            List<Pieces> pieceList = uneGestionPiece.GetListePieces();
+            cmbPiece.DataSource = pieceList;
+            cmbPiece.ValueMember = "Play_id";
+            cmbPiece.DisplayMember = "Play_name";
+            cmbPiece.SelectedIndex = -1;// Désactiver la sélection initiale
 
+            List<Representation> representations = GestionRepresentations.GetListeRepresentations();
+            cmbRepresentation.DataSource = representations;
+            cmbRepresentation.ValueMember = "rep_id";
+            cmbRepresentation.DisplayMember = "rep_date";
+            cmbRepresentation.SelectedIndex = -1;// Désactiver la sélection initiale
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
         {
             FrmGestionReservation frmGestionReservation = new FrmGestionReservation();
             this.Hide();
+            frmGestionReservation.StartPosition = FormStartPosition.CenterScreen;
             frmGestionReservation.Show();
         }
 
@@ -37,21 +52,21 @@ namespace GestionFestival
             bool isValid = true;
             errorProvider.Clear();
 
-            if(string.IsNullOrWhiteSpace(txtNom.Text))
+            if (string.IsNullOrWhiteSpace(txtNom.Text))
             {
-                errorProvider.SetError(cmbPiece, "Veuillez entrer un nom.");
+                errorProvider.SetError(txtNom, "Veuillez entrer un nom.");
                 isValid = false;
             }
 
-            if(string.IsNullOrWhiteSpace(txtPrenom.Text))
+            if (string.IsNullOrWhiteSpace(txtPrenom.Text))
             {
-                errorProvider.SetError(cmbPiece, "Veuillez entrer un prénom.");
+                errorProvider.SetError(txtPrenom, "Veuillez entrer un prénom.");
                 isValid = false;
             }
 
-            if(string.IsNullOrWhiteSpace(txtEmail.Text))
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
-                errorProvider.SetError(cmbPiece, "Veuillez entrer un email.");
+                errorProvider.SetError(txtEmail, "Veuillez entrer un email.");
                 isValid = false;
             }
 
@@ -80,6 +95,61 @@ namespace GestionFestival
             }
 
             return isValid;
+        }
+
+        private void btnAjout_Click(object sender, EventArgs e)
+        {
+            if (ValidateForm())
+            {
+                try
+                {
+                    // CUSTOMER
+                    string customerLastName = txtNom.Text;
+                    string customerFirstName = txtPrenom.Text;
+                    string customerEmail = txtEmail.Text;
+                    string customerPhone = txtTelephone.Text;
+
+                    //OBJET CUSTOMER
+                    Customer customer = new Customer(customerFirstName, customerLastName, customerEmail, customerPhone);
+
+                    // RESERVATION
+                    string pieceName = cmbPiece.Text;
+                    string representationName = cmbRepresentation.Text;
+                    int numSeats = int.Parse(txtNbPlace.Text);
+
+                    //PIECE ASSOCIER  A LA COMBOBOX
+                    Pieces selectedPiece = (Pieces)cmbPiece.SelectedItem;
+
+                    //REPRESENTATIO ASSOCIER A LA COMBOBOX
+                    Representation selectedRepresentation = (Representation)cmbPiece.SelectedItem;
+
+                    //OBJET RESERVATION
+                    Reservation res = new Reservation(customer, selectedRepresentation, numSeats);
+
+                    
+                    int result = GestionReservations.AjoutReservation(res);
+
+                    //VERIF
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Réservation ajoutée avec succès !");
+                        btnRetour_Click(sender, e);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erreur lors de l'ajout de la réservation.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de l'ajout de la réservation : " + ex.Message);
+                }
+            }
+        }
+
+        private void cmbPiece_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

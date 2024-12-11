@@ -85,6 +85,7 @@ namespace GestionFestival
         {
             FrmGestionRepresentation frmGestionRepresentation = new FrmGestionRepresentation();
             this.Hide();
+            frmGestionRepresentation.StartPosition = FormStartPosition.CenterScreen;
             frmGestionRepresentation.Show();
     
         }
@@ -127,5 +128,9 @@ namespace GestionFestival
             return isValid;
         }
 
+        private void cmbRates_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

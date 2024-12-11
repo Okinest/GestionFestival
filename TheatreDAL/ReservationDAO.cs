@@ -108,15 +108,25 @@ namespace TheatreDAL
             int result = 0;
             using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
             {
-                string query = "UPDATE RESERVER SET cus_id = @cus_id, rep_id = @rep_id, res_num_seats = @res_num_seats";
+                //UPDATE CUSTOMER
+                string query_customer = "UPDATE CUSTOMER SET cus_id = @cus_id, cus_firstname = @cus_firstname, cus_lastname = @cus_lastname, cus_email = @cus_email, cus_phone_number = @cus_phone_number";
+                
+                SqlCommand command_customer = new SqlCommand(query_customer, connection);
+                command_customer.Parameters.AddWithValue("@cus_id", rep.Customer.Cus_id);
+                command_customer.Parameters.AddWithValue("@cus_firstname", rep.Customer.Cus_firstname);
+                command_customer.Parameters.AddWithValue("@cus_lastname", rep.Customer.Cus_lastname);
+                command_customer.Parameters.AddWithValue("@cus_email", rep.Customer.Cus_email);
+                command_customer.Parameters.AddWithValue("@cus_phone_number", rep.Customer.Cus_phone_number);
 
-                SqlCommand command = new SqlCommand(query, connection);
+                //UPDATE RESERVER
+                string query_reserver = "UPDATE RESERVER SET cus_id = @cus_id, rep_id = @rep_id, res_num_seats = @res_num_seats";
 
-                command.Parameters.AddWithValue("@cus_id", rep.Customer);
-                command.Parameters.AddWithValue("@rep_id", rep.Representation);
-                command.Parameters.AddWithValue("@res_num_seats", rep.Res_num_seats);
+                SqlCommand command_reserver = new SqlCommand(query_reserver, connection);
+                command_reserver.Parameters.AddWithValue("@cus_id", rep.Customer.Cus_id);
+                command_reserver.Parameters.AddWithValue("@rep_id", rep.Representation.Rep_id);
+                command_reserver.Parameters.AddWithValue("@res_num_seats", rep.Res_num_seats);
 
-                result = command.ExecuteNonQuery();
+                result = command_reserver.ExecuteNonQuery();
             }
 
 

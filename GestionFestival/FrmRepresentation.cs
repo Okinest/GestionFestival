@@ -76,6 +76,7 @@ namespace GestionFestival
         {
             FrmAjoutRepresentation frmAjoutRepresentation = new FrmAjoutRepresentation();
             this.Hide();
+            frmAjoutRepresentation.StartPosition = FormStartPosition.CenterScreen;
             frmAjoutRepresentation.Show();
         }
         private void BtnModifier_Click(object sender, EventArgs e)
@@ -89,6 +90,7 @@ namespace GestionFestival
                 {
                     FrmModifierRepresentation frmModifierRepresentation = new FrmModifierRepresentation(rep);
                     this.Hide();
+                    frmModifierRepresentation.StartPosition = FormStartPosition.CenterScreen;
                     frmModifierRepresentation.Show();
                 }
             }
@@ -99,6 +101,7 @@ namespace GestionFestival
         {
             FrmMenu frmMenu = new FrmMenu();
             this.Hide();
+            frmMenu.StartPosition = FormStartPosition.CenterScreen;
             frmMenu.Show();
         }
 
