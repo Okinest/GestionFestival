@@ -63,8 +63,9 @@
     <Compile Include="FrmAjoutReservation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmAjoutReservation.Designer.cs">
-      <DependentUpon>FrmAjoutReservation.cs</DependentUpon>
+	<Compile Include="FrmAjoutReservation.Designer.cs">
+		<DependentUpon>FrmAjoutReservation.cs</DependentUpon>
+	</Compile>
     <Compile Include="FrmGestionReservation.cs">
       <SubType>Form</SubType>
     </Compile>
