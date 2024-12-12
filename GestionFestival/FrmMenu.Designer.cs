@@ -22,6 +22,7 @@
             this.btnReservations = new System.Windows.Forms.Button();
             this.btnSynthese = new System.Windows.Forms.Button();
             this.btnDeconnexion = new System.Windows.Forms.Button();
+            this.lblAccueil = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnPiece
@@ -79,11 +80,22 @@
             this.btnDeconnexion.UseVisualStyleBackColor = true;
             this.btnDeconnexion.Click += new System.EventHandler(this.btnDeconnexion_Click);
             // 
+            // lblAccueil
+            // 
+            this.lblAccueil.AutoSize = true;
+            this.lblAccueil.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccueil.Location = new System.Drawing.Point(316, 99);
+            this.lblAccueil.Name = "lblAccueil";
+            this.lblAccueil.Size = new System.Drawing.Size(151, 46);
+            this.lblAccueil.TabIndex = 9;
+            this.lblAccueil.Text = "Accueil";
+            // 
             // FrmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblAccueil);
             this.Controls.Add(this.btnDeconnexion);
             this.Controls.Add(this.btnSynthese);
             this.Controls.Add(this.btnReservations);
@@ -93,6 +105,7 @@
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.FrmMenu_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -103,5 +116,6 @@
         private System.Windows.Forms.Button btnReservations;
         private System.Windows.Forms.Button btnSynthese;
         private System.Windows.Forms.Button btnDeconnexion;
+        private System.Windows.Forms.Label lblAccueil;
     }
 }
