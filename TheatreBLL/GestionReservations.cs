@@ -34,9 +34,9 @@ namespace TheatreBLL
             return ReservationDAO.AjoutReservation(rep);
         }
 
-        public static int ModifierReservation(Reservation rep) 
+        public static int ModifierReservation(Reservation rep, Pieces pie, Customer cus) 
         {
-            return ReservationDAO.ModifierReservation(rep);
+            return ReservationDAO.ModifierReservation(rep, pie, cus);
         }
 
         public int GetMaxPlacesForRepresentation(int repId)

@@ -230,9 +230,6 @@ namespace GestionFestival
         }
 
 
-
-
-
         //POUR VERIFIER L'EMAIL
         private bool IsValidEmail(string email)
         {
@@ -265,36 +262,28 @@ namespace GestionFestival
             {
                 try
                 {
-                    // CUSTOMER
+                    // Création de l'objet Customer
                     string customerLastName = txtNom.Text;
                     string customerFirstName = txtPrenom.Text;
                     string customerEmail = txtEmail.Text;
                     string customerPhone = txtTelephone.Text;
+                    
 
-                    //OBJET CUSTOMER
                     Customer customer = new Customer(customerFirstName, customerLastName, customerEmail, customerPhone);
 
-                    // RESERVATION
-                    string pieceName = cmbPiece.Text;
-                    string representationName = cmbRepresentation.Text;
+                    //OBJET RESERVATION
+                    Pieces selectedPiece = (Pieces)cmbPiece.SelectedItem;
+                    Representation selectedRepresentation = (Representation)cmbRepresentation.SelectedItem;
                     int numSeats = int.Parse(txtNbPlace.Text);
 
-                    //PIECE ASSOCIER  A LA COMBOBOX
-                    Pieces selectedPiece = (Pieces)cmbPiece.SelectedItem;
+                    Reservation rep = new Reservation(customer, selectedRepresentation, numSeats);
 
-                    //REPRESENTATIO ASSOCIER A LA COMBOBOX
-                    Representation selectedRepresentation = (Representation)cmbRepresentation.SelectedItem;
+                    // Appel à la méthode de modification
+                    int result = GestionReservations.ModifierReservation(rep, selectedPiece, customer);
 
-                    //OBJET RESERVATION
-                    Reservation res = new Reservation(customer, selectedRepresentation, numSeats);
-
-
-                    int result = GestionReservations.ModifierReservation(res);
-
-                    //VERIF
                     if (result > 0)
                     {
-                        MessageBox.Show("Réservation modifier avec succès !");
+                        MessageBox.Show("Réservation modifiée avec succès !");
                         btnRetour_Click(sender, e);
                     }
                     else
