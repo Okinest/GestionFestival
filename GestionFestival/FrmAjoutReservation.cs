@@ -14,6 +14,7 @@ namespace GestionFestival
 {
     public partial class FrmAjoutReservation : Form
     {
+        private readonly GestionReservations gestionReservations;
         private static GestionPieces uneGestionPiece = new GestionPieces();
         private static GestionRepresentations GestionRepresentations = new GestionRepresentations();
         // ErrorProvider pour afficher les messages d'erreur
@@ -21,6 +22,7 @@ namespace GestionFestival
         public FrmAjoutReservation()
         {
             InitializeComponent();
+            gestionReservations = new GestionReservations();
         }
 
         private void FrmAjoutReservation_Load(object sender, EventArgs e)
@@ -75,7 +77,7 @@ namespace GestionFestival
                 isValid = false;
             }
 
-            if (!IsValidMaxPlace(txtNbPlace, GetSelectedRepresentationId()))
+            if (!IsValidMaxPlace(txtNbPlace, GetSelectedRepresentationId())) //VALIDATION PLACE
             {
                 isValid = false;
             }
@@ -108,7 +110,7 @@ namespace GestionFestival
             else
             {
                 //RECUPERER DU NOMBRE DE PLACE MAXIMUM
-                int MaxnbPlaces = ReservationDAO.GetMaxPlacesForRepresentation(repId);
+                int MaxnbPlaces = gestionReservations.GetMaxPlacesForRepresentation(repId);
 
                 //COMPARER MAX PERSONNE PAR RAPPORT AU NOMBRE DE PLACE
                 if (nbPlace > MaxnbPlaces)
