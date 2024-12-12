@@ -227,8 +227,8 @@ namespace TheatreDAL
       
                     switch (rateId)
                     {
-                        case 1: // SEMAINE AM : réduction spécifique de 5%
-                            price = basePrice - (basePrice * 0.05);
+                        case 1: // SEMAINE AM : augmentation de 5%
+                            price = basePrice + (basePrice * rateValue / 100.0);
                             break;
 
                         case 2: // SEMAINE PM : augmentation de 10%
@@ -236,7 +236,7 @@ namespace TheatreDAL
                             break;
 
                         case 3: // WEEK-END AM : réduction de 5%
-                            price = basePrice - (basePrice * rateValue / 100.0);
+                            price = basePrice - (basePrice * 0.05);
                             break;
 
                         case 4: // WEEK-END PM : augmentation de 15%

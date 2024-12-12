@@ -91,6 +91,7 @@ namespace GestionFestival
             this.cmbRepresentation.Name = "cmbRepresentation";
             this.cmbRepresentation.Size = new System.Drawing.Size(121, 21);
             this.cmbRepresentation.TabIndex = 23;
+            this.cmbRepresentation.SelectedIndexChanged += new System.EventHandler(this.cmbRepresentation_SelectedIndexChanged);
             // 
             // cmbPiece
             // 
@@ -108,6 +109,7 @@ namespace GestionFestival
             this.txtTarifReservation.ReadOnly = true;
             this.txtTarifReservation.Size = new System.Drawing.Size(100, 20);
             this.txtTarifReservation.TabIndex = 21;
+            this.txtTarifReservation.TextChanged += new System.EventHandler(this.txtTarifReservation_TextChanged);
             // 
             // txtTarifPlace
             // 

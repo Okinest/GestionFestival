@@ -52,7 +52,7 @@ namespace TheatreBLL
 
         public static double GetPiecePriceByTime(int playId, string timeOfDay)
         {
-            return ReservationDAO.GetPiecePriceByTime(playId, timeOfDay);
+            return ReservationDAO.GetPiecePriceByTime(playId);
         }
 
     }

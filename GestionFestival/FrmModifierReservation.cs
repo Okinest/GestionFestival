@@ -26,6 +26,8 @@ namespace GestionFestival
         public FrmModifierReservation(Reservation res, Customer cus, Representation rep)
         {
             InitializeComponent();
+            cmbPiece.SelectedIndexChanged += cmbPiece_SelectedIndexChanged; //CHANGEMENT DU TARIF INTITIAL EN FONCTION DE LA PIECE
+            cmbRepresentation.SelectedIndexChanged += cmbRepresentation_SelectedIndexChanged; //CHANGEMENT DU TARIF EN FONCTION DE LA REPRESENTATION
             if (res == null || rep == null || cus == null)
             {
                 MessageBox.Show("Erreur lors de la récupération de la représentation");
@@ -306,10 +308,47 @@ namespace GestionFestival
             {
                 double price = GestionReservations.GetPiecePrice(selectedPiece.Play_id);
                 txtTarifPlace.Text = price.ToString("C");
+
+                // Si une représentation est déjà sélectionnée, recalculer également le tarif
+                if (cmbRepresentation.SelectedItem is Representation selectedRepresentation)
+                {
+                    // Récupérer l'heure de la représentation
+                    string timeOfDay = selectedRepresentation.Rep_time.ToString(@"hh\:mm");
+
+                    //RECALCULER LE TARIF
+                    double updatedPrice = GestionReservations.GetPiecePriceByTime(selectedPiece.Play_id, timeOfDay);
+
+                    // Afficher le tarif actualisé pour la représentation
+                    txtTarifReservation.Visible = true;
+                    txtTarifReservation.Text = updatedPrice.ToString("C");
+                }
             }
             else
             {
                 txtTarifPlace.Text = "Veuillez sélectionner une pièce.";
+            }
+        }
+
+        private void txtTarifReservation_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbRepresentation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //VERIFIER SI L'ITEMS PIECE ET REPRENSENTATION EST BIEN SELECTIONNER
+            if (cmbPiece.SelectedItem is Pieces selectedPiece && cmbRepresentation.SelectedItem is Representation selectedRepresentation)
+            {
+                string timeOfDay = selectedRepresentation.Rep_time.ToString(@"hh\:mm");
+                //RECALCULER
+                double price = GestionReservations.GetPiecePriceByTime(selectedPiece.Play_id, timeOfDay);
+
+                txtTarifReservation.Visible = true;
+                txtTarifReservation.Text = price.ToString("C");
+            }
+            else
+            {
+                txtTarifReservation.Visible = false;
             }
         }
     }
