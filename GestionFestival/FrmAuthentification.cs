@@ -26,19 +26,40 @@ namespace GestionFestival
 
         private void FrmAuthentification_KeyDown(object sender, KeyEventArgs e)
         {
-            // Vérifie si la touche pressée est Entrée
-            if (e.KeyCode == Keys.Enter) // SI Keys.Enter soit la touche entrée, alors cela se connecte
+            if (e.KeyCode == Keys.Enter)
             {
                 btnConnexion_Click(sender, e);
             }
-
-            else if(e.KeyCode == Keys.Down)
+            else if (e.KeyCode == Keys.Down)
             {
-                txtPassword.Select();
+                if (txtUsername.Focused)
+                {
+                    txtPassword.Select();
+                }
+                else if (txtPassword.Focused)
+                {
+                    btnConnexion.Select();
+                }
+                else if (btnConnexion.Focused)
+                {
+                    txtUsername.Select();
+                }
             }
-
-            else if(e.KeyCode == Keys.Up){
-                txtUsername.Select();
+            else if (e.KeyCode == Keys.Up)
+            {
+                if (txtUsername.Focused)
+                {
+                    btnConnexion.Select();
+                }
+                else if (btnConnexion.Focused)
+                {
+                    txtPassword.Select();
+                }
+                else if (txtPassword.Focused)
+                {
+                    txtUsername.Select();
+                }
+                
             }
         }
 

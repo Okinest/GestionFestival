@@ -27,7 +27,7 @@
             // btnPiece
             // 
             this.btnPiece.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.btnPiece.Location = new System.Drawing.Point(58, 144);
+            this.btnPiece.Location = new System.Drawing.Point(53, 194);
             this.btnPiece.Name = "btnPiece";
             this.btnPiece.Size = new System.Drawing.Size(137, 34);
             this.btnPiece.TabIndex = 0;
@@ -38,7 +38,7 @@
             // btnRepresentations
             // 
             this.btnRepresentations.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.btnRepresentations.Location = new System.Drawing.Point(248, 145);
+            this.btnRepresentations.Location = new System.Drawing.Point(243, 195);
             this.btnRepresentations.Name = "btnRepresentations";
             this.btnRepresentations.Size = new System.Drawing.Size(137, 34);
             this.btnRepresentations.TabIndex = 1;
@@ -49,7 +49,7 @@
             // btnReservations
             // 
             this.btnReservations.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.btnReservations.Location = new System.Drawing.Point(431, 144);
+            this.btnReservations.Location = new System.Drawing.Point(426, 194);
             this.btnReservations.Name = "btnReservations";
             this.btnReservations.Size = new System.Drawing.Size(137, 34);
             this.btnReservations.TabIndex = 2;
@@ -60,7 +60,7 @@
             // btnSynthese
             // 
             this.btnSynthese.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.btnSynthese.Location = new System.Drawing.Point(608, 145);
+            this.btnSynthese.Location = new System.Drawing.Point(603, 195);
             this.btnSynthese.Name = "btnSynthese";
             this.btnSynthese.Size = new System.Drawing.Size(137, 35);
             this.btnSynthese.TabIndex = 3;
@@ -71,7 +71,7 @@
             // btnDeconnexion
             // 
             this.btnDeconnexion.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.btnDeconnexion.Location = new System.Drawing.Point(329, 246);
+            this.btnDeconnexion.Location = new System.Drawing.Point(324, 296);
             this.btnDeconnexion.Name = "btnDeconnexion";
             this.btnDeconnexion.Size = new System.Drawing.Size(137, 34);
             this.btnDeconnexion.TabIndex = 4;
@@ -91,7 +91,9 @@
             this.Controls.Add(this.btnPiece);
             this.Name = "FrmMenu";
             this.Text = "Menu";
+            this.Load += new System.EventHandler(this.FrmMenu_Load);
             this.ResumeLayout(false);
+
         }
 
         #endregion
