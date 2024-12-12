@@ -16,7 +16,7 @@ namespace GestionFestival
     public partial class FrmModifierReservation : Form
     {
         ErrorProvider errorProvider = new ErrorProvider();
-        private Reservation currentRep;
+        private Reservation currentRes;
         private Customer currentCus;
         private Representation currentRepresentation;
         private static GestionPieces uneGestionPiece = new GestionPieces();
@@ -31,7 +31,7 @@ namespace GestionFestival
                 this.Close();
                 return;
             }
-            currentRep = res;
+            currentRes = res;
             currentCus = cus;
             currentRepresentation = rep;
             LoadCmb();
@@ -60,7 +60,7 @@ namespace GestionFestival
             }
             else
             {
-                txtNom.Text = currentRep.Cus_lastname;
+                txtNom.Text = currentRes.Cus_lastname;
                 errorProvider.SetError(txtNom, string.Empty);
             }
 
@@ -96,13 +96,13 @@ namespace GestionFestival
                 errorProvider.SetError(txtTelephone, string.Empty);
             }
 
-            if (currentRep.Res_num_seats <= 0)
+            if (currentRes.Res_num_seats <= 0)
             {
                 errorProvider.SetError(txtNbPlace, "Le nombre de sièges doit être supérieur à zéro.");
             }
             else
             {
-                txtNbPlace.Text = currentRep.Res_num_seats.ToString();
+                txtNbPlace.Text = currentRes.Res_num_seats.ToString();
                 errorProvider.SetError(txtNbPlace, string.Empty);
             }
 
@@ -158,14 +158,14 @@ namespace GestionFestival
                 isValid = false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            if (string.IsNullOrWhiteSpace(txtEmail.Text) || !IsValidEmail(txtEmail.Text))
             {
-                errorProvider.SetError(txtEmail, "Veuillez entrer un email.");
+                errorProvider.SetError(txtEmail, "Veuillez entrer un email valide.");
                 isValid = false;
             }
 
-            if (!int.TryParse(txtTelephone.Text, out _))
-            {
+            if (!int.TryParse(txtTelephone.Text, out _) || txtTelephone.Text.Length != 10)
+                {
                 errorProvider.SetError(txtTelephone, "Veuillez entrer un numéro valide.");
                 isValid = false;
             }
@@ -176,19 +176,36 @@ namespace GestionFestival
                 isValid = false;
             }
 
-            if (cmbPiece.SelectedIndex == -1)
+            if (cmbPiece.SelectedItem == null)
             {
                 errorProvider.SetError(cmbPiece, "Veuillez sélectionner une pièce.");
                 isValid = false;
             }
 
-            if (cmbRepresentation.SelectedIndex == -1)
+            if (cmbRepresentation.SelectedItem == null)
             {
                 errorProvider.SetError(cmbRepresentation, "Veuillez sélectionner une représentation.");
                 isValid = false;
             }
 
             return isValid;
+        }
+
+
+
+
+        //POUR VERIFIER L'EMAIL
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void FrmModifierReservation_Load(object sender, EventArgs e)
@@ -198,7 +215,7 @@ namespace GestionFestival
 
         private void btnModif_Click(object sender, EventArgs e)
         {
-            if (currentRep == null)
+            if (currentRes == null)
             {
                 MessageBox.Show("Erreur lors de la récupération de la réservation");
                 this.Close();

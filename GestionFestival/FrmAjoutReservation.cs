@@ -64,13 +64,13 @@ namespace GestionFestival
                 isValid = false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            if (string.IsNullOrWhiteSpace(txtEmail.Text) || !IsValidEmail(txtEmail.Text))
             {
-                errorProvider.SetError(txtEmail, "Veuillez entrer un email.");
+                errorProvider.SetError(txtEmail, "Veuillez entrer une email valide.");
                 isValid = false;
             }
 
-            if (!int.TryParse(txtTelephone.Text, out _))
+            if (!int.TryParse(txtTelephone.Text, out _) || txtTelephone.Text.Length != 10)
             {
                 errorProvider.SetError(txtTelephone, "Veuillez entrer un numéro valide.");
                 isValid = false;
@@ -95,6 +95,20 @@ namespace GestionFestival
             }
 
             return isValid;
+        }
+
+        //POUR VERIFIER L'EMAIL
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void btnAjout_Click(object sender, EventArgs e)
