@@ -35,7 +35,7 @@ namespace GestionFestival
             List<Representation> representations = GestionRepresentations.GetListeRepresentations();
             cmbRepresentation.DataSource = representations;
             cmbRepresentation.ValueMember = "rep_id";
-            cmbRepresentation.DisplayMember = "rep_date";
+            cmbRepresentation.DisplayMember = "DateTimeFormatted";
             cmbRepresentation.SelectedIndex = -1;// Désactiver la sélection initiale
         }
 

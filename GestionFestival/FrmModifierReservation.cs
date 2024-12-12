@@ -25,7 +25,7 @@ namespace GestionFestival
         public FrmModifierReservation(Reservation res, Customer cus, Representation rep)
         {
             InitializeComponent();
-            if (res == null)
+            if (res == null || rep == null || cus == null)
             {
                 MessageBox.Show("Erreur lors de la récupération de la représentation");
                 this.Close();
