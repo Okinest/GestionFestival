@@ -23,6 +23,7 @@ namespace GestionFestival
         {
             InitializeComponent();
             gestionReservations = new GestionReservations();
+            cmbPiece.SelectedIndexChanged += cmbPiece_SelectedIndexChanged;
         }
 
         private void FrmAjoutReservation_Load(object sender, EventArgs e)
@@ -38,6 +39,9 @@ namespace GestionFestival
             cmbRepresentation.ValueMember = "rep_id";
             cmbRepresentation.DisplayMember = "DateTimeFormatted";
             cmbRepresentation.SelectedIndex = -1;// Désactiver la sélection initiale
+
+            txtTarifPlace.Text = "Veuillez sélectionner une pièce.";
+
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
@@ -200,7 +204,19 @@ namespace GestionFestival
 
         private void cmbPiece_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Pieces selectedPiece = (Pieces)cmbPiece.SelectedItem;
 
+            if (selectedPiece != null)
+            {
+                // Récupérer le prix de la pièce via la BLL et l'afficher
+                double price = GestionReservations.GetPiecePrice(selectedPiece.Play_id);
+                txtTarifPlace.Text = price.ToString("C");
+            }
+            else
+            {
+                // Réinitialiser le champ texte si rien n'est sélectionné
+                txtTarifPlace.Text = "Veuillez sélectionner une pièce.";
+            }
         }
     }
 }

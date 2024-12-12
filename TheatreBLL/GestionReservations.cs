@@ -44,5 +44,11 @@ namespace TheatreBLL
             return ReservationDAO.GetMaxPlacesForRepresentation(repId);
         }
 
+        public static double GetPiecePrice(int pieceId)
+        {
+            double price = ReservationDAO.GetPriceForSelectedPiece(pieceId);
+            return price;
+        }
+
     }
 }

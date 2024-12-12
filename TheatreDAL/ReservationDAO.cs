@@ -177,5 +177,28 @@ namespace TheatreDAL
             return maxPlaces;
         }
 
+        //RECUPERER LES PRIX EN FONCTION DE LA PIECE
+        public static double GetPriceForSelectedPiece(int pieceId)
+        {
+            double price = 0.0;
+            string query = "SELECT play_price FROM PLAY WHERE play_id = @play_id";
+
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@play_id", pieceId);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    price = (double)reader["play_price"];
+                }
+
+                reader.Close();
+            }
+
+            return price;
+        }
+
     }
 }

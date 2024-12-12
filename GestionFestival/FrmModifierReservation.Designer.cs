@@ -99,6 +99,7 @@ namespace GestionFestival
             this.cmbPiece.Name = "cmbPiece";
             this.cmbPiece.Size = new System.Drawing.Size(121, 21);
             this.cmbPiece.TabIndex = 22;
+            this.cmbPiece.SelectedIndexChanged += new System.EventHandler(this.cmbPiece_SelectedIndexChanged);
             // 
             // txtTarifReservation
             // 

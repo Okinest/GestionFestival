@@ -297,5 +297,20 @@ namespace GestionFestival
                 }
             }
         }
+
+        private void cmbPiece_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Pieces selectedPiece = (Pieces)cmbPiece.SelectedItem;
+
+            if (selectedPiece != null)
+            {
+                double price = GestionReservations.GetPiecePrice(selectedPiece.Play_id);
+                txtTarifPlace.Text = price.ToString("C");
+            }
+            else
+            {
+                txtTarifPlace.Text = "Veuillez sélectionner une pièce.";
+            }
+        }
     }
 }
