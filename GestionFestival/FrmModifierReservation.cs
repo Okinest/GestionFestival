@@ -21,6 +21,7 @@ namespace GestionFestival
         private Representation currentRepresentation;
         private static GestionPieces uneGestionPiece = new GestionPieces();
         private static GestionRepresentations GestionRepresentations = new GestionRepresentations();
+        private readonly GestionReservations gestionReservations;
 
         public FrmModifierReservation(Reservation res, Customer cus, Representation rep)
         {
@@ -36,6 +37,7 @@ namespace GestionFestival
             currentRepresentation = rep;
             LoadCmb();
             LoadData();
+            gestionReservations = new GestionReservations();
         }
 
         private void LoadCmb()
@@ -170,9 +172,8 @@ namespace GestionFestival
                 isValid = false;
             }
 
-            if (!int.TryParse(txtNbPlace.Text, out int nbPlace) || nbPlace <= 0)
+            if (!IsValidMaxPlace(txtNbPlace, GetSelectedRepresentationId())) //VALIDATION PLACE
             {
-                errorProvider.SetError(txtNbPlace, "Veuillez entrer un nombre valide (supérieur à 0).");
                 isValid = false;
             }
 
@@ -190,6 +191,44 @@ namespace GestionFestival
 
             return isValid;
         }
+
+        //POUR VERIFIER LE NOMBRE DE PLACE MAXIMUM
+        private bool IsValidMaxPlace(TextBox txtNbPlace, int repId)
+        {
+            bool isValid = true;
+
+            if (!int.TryParse(txtNbPlace.Text, out int nbPlace) || nbPlace <= 0)
+            {
+                errorProvider.SetError(txtNbPlace, "Veuillez entrer un nombre valide (supérieur à 0).");
+                isValid = false;
+            }
+            else
+            {
+                //RECUPERER DU NOMBRE DE PLACE MAXIMUM
+                int MaxnbPlaces = gestionReservations.GetMaxPlacesForRepresentation(repId);
+
+                //COMPARER MAX PERSONNE PAR RAPPORT AU NOMBRE DE PLACE
+                if (nbPlace > MaxnbPlaces)
+                {
+                    errorProvider.SetError(txtNbPlace, $"Le nombre de places ne peut pas dépasser {MaxnbPlaces}.");
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        private int GetSelectedRepresentationId()
+        {
+            if (cmbRepresentation.SelectedItem != null)
+            {
+                var selectedItem = (Representation)cmbRepresentation.SelectedItem;
+                return selectedItem.Rep_id;
+            }
+            //SI RIEN SELECTIONNER
+            return 0;
+        }
+
 
 
 
