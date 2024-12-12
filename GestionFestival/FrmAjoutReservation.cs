@@ -23,7 +23,8 @@ namespace GestionFestival
         {
             InitializeComponent();
             gestionReservations = new GestionReservations();
-            cmbPiece.SelectedIndexChanged += cmbPiece_SelectedIndexChanged;
+            cmbPiece.SelectedIndexChanged += cmbPiece_SelectedIndexChanged; //CHANGEMENT DU TARIF INTITIAL EN FONCTION DE LA PIECE
+            cmbRepresentation.SelectedIndexChanged += cmbRepresentation_SelectedIndexChanged; //CHANGEMENT DU TARIF EN FONCTION DE LA REPRESENTATION
         }
 
         private void FrmAjoutReservation_Load(object sender, EventArgs e)
@@ -41,6 +42,7 @@ namespace GestionFestival
             cmbRepresentation.SelectedIndex = -1;// Désactiver la sélection initiale
 
             txtTarifPlace.Text = "Veuillez sélectionner une pièce.";
+            txtTarifReservation.Visible = false;
 
         }
 
@@ -208,14 +210,33 @@ namespace GestionFestival
 
             if (selectedPiece != null)
             {
-                // Récupérer le prix de la pièce via la BLL et l'afficher
                 double price = GestionReservations.GetPiecePrice(selectedPiece.Play_id);
                 txtTarifPlace.Text = price.ToString("C");
             }
             else
             {
-                // Réinitialiser le champ texte si rien n'est sélectionné
                 txtTarifPlace.Text = "Veuillez sélectionner une pièce.";
+            }
+        }
+
+        private void cmbRepresentation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Pieces selectedPiece = (Pieces)cmbPiece.SelectedItem;
+            Representation selectedRepresentation = (Representation)cmbRepresentation.SelectedItem;
+
+            if (selectedPiece != null && selectedRepresentation != null)
+            {
+                // Récupérer l'heure de la représentation
+                TimeSpan repTime = selectedRepresentation.Rep_time;
+
+                double price = GestionReservations.GetPiecePriceByTime(selectedPiece.Play_id, repTime);
+
+                txtTarifReservation.Visible = true;
+                txtTarifReservation.Text = price.ToString("C");
+            }
+            else
+            {
+                txtTarifReservation.Text = "Veuillez sélectionner une pièce et une représentation.";
             }
         }
     }

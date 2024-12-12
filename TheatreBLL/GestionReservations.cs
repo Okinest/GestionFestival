@@ -50,5 +50,16 @@ namespace TheatreBLL
             return price;
         }
 
+        /*public static double GetPiecePriceByTime(int playId, TimeSpan repTime)
+        {
+            // Déterminer si la représentation est le matin (AM) ou l'après-midi/soir (PM)
+            string timeOfDay = repTime.Hours < 12 ? "AM" : "PM";
+
+            // Appeler la méthode DAO pour obtenir le prix ajusté en fonction de la période de la journée (AM/PM)
+            double price = GestionReservations.GetPiecePriceByTime(playId, timeOfDay);
+
+            return price;
+        }*/
+
     }
 }

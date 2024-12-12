@@ -200,5 +200,34 @@ namespace TheatreDAL
             return price;
         }
 
+        //RECUPERER L'HEURE
+        public static double GetPiecePriceByTime(int playId, string timeOfDay)
+        {
+            double price = 0;
+            string query = "SELECT play_price, rate_value FROM PLAY JOIN REPRESENTATION ON PLAY.play_id = REPRESENTATION.play_id" +
+                            "JOIN RATE ON REPRESENTATION.rate_id = RATE.rate_id WHERE PLAY.play_id = @playId AND RATE.rate_period = @timeOfDay";
+
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@playId", playId);
+                cmd.Parameters.AddWithValue("@timeOfDay", timeOfDay);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    double basePrice = (double)reader["play_price"];
+                    int rateValue = (int)reader["rate_value"];
+                    price = basePrice + (basePrice * rateValue / 100.0);
+                }
+
+
+                reader.Close();
+            }
+
+            return price;
+        }
+
     }
 }
