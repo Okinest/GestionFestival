@@ -32,11 +32,13 @@ namespace GestionFestival
             cmbPieces.DataSource = pieceList;
             cmbPieces.DisplayMember = "Play_name";
             cmbPieces.ValueMember = "Play_id";
+            cmbPieces.SelectedIndex = -1;// Désactiver la sélection initiale
 
             List<Rate> rateList = uneGestionRepresentation.GetListeRates();
             cmbRates.DataSource = rateList;
             cmbRates.DisplayMember = "Rate_period";
             cmbRates.ValueMember = "Rate_id";
+            cmbRates.SelectedIndex = -1;// Désactiver la sélection initiale
         }
 
         private void btnAjout_Click(object sender, EventArgs e)
@@ -85,6 +87,7 @@ namespace GestionFestival
         {
             FrmGestionRepresentation frmGestionRepresentation = new FrmGestionRepresentation();
             this.Hide();
+            frmGestionRepresentation.StartPosition = FormStartPosition.CenterScreen;
             frmGestionRepresentation.Show();
     
         }
@@ -127,5 +130,14 @@ namespace GestionFestival
             return isValid;
         }
 
+        private void cmbRates_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpDate_ValueChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

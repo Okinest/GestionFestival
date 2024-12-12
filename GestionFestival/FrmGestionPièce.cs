@@ -79,6 +79,7 @@ namespace GestionFestival
         private void BtnRetour_Click(object sender, EventArgs e)
         {
             FrmMenu frmMenu = new FrmMenu();
+            frmMenu.StartPosition = FormStartPosition.CenterScreen;
             this.Hide();
             frmMenu.Show();
         }
@@ -87,6 +88,7 @@ namespace GestionFestival
         {
             FrmAjoutPièce frmAjoutPièce = new FrmAjoutPièce();
             this.Hide();
+            frmAjoutPièce.StartPosition = FormStartPosition.CenterScreen;
             frmAjoutPièce.Show();
         }
         
@@ -102,6 +104,7 @@ namespace GestionFestival
                 {
                     FrmModifierPièce frmModifier = new FrmModifierPièce(selectedPiece);
                     this.Hide();
+                    frmModifier.StartPosition = FormStartPosition.CenterScreen;
                     frmModifier.Show();
                 }
             }

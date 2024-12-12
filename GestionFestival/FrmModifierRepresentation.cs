@@ -170,6 +170,7 @@ namespace GestionFestival
         {
             FrmGestionRepresentation frmGestionRepresentation = new FrmGestionRepresentation();
             this.Hide();
+            frmGestionRepresentation.StartPosition = FormStartPosition.CenterScreen;
             frmGestionRepresentation.Show();
 
         }
@@ -211,6 +212,11 @@ namespace GestionFestival
             }
 
             return isValid;
+        }
+
+        private void FrmModifierRepresentation_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

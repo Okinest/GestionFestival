@@ -49,47 +49,53 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Underline);
-            this.label1.Location = new System.Drawing.Point(151, 54);
+            this.label1.Location = new System.Drawing.Point(113, 44);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(763, 58);
+            this.label1.Size = new System.Drawing.Size(608, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "Modification d\'une représentation";
             // 
             // txtLieu
             // 
-            this.txtLieu.Location = new System.Drawing.Point(505, 204);
+            this.txtLieu.Location = new System.Drawing.Point(379, 166);
+            this.txtLieu.Margin = new System.Windows.Forms.Padding(2);
             this.txtLieu.Name = "txtLieu";
-            this.txtLieu.Size = new System.Drawing.Size(114, 22);
+            this.txtLieu.Size = new System.Drawing.Size(86, 20);
             this.txtLieu.TabIndex = 1;
             // 
             // txtSeat
             // 
-            this.txtSeat.Location = new System.Drawing.Point(647, 204);
+            this.txtSeat.Location = new System.Drawing.Point(485, 166);
+            this.txtSeat.Margin = new System.Windows.Forms.Padding(2);
             this.txtSeat.Name = "txtSeat";
-            this.txtSeat.Size = new System.Drawing.Size(114, 22);
+            this.txtSeat.Size = new System.Drawing.Size(86, 20);
             this.txtSeat.TabIndex = 2;
             // 
             // cmbPieces
             // 
             this.cmbPieces.FormattingEnabled = true;
-            this.cmbPieces.Location = new System.Drawing.Point(88, 202);
+            this.cmbPieces.Location = new System.Drawing.Point(66, 164);
+            this.cmbPieces.Margin = new System.Windows.Forms.Padding(2);
             this.cmbPieces.Name = "cmbPieces";
-            this.cmbPieces.Size = new System.Drawing.Size(121, 24);
+            this.cmbPieces.Size = new System.Drawing.Size(92, 21);
             this.cmbPieces.TabIndex = 3;
             // 
             // cmbRates
             // 
             this.cmbRates.FormattingEnabled = true;
-            this.cmbRates.Location = new System.Drawing.Point(800, 204);
+            this.cmbRates.Location = new System.Drawing.Point(600, 166);
+            this.cmbRates.Margin = new System.Windows.Forms.Padding(2);
             this.cmbRates.Name = "cmbRates";
-            this.cmbRates.Size = new System.Drawing.Size(121, 24);
+            this.cmbRates.Size = new System.Drawing.Size(92, 21);
             this.cmbRates.TabIndex = 4;
             // 
             // btnModif
             // 
-            this.btnModif.Location = new System.Drawing.Point(429, 308);
+            this.btnModif.Location = new System.Drawing.Point(322, 250);
+            this.btnModif.Margin = new System.Windows.Forms.Padding(2);
             this.btnModif.Name = "btnModif";
-            this.btnModif.Size = new System.Drawing.Size(177, 47);
+            this.btnModif.Size = new System.Drawing.Size(133, 38);
             this.btnModif.TabIndex = 5;
             this.btnModif.Text = "Modifier";
             this.btnModif.UseVisualStyleBackColor = true;
@@ -97,9 +103,10 @@
             // 
             // btnRetour
             // 
-            this.btnRetour.Location = new System.Drawing.Point(429, 382);
+            this.btnRetour.Location = new System.Drawing.Point(322, 310);
+            this.btnRetour.Margin = new System.Windows.Forms.Padding(2);
             this.btnRetour.Name = "btnRetour";
-            this.btnRetour.Size = new System.Drawing.Size(177, 47);
+            this.btnRetour.Size = new System.Drawing.Size(133, 38);
             this.btnRetour.TabIndex = 6;
             this.btnRetour.Text = "Revenir en arrière";
             this.btnRetour.UseVisualStyleBackColor = true;
@@ -109,77 +116,85 @@
             // 
             this.dtpDate.CustomFormat = "dd/MM/yyyy";
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDate.Location = new System.Drawing.Point(236, 204);
+            this.dtpDate.Location = new System.Drawing.Point(177, 166);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(108, 22);
+            this.dtpDate.Size = new System.Drawing.Size(82, 20);
             this.dtpDate.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(271, 177);
+            this.label2.Location = new System.Drawing.Point(203, 144);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 16);
+            this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "Date";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(403, 177);
+            this.label3.Location = new System.Drawing.Point(302, 144);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 16);
+            this.label3.Size = new System.Drawing.Size(36, 13);
             this.label3.TabIndex = 10;
             this.label3.Text = "Heure";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(543, 175);
+            this.label4.Location = new System.Drawing.Point(407, 142);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 16);
+            this.label4.Size = new System.Drawing.Size(27, 13);
             this.label4.TabIndex = 11;
             this.label4.Text = "Lieu";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(644, 175);
+            this.label5.Location = new System.Drawing.Point(483, 142);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(109, 16);
+            this.label5.Size = new System.Drawing.Size(86, 13);
             this.label5.TabIndex = 12;
             this.label5.Text = "Places Maximum";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(845, 175);
+            this.label6.Location = new System.Drawing.Point(634, 142);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 16);
+            this.label6.Size = new System.Drawing.Size(28, 13);
             this.label6.TabIndex = 13;
             this.label6.Text = "Tarif";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(133, 177);
+            this.label7.Location = new System.Drawing.Point(100, 144);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 16);
+            this.label7.Size = new System.Drawing.Size(34, 13);
             this.label7.TabIndex = 14;
             this.label7.Text = "Pièce";
             // 
             // txtHeure
             // 
-            this.txtHeure.Location = new System.Drawing.Point(369, 204);
+            this.txtHeure.Location = new System.Drawing.Point(277, 166);
+            this.txtHeure.Margin = new System.Windows.Forms.Padding(2);
             this.txtHeure.Name = "txtHeure";
-            this.txtHeure.Size = new System.Drawing.Size(114, 22);
+            this.txtHeure.Size = new System.Drawing.Size(86, 20);
             this.txtHeure.TabIndex = 15;
             // 
             // FrmModifierRepresentation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txtHeure);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -195,8 +210,10 @@
             this.Controls.Add(this.txtSeat);
             this.Controls.Add(this.txtLieu);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmModifierRepresentation";
-            this.Text = "FrmModifierRepresentation";
+            this.Text = "Modifier une représentation";
+            this.Load += new System.EventHandler(this.FrmModifierRepresentation_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

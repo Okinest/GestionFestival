@@ -101,7 +101,28 @@ namespace GestionFestival
         {
             FrmGestionPièce frmGestionPièce = new FrmGestionPièce();
             this.Hide();
+            frmGestionPièce.StartPosition = FormStartPosition.CenterScreen;
             frmGestionPièce.Show();
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
