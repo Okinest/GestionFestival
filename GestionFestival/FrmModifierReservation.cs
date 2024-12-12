@@ -47,8 +47,8 @@ namespace GestionFestival
 
             List<Representation> representations = GestionRepresentations.GetListeRepresentations();
             cmbRepresentation.DataSource = representations;
-            cmbRepresentation.ValueMember = "rep_id";
-            cmbRepresentation.DisplayMember = "rep_date";
+            cmbRepresentation.ValueMember = "Rep_id";
+            cmbRepresentation.DisplayMember = "DateTimeFormatted";
 
         }
 
@@ -117,14 +117,14 @@ namespace GestionFestival
                 errorProvider.SetError(cmbPiece, "La pièce sélectionnée est invalide.");
             }
             //COMBOBOX REPRESENTATION
-            if (currentRepresentation.Piece != null)
+            if (currentRepresentation != null && currentRepresentation.Rep_date != DateTime.MinValue && currentRepresentation.Rep_time != TimeSpan.Zero)
             {
-                cmbRepresentation.SelectedValue = currentRepresentation.Piece.Play_id;
+                cmbRepresentation.SelectedValue = currentRepresentation.Rep_id;
                 errorProvider.SetError(cmbRepresentation, string.Empty);
             }
             else
             {
-                errorProvider.SetError(cmbRepresentation, "La pièce sélectionnée est invalide.");
+                errorProvider.SetError(cmbRepresentation, "La date de la représentation sélectionnée est invalide.");
             }
         }
 
