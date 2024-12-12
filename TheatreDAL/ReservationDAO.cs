@@ -72,21 +72,10 @@ namespace TheatreDAL
         }
         public static bool SupprimerReservation(int cusId, int repId)
         {
-            string queryCheck = "SELECT COUNT(*) FROM REPRESENTATION WHERE rep_id = @repId";
             string queryDelete = "DELETE FROM RESERVER WHERE cus_id = @cusId AND rep_id = @repId";
 
             using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
             {
-                SqlCommand cmdCheck = new SqlCommand(queryCheck, connection);
-                cmdCheck.Parameters.AddWithValue("@repId", repId);
-
-                int count = (int)cmdCheck.ExecuteScalar();
-                if (count > 0)
-                {
-                    // Une représentation liée existe, suppression interdite
-                    return false;
-                }
-
                 SqlCommand cmdDelete = new SqlCommand(queryDelete, connection);
                 cmdDelete.Parameters.AddWithValue("@cusId", cusId);
                 cmdDelete.Parameters.AddWithValue("@repId", repId);
@@ -95,6 +84,7 @@ namespace TheatreDAL
                 return rowsAffected > 0;
             }
         }
+
 
     }
 }
