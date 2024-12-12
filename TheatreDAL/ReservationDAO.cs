@@ -152,5 +152,33 @@ namespace TheatreDAL
             return result;
         }
 
+        //REQUETE QUI RENVOIE LE NOMBRE DE PLACE MAXIMUM
+        public static int GetMaxPlacesForRepresentation(int repId)
+        {
+            int maxPlaces = 0;
+
+            try
+            {
+                using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+                {
+                    string query = "SELECT rep_max_seats FROM REPRESENTATION WHERE rep_id = @rep_id";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@rep_id", repId);
+
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        maxPlaces = Convert.ToInt32(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur lors de la récupération du nombre maximum de places : " + ex.Message);
+            }
+
+            return maxPlaces;
+        }
+
     }
 }

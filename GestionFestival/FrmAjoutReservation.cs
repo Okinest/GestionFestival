@@ -14,7 +14,6 @@ namespace GestionFestival
 {
     public partial class FrmAjoutReservation : Form
     {
-
         private static GestionPieces uneGestionPiece = new GestionPieces();
         private static GestionRepresentations GestionRepresentations = new GestionRepresentations();
         // ErrorProvider pour afficher les messages d'erreur
@@ -76,9 +75,8 @@ namespace GestionFestival
                 isValid = false;
             }
 
-            if (!int.TryParse(txtNbPlace.Text, out int nbPlace) || nbPlace <= 0)
+            if (!IsValidMaxPlace(txtNbPlace, GetSelectedRepresentationId()))
             {
-                errorProvider.SetError(txtNbPlace, "Veuillez entrer un nombre valide (supérieur à 0).");
                 isValid = false;
             }
 
@@ -95,6 +93,43 @@ namespace GestionFestival
             }
 
             return isValid;
+        }
+
+        //POUR VERIFIER LE NOMBRE DE PLACE MAXIMUM
+        private bool IsValidMaxPlace(TextBox txtNbPlace, int repId)
+        {
+            bool isValid = true;
+
+            if (!int.TryParse(txtNbPlace.Text, out int nbPlace) || nbPlace <= 0)
+            {
+                errorProvider.SetError(txtNbPlace, "Veuillez entrer un nombre valide (supérieur à 0).");
+                isValid = false;
+            }
+            else
+            {
+                //RECUPERER DU NOMBRE DE PLACE MAXIMUM
+                int MaxnbPlaces = ReservationDAO.GetMaxPlacesForRepresentation(repId);
+
+                //COMPARER MAX PERSONNE PAR RAPPORT AU NOMBRE DE PLACE
+                if (nbPlace > MaxnbPlaces)
+                {
+                    errorProvider.SetError(txtNbPlace, $"Le nombre de places ne peut pas dépasser {MaxnbPlaces}.");
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        private int GetSelectedRepresentationId()
+        {
+            if (cmbRepresentation.SelectedItem != null)
+            {
+                var selectedItem = (Representation)cmbRepresentation.SelectedItem;
+                return selectedItem.Rep_id;
+            }
+            //SI RIEN SELECTIONNER
+            return 0;
         }
 
         //POUR VERIFIER L'EMAIL
