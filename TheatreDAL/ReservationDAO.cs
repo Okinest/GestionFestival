@@ -204,8 +204,11 @@ namespace TheatreDAL
         public static double GetPiecePriceByTime(int playId, string timeOfDay)
         {
             double price = 0;
-            string query = "SELECT play_price, rate_value FROM PLAY JOIN REPRESENTATION ON PLAY.play_id = REPRESENTATION.play_id" +
-                            "JOIN RATE ON REPRESENTATION.rate_id = RATE.rate_id WHERE PLAY.play_id = @playId AND RATE.rate_period = @timeOfDay";
+            string query = @"SELECT PLAY.play_price, RATE.rate_id, RATE.rate_value 
+             FROM PLAY 
+             JOIN REPRESENTATION ON PLAY.play_id = REPRESENTATION.play_id
+             JOIN RATE ON REPRESENTATION.rate_id = RATE.rate_id 
+             WHERE PLAY.play_id = @playId";
 
             using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
             {
@@ -217,17 +220,41 @@ namespace TheatreDAL
 
                 if (reader.Read())
                 {
-                    double basePrice = (double)reader["play_price"];
-                    int rateValue = (int)reader["rate_value"];
-                    price = basePrice + (basePrice * rateValue / 100.0);
-                }
+                    double basePrice = Convert.ToDouble(reader["play_price"]);
+                    int rateValue = Convert.ToInt32(reader["rate_value"]);
+                    int rateId = Convert.ToInt32(reader["rate_id"]);
 
+      
+                    switch (rateId)
+                    {
+                        case 1: // SEMAINE AM : réduction spécifique de 5%
+                            price = basePrice - (basePrice * 0.05);
+                            break;
+
+                        case 2: // SEMAINE PM : augmentation de 10%
+                            price = basePrice + (basePrice * rateValue / 100.0);
+                            break;
+
+                        case 3: // WEEK-END AM : réduction de 5%
+                            price = basePrice - (basePrice * rateValue / 100.0);
+                            break;
+
+                        case 4: // WEEK-END PM : augmentation de 15%
+                            price = basePrice + (basePrice * rateValue / 100.0);
+                            break;
+
+                        default:
+                            price = basePrice;
+                            break;
+                    }
+                }
 
                 reader.Close();
             }
 
             return price;
         }
+
 
     }
 }

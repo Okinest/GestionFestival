@@ -221,22 +221,21 @@ namespace GestionFestival
 
         private void cmbRepresentation_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Pieces selectedPiece = (Pieces)cmbPiece.SelectedItem;
-            Representation selectedRepresentation = (Representation)cmbRepresentation.SelectedItem;
-
-            if (selectedPiece != null && selectedRepresentation != null)
+            //VERIFIER SI L'ITEMS PIECE ET REPRENSENTATION EST BIEN SELECTIONNER
+            if (cmbPiece.SelectedItem is Pieces selectedPiece && cmbRepresentation.SelectedItem is Representation selectedRepresentation)
             {
-                // Récupérer l'heure de la représentation
-                TimeSpan repTime = selectedRepresentation.Rep_time;
 
-                double price = GestionReservations.GetPiecePriceByTime(selectedPiece.Play_id, repTime);
+                // Récupérer l'heure de la représentation
+                string timeOfDay = selectedRepresentation.Rep_time.ToString(@"hh\:mm");
+
+                double price = GestionReservations.GetPiecePriceByTime(selectedPiece.Play_id, timeOfDay);
 
                 txtTarifReservation.Visible = true;
-                txtTarifReservation.Text = price.ToString("C");
+                txtTarifReservation.Text = price.ToString("C");     
             }
             else
             {
-                txtTarifReservation.Text = "Veuillez sélectionner une pièce et une représentation.";
+                txtTarifReservation.Visible = false;
             }
         }
     }
