@@ -178,6 +178,32 @@ namespace TheatreDAL
             return maxPlaces;
         }
 
+        //REQUETE QUI COMPTE LE NOMBRE DE PLACE
+        public static int GetNbPlaceTotalForReservation(int resToal)
+        {
+            int TotalPlace = 0;
+            try
+            {
+                using(SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+                {
+                    string query_total = "SELECT SUM(res_num_seats) as total FROM RESERVER WHERE rep_id = @rep_id";
+                    SqlCommand command = new SqlCommand(query_total, connection);
+                    command.Parameters.AddWithValue("@rep_id", resToal);
+
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        TotalPlace = Convert.ToInt32(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur lors de la récupération du nombre de place total disponible");
+            }
+            return TotalPlace;
+        }
+
         //RECUPERER LES PRIX EN FONCTION DE LA PIECE
         public static double GetPriceForSelectedPiece(int pieceId)
         {
