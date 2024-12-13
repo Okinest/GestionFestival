@@ -350,15 +350,21 @@ namespace GestionFestival
             if (cmbPiece.SelectedItem is Pieces selectedPiece && cmbRepresentation.SelectedItem is Representation selectedRepresentation)
             {
                 string timeOfDay = selectedRepresentation.Rep_time.ToString(@"hh\:mm");
-                double price = GestionReservations.GetPiecePriceByTime(selectedPiece.Play_id, timeOfDay);
 
-                if (ValidateNbPlace(out int nbPlace) && nbPlace > 0)
+                if (float.TryParse(txtNbPlace.Text, out float nbPlace) && nbPlace > 0)
                 {
-                    price *= nbPlace;
-                }
+                    double pricePerPlace = GestionReservations.GetPiecePriceByTime(selectedPiece.Play_id, timeOfDay);
 
-                txtTarifReservation.Visible = true;
-                txtTarifReservation.Text = price.ToString("C");
+                    // Calculer le tarif total
+                    double totalPrice = pricePerPlace * nbPlace;
+
+                    txtTarifReservation.Visible = true;
+                    txtTarifReservation.Text = totalPrice.ToString("C2"); // Format monétaire
+                }
+                else
+                {
+                    txtTarifReservation.Visible = false;
+                }
             }
             else
             {
