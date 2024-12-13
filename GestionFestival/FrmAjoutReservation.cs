@@ -204,56 +204,74 @@ namespace GestionFestival
                 }
             }
         }
-        private void UpdateTotalPrice()
+
+        private void cmbPiece_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Pieces selectedPiece = (Pieces)cmbPiece.SelectedItem;
+
+            if (selectedPiece != null)
+            {
+                double price = GestionReservations.GetPiecePrice(selectedPiece.Play_id);
+                txtTarifPlace.Text = price.ToString("C");
+
+                // Si une représentation est déjà sélectionnée, recalculer également le tarif
+                if (cmbRepresentation.SelectedItem is Representation selectedRepresentation)
+                {
+                    // Récupérer l'heure de la représentation
+                    string timeOfDay = selectedRepresentation.Rep_time.ToString(@"hh\:mm");
+
+                    //RECALCULER LE TARIF
+                    double updatedPrice = GestionReservations.GetPiecePriceByTime(selectedPiece.Play_id, timeOfDay);
+
+                    // Afficher le tarif actualisé pour la représentation
+                    txtTarifReservation.Visible = true;
+                    txtTarifReservation.Text = updatedPrice.ToString("C");
+                }
+            }
+            else
+            {
+                txtTarifPlace.Text = "Veuillez sélectionner une pièce.";
+            }
+        }
+
+
+        //TARIF TOTAL
+        private void UpdateTarifReservation()
         {
             if (cmbPiece.SelectedItem is Pieces selectedPiece && cmbRepresentation.SelectedItem is Representation selectedRepresentation)
             {
                 string timeOfDay = selectedRepresentation.Rep_time.ToString(@"hh\:mm");
-                double price = GestionReservations.GetPiecePriceByTime(selectedPiece.Play_id, timeOfDay);
 
-                if (int.TryParse(txtNbPlace.Text, out int nbPlace) && nbPlace > 0)
+                if (float.TryParse(txtNbPlace.Text, out float nbPlace) && nbPlace > 0)
                 {
-                    price *= nbPlace;
-                }
+                    double pricePerPlace = GestionReservations.GetPiecePriceByTime(selectedPiece.Play_id, timeOfDay);
 
-                txtTarifReservation.Visible = true;
-                txtTarifReservation.Text = price.ToString("C");
+                    // Calculer le tarif total
+                    double totalPrice = pricePerPlace * nbPlace;
+
+                    txtTarifReservation.Visible = true;
+                    txtTarifReservation.Text = totalPrice.ToString("C2"); // Format monétaire
+                }
+                else
+                {
+                    txtTarifReservation.Visible = false;
+                }
             }
             else
             {
                 txtTarifReservation.Visible = false;
             }
-        }
-
-        private void cmbPiece_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateTotalPrice();
-        }
-        private void txtNbPlace_TextChanged(object sender, EventArgs e)
-        {
-            UpdateTotalPrice();
         }
 
         private void cmbRepresentation_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //VERIFIER SI L'ITEMS PIECE ET REPRENSENTATION EST BIEN SELECTIONNER
-            if (cmbPiece.SelectedItem is Pieces selectedPiece && cmbRepresentation.SelectedItem is Representation selectedRepresentation)
-            {
-                string timeOfDay = selectedRepresentation.Rep_time.ToString(@"hh\:mm");
-                double price = GestionReservations.GetPiecePriceByTime(selectedPiece.Play_id, timeOfDay);
-                if (int.TryParse(txtNbPlace.Text, out int nbPlace) && nbPlace > 0)
-                {
-                    price *= nbPlace;
-                }
-
-                txtTarifReservation.Visible = true;
-                txtTarifReservation.Text = price.ToString("C");
-            }
-            else
-            {
-                // Masquer le champ de tarif si la pièce ou la représentation n'est pas sélectionnée
-                txtTarifReservation.Visible = false;
-            }
+            UpdateTarifReservation();
         }
+
+        private void txtNbPlace_TextChanged(object sender, EventArgs e)
+        {
+            UpdateTarifReservation();
+        }
+
     }
 }
