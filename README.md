@@ -39,7 +39,7 @@ Un guide d’utilisation de l’application doit être fourni au client.
 **Sprint 4** :
   - [x] Liste réservations = Théo
   - [x] Ajout réservations = Adrien
-  - [ ] Modification réservations = Adrien
+  - [x] Modification réservations = Adrien
   - [x] Suppression réservation = Myriam
   - [x] Cahier de recette = Myriam
 
