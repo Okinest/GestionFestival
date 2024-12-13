@@ -37,11 +37,11 @@ Un guide d’utilisation de l’application doit être fourni au client.
   - [x] Cahier de recette = Adrien
 
 **Sprint 4** :
-  - [ ] Liste réservations = ??
-  - [ ] Ajout réservations = ??
-  - [ ] Modification réservations = ??
-  - [ ] Suppression réservation = ??
-  - [ ] Cahier de recette = ??
+  - [x] Liste réservations = Théo
+  - [x] Ajout réservations = Adrien
+  - [ ] Modification réservations = Adrien
+  - [x] Suppression réservation = Myriam
+  - [x] Cahier de recette = Myriam
 
 **Sprint 5** :
   - [ ] Module statistiques = ??

@@ -22,7 +22,7 @@ namespace TheatreDAL
                            "JOIN AUTHOR ON PLAY.auth_id = AUTHOR.auth_id " +
                            "JOIN AUDIENCE ON PLAY.aud_id = AUDIENCE.aud_id;";
 
-            using(SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
             {
                 SqlCommand cmd = new SqlCommand(query, connection);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -70,7 +70,7 @@ namespace TheatreDAL
 
             return reservations;
         }
-
+      
         public static int AjoutReservation(Reservation rep)
         {
             int result = 0;
@@ -255,7 +255,21 @@ namespace TheatreDAL
 
             return price;
         }
+      
+        public static bool SupprimerReservation(int cusId, int repId)
+        {
+            string queryDelete = "DELETE FROM RESERVER WHERE cus_id = @cusId AND rep_id = @repId";
 
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand cmdDelete = new SqlCommand(queryDelete, connection);
+                cmdDelete.Parameters.AddWithValue("@cusId", cusId);
+                cmdDelete.Parameters.AddWithValue("@repId", repId);
 
+                int rowsAffected = cmdDelete.ExecuteNonQuery();
+                return rowsAffected > 0;
+            }
+        }
+      
     }
 }

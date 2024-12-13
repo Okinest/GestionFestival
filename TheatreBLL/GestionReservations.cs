@@ -28,6 +28,10 @@ namespace TheatreBLL
             listeReservations = ReservationDAO.GetReservations();
             return listeReservations;
         }
+        public bool SupprimerReservation(int cusId, int repId)
+        {
+            return ReservationDAO.SupprimerReservation(cusId, repId);
+        }
 
         public static int AjoutReservation(Reservation res)
         {
