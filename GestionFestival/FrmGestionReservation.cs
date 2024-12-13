@@ -28,7 +28,7 @@ namespace GestionFestival
             NomPiece.HeaderText = "Pièce";
 
             DataGridViewTextBoxColumn DateRepresentation = new DataGridViewTextBoxColumn();
-            DateRepresentation.DataPropertyName = "Rep_date";
+            DateRepresentation.DataPropertyName = "DateTimeFormatted";
             DateRepresentation.HeaderText = "Representation";
 
             DataGridViewTextBoxColumn LieuRepresentation = new DataGridViewTextBoxColumn();
@@ -36,7 +36,7 @@ namespace GestionFestival
             LieuRepresentation.HeaderText = "Lieu";
 
             DataGridViewTextBoxColumn NomReservation = new DataGridViewTextBoxColumn();
-            NomReservation.DataPropertyName = "Cus_lastname";
+            NomReservation.DataPropertyName = "CustomerFullName";
             NomReservation.HeaderText = "Nom";
 
             DataGridViewTextBoxColumn NombrePlacesReservation = new DataGridViewTextBoxColumn();

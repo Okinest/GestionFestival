@@ -36,5 +36,13 @@ namespace TheatreBO
         public string Cus_lastname { get { return cus_lastname; } set { cus_lastname = value; } }
         public string Cus_email { get { return cus_email; } set { cus_email = value; } }
         public string Cus_phone_number { get { return cus_phone_number; } set { cus_phone_number = value; } }
+
+        public string CustomerFullName
+        {
+            get
+            {
+                return $"{Cus_lastname} {Cus_firstname}";
+            }
+        }
     }
 }
