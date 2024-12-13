@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using TheatreBLL;
 using TheatreBO;
@@ -62,6 +63,34 @@ namespace GestionFestival
             dtgRepresentations.Columns.Add(RatePeriod_column);  // Ajouter la colonne "Période du tarif"
 
             dtgRepresentations.SelectionMode = DataGridViewSelectionMode.FullRowSelect; //POUR SELECTIONNER TOUTES LA LIGNE
+        }
+        private void BtnFilter_Click(object sender, EventArgs e)
+        {
+            // Récupérer la période sélectionnée
+            DateTime startDate = dtpStartDate.Value;
+            DateTime endDate = dtpEndDate.Value;
+
+            // Récupérer la pièce de théâtre saisie
+            string pieceName = txtSearchPiece.Text.ToLower(); // Convertir en minuscule pour comparaison insensible à la casse
+
+            // Filtrer les représentations
+            List<Representation> filteredRepresentations = gestionRepresentations.GetListeRepresentations();
+
+            // Appliquer le filtre par date
+            filteredRepresentations = filteredRepresentations
+                .Where(rep => rep.Rep_date >= startDate && rep.Rep_date <= endDate)
+                .ToList();
+
+            // Appliquer le filtre par pièce de théâtre
+            if (!string.IsNullOrEmpty(pieceName))
+            {
+                filteredRepresentations = filteredRepresentations
+                    .Where(rep => rep.Piece_name.ToLower().Contains(pieceName))
+                    .ToList();
+            }
+
+            // Lier les données filtrées au DataGridView
+            dtgRepresentations.DataSource = filteredRepresentations;
         }
 
         private void FrmGestionRepresentation_Load(object sender, EventArgs e)
