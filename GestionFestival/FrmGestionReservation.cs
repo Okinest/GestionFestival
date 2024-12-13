@@ -85,13 +85,11 @@ namespace GestionFestival
             {
                 DataGridViewRow row = dtgReservations.SelectedRows[0];
                 Reservation res = (Reservation)row.DataBoundItem;
-                Customer cus = res.Customer; 
-                Representation rep = res.Representation;
 
 
-                if (rep != null)
+                if (res != null)
                 {
-                    FrmModifierReservation frmModifierReservation = new FrmModifierReservation(res, cus, rep);
+                    FrmModifierReservation frmModifierReservation = new FrmModifierReservation(res);
                     this.Hide();
                     frmModifierReservation.StartPosition = FormStartPosition.CenterScreen;
                     frmModifierReservation.Show();

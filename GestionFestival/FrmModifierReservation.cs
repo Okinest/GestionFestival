@@ -17,26 +17,23 @@ namespace GestionFestival
     {
         ErrorProvider errorProvider = new ErrorProvider();
         private Reservation currentRes;
-        private Customer currentCus;
-        private Representation currentRepresentation;
         private static GestionPieces uneGestionPiece = new GestionPieces();
         private static GestionRepresentations GestionRepresentations = new GestionRepresentations();
         private readonly GestionReservations gestionReservations;
 
-        public FrmModifierReservation(Reservation res, Customer cus, Representation rep)
+        public FrmModifierReservation(Reservation res)
         {
             InitializeComponent();
             cmbPiece.SelectedIndexChanged += cmbPiece_SelectedIndexChanged; //CHANGEMENT DU TARIF INTITIAL EN FONCTION DE LA PIECE
             cmbRepresentation.SelectedIndexChanged += cmbRepresentation_SelectedIndexChanged; //CHANGEMENT DU TARIF EN FONCTION DE LA REPRESENTATION
-            if (res == null || rep == null || cus == null)
+            txtNbPlace.TextChanged += txtNbPlace_TextChanged; // AJOUTER CETTE LIGNE
+            if (res == null)
             {
                 MessageBox.Show("Erreur lors de la récupération de la représentation");
                 this.Close();
                 return;
             }
             currentRes = res;
-            currentCus = cus;
-            currentRepresentation = rep;
             LoadCmb();
             LoadData();
             gestionReservations = new GestionReservations();
@@ -58,45 +55,45 @@ namespace GestionFestival
 
         private void LoadData()
         {
-            if (string.IsNullOrWhiteSpace(currentCus.Cus_lastname))
+            if (string.IsNullOrWhiteSpace(currentRes.Customer.Cus_lastname))
             {
                 errorProvider.SetError(txtNom, "Le nom ne peut pas être vide.");
             }
             else
             {
-                txtNom.Text = currentRes.Cus_lastname;
+                txtNom.Text = currentRes.Customer.Cus_lastname;
                 errorProvider.SetError(txtNom, string.Empty);
             }
 
             // Vérification et assignation du prénom
-            if (string.IsNullOrWhiteSpace(currentCus.Cus_firstname))
+            if (string.IsNullOrWhiteSpace(currentRes.Customer.Cus_firstname))
             {
                 errorProvider.SetError(txtPrenom, "Le prénom ne peut pas être vide.");
             }
             else
             {
-                txtPrenom.Text = currentCus.Cus_firstname;
+                txtPrenom.Text = currentRes.Customer.Cus_firstname;
                 errorProvider.SetError(txtPrenom, string.Empty);
             }
 
             // Vérification et assignation de l'email
-            if (string.IsNullOrWhiteSpace(currentCus.Cus_email))
+            if (string.IsNullOrWhiteSpace(currentRes.Customer.Cus_email))
             {
                 errorProvider.SetError(txtEmail, "L'email ne peut pas être vide.");
             }
             else
             {
-                txtEmail.Text = currentCus.Cus_email;
+                txtEmail.Text = currentRes.Customer.Cus_email;
                 errorProvider.SetError(txtEmail, string.Empty);
             }
 
-            if (!string.IsNullOrWhiteSpace(currentCus.Cus_phone_number) && !int.TryParse(currentCus.Cus_phone_number, out _))
+            if (!string.IsNullOrWhiteSpace(currentRes.Customer.Cus_phone_number) && !int.TryParse(currentRes.Customer.Cus_phone_number, out _))
             {
                 errorProvider.SetError(txtTelephone, "Numéro de téléphone invalide.");
             }
             else
             {
-                txtTelephone.Text = currentCus.Cus_phone_number;
+                txtTelephone.Text = currentRes.Customer.Cus_phone_number;
                 errorProvider.SetError(txtTelephone, string.Empty);
             }
 
@@ -111,9 +108,9 @@ namespace GestionFestival
             }
 
             //COMBOBOX PIECE
-            if (currentRepresentation.Piece != null)
+            if (currentRes.Representation.Piece != null)
             {
-                cmbPiece.SelectedValue = currentRepresentation.Piece.Play_id;
+                cmbPiece.SelectedValue = currentRes.Representation.Piece.Play_id;
                 errorProvider.SetError(cmbPiece, string.Empty);
             }
             else
@@ -121,9 +118,9 @@ namespace GestionFestival
                 errorProvider.SetError(cmbPiece, "La pièce sélectionnée est invalide.");
             }
             //COMBOBOX REPRESENTATION
-            if (currentRepresentation != null && currentRepresentation.Rep_date != DateTime.MinValue && currentRepresentation.Rep_time != TimeSpan.Zero)
+            if (currentRes.Representation != null && currentRes.Representation.Rep_date != DateTime.MinValue && currentRes.Representation.Rep_time != TimeSpan.Zero)
             {
-                cmbRepresentation.SelectedValue = currentRepresentation.Rep_id;
+                cmbRepresentation.SelectedValue = currentRes.Representation.Rep_id;
                 errorProvider.SetError(cmbRepresentation, string.Empty);
             }
             else
@@ -246,11 +243,6 @@ namespace GestionFestival
             }
         }
 
-        private void FrmModifierReservation_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnModif_Click(object sender, EventArgs e)
         {
             if (currentRes == null)
@@ -265,23 +257,23 @@ namespace GestionFestival
                 try
                 {
                     // Création de l'objet Customer
+                    int customerId = currentRes.Customer.Cus_id;
                     string customerLastName = txtNom.Text;
                     string customerFirstName = txtPrenom.Text;
                     string customerEmail = txtEmail.Text;
                     string customerPhone = txtTelephone.Text;
-                    
 
-                    Customer customer = new Customer(customerFirstName, customerLastName, customerEmail, customerPhone);
+                    Customer customer = new Customer(customerId, customerFirstName, customerLastName, customerEmail, customerPhone);
 
                     //OBJET RESERVATION
                     Pieces selectedPiece = (Pieces)cmbPiece.SelectedItem;
                     Representation selectedRepresentation = (Representation)cmbRepresentation.SelectedItem;
                     int numSeats = int.Parse(txtNbPlace.Text);
 
-                    Reservation rep = new Reservation(customer, selectedRepresentation, numSeats);
+                    Reservation res = new Reservation(customer, selectedRepresentation, numSeats);
 
                     // Appel à la méthode de modification
-                    int result = GestionReservations.ModifierReservation(rep, selectedPiece, customer);
+                    int result = GestionReservations.ModifierReservation(res);
 
                     if (result > 0)
                     {
@@ -328,10 +320,50 @@ namespace GestionFestival
                 txtTarifPlace.Text = "Veuillez sélectionner une pièce.";
             }
         }
-
-        private void txtTarifReservation_TextChanged(object sender, EventArgs e)
+        private bool ValidateNbPlace(out int nbPlace)
         {
+            if (int.TryParse(txtNbPlace.Text, out nbPlace) && nbPlace > 0)
+            {
+                return true;
+            }
+            else
+            {
+                nbPlace = 0;
+                return false;
+            }
+        }
+        private void txtNbPlace_TextChanged(object sender, EventArgs e)
+        {
+            if (ValidateNbPlace(out int nbPlace))
+            {
+                txtNbPlace.BackColor = SystemColors.Window; // Couleur de fond normale
+                UpdateTotalPrice();
+            }
+            else
+            {
+                txtNbPlace.BackColor = Color.LightCoral; // Couleur de fond pour indiquer une erreur
+                txtTarifReservation.Visible = false; // Masquer le tarif si la validation échoue
+            }
+        }
+        private void UpdateTotalPrice()
+        {
+            if (cmbPiece.SelectedItem is Pieces selectedPiece && cmbRepresentation.SelectedItem is Representation selectedRepresentation)
+            {
+                string timeOfDay = selectedRepresentation.Rep_time.ToString(@"hh\:mm");
+                double price = GestionReservations.GetPiecePriceByTime(selectedPiece.Play_id, timeOfDay);
 
+                if (ValidateNbPlace(out int nbPlace) && nbPlace > 0)
+                {
+                    price *= nbPlace;
+                }
+
+                txtTarifReservation.Visible = true;
+                txtTarifReservation.Text = price.ToString("C");
+            }
+            else
+            {
+                txtTarifReservation.Visible = false;
+            }
         }
 
         private void cmbRepresentation_SelectedIndexChanged(object sender, EventArgs e)

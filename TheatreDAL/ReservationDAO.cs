@@ -113,9 +113,10 @@ namespace TheatreDAL
         }
 
 
-        public static int ModifierReservation(Reservation rep, Pieces pie, Customer cus)
+        public static int ModifierReservation(Reservation res)
         {
             int result = 0;
+  
             try
             {
                 using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
@@ -123,19 +124,19 @@ namespace TheatreDAL
                     // Mise à jour de CUSTOMER
                     string query_customer = "UPDATE CUSTOMER SET cus_firstname = @cus_firstname, cus_lastname = @cus_lastname, cus_email = @cus_email, cus_phone_number = @cus_phone_number WHERE cus_id = @cus_id";
                     SqlCommand command_customer = new SqlCommand(query_customer, connection);
-                    command_customer.Parameters.AddWithValue("@cus_id", cus.Cus_id);
-                    command_customer.Parameters.AddWithValue("@cus_firstname", cus.Cus_firstname);
-                    command_customer.Parameters.AddWithValue("@cus_lastname", cus.Cus_lastname);
-                    command_customer.Parameters.AddWithValue("@cus_email", cus.Cus_email);
-                    command_customer.Parameters.AddWithValue("@cus_phone_number", cus.Cus_phone_number);
+                    command_customer.Parameters.AddWithValue("@cus_id", res.Customer.Cus_id);
+                    command_customer.Parameters.AddWithValue("@cus_firstname", res.Customer.Cus_firstname);
+                    command_customer.Parameters.AddWithValue("@cus_lastname", res.Customer.Cus_lastname);
+                    command_customer.Parameters.AddWithValue("@cus_email", res.Customer.Cus_email);
+                    command_customer.Parameters.AddWithValue("@cus_phone_number", res.Customer.Cus_phone_number);
                     command_customer.ExecuteNonQuery();
 
                     // Mise à jour de RESERVER
                     string query_reserver = "UPDATE RESERVER SET cus_id = @cus_id, rep_id = @rep_id, res_num_seats = @res_num_seats WHERE cus_id = @cus_id AND rep_id = @rep_id";
                     SqlCommand command_reserver = new SqlCommand(query_reserver, connection);
-                    command_reserver.Parameters.AddWithValue("@cus_id", cus.Cus_id);
-                    command_reserver.Parameters.AddWithValue("@rep_id", rep.Representation.Rep_id);
-                    command_reserver.Parameters.AddWithValue("@res_num_seats", rep.Res_num_seats);
+                    command_reserver.Parameters.AddWithValue("@cus_id", res.Customer.Cus_id);
+                    command_reserver.Parameters.AddWithValue("@rep_id", res.Representation.Rep_id);
+                    command_reserver.Parameters.AddWithValue("@res_num_seats", res.Res_num_seats);
                     result = command_reserver.ExecuteNonQuery();
                 }
             }

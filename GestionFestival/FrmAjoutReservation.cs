@@ -25,7 +25,8 @@ namespace GestionFestival
             gestionReservations = new GestionReservations();
             cmbPiece.SelectedIndexChanged += cmbPiece_SelectedIndexChanged; //CHANGEMENT DU TARIF INTITIAL EN FONCTION DE LA PIECE
             cmbRepresentation.SelectedIndexChanged += cmbRepresentation_SelectedIndexChanged; //CHANGEMENT DU TARIF EN FONCTION DE LA REPRESENTATION
-        }
+            txtNbPlace.TextChanged += txtNbPlace_TextChanged; // AJOUTER CETTE LIGNE
+    }
 
         private void FrmAjoutReservation_Load(object sender, EventArgs e)
         {
@@ -203,34 +204,34 @@ namespace GestionFestival
                 }
             }
         }
-
-        private void cmbPiece_SelectedIndexChanged(object sender, EventArgs e)
+        private void UpdateTotalPrice()
         {
-            Pieces selectedPiece = (Pieces)cmbPiece.SelectedItem;
-
-            if (selectedPiece != null)
+            if (cmbPiece.SelectedItem is Pieces selectedPiece && cmbRepresentation.SelectedItem is Representation selectedRepresentation)
             {
-                double price = GestionReservations.GetPiecePrice(selectedPiece.Play_id);
-                txtTarifPlace.Text = price.ToString("C");
+                string timeOfDay = selectedRepresentation.Rep_time.ToString(@"hh\:mm");
+                double price = GestionReservations.GetPiecePriceByTime(selectedPiece.Play_id, timeOfDay);
 
-                // Si une représentation est déjà sélectionnée, recalculer également le tarif
-                if (cmbRepresentation.SelectedItem is Representation selectedRepresentation)
+                if (int.TryParse(txtNbPlace.Text, out int nbPlace) && nbPlace > 0)
                 {
-                    // Récupérer l'heure de la représentation
-                    string timeOfDay = selectedRepresentation.Rep_time.ToString(@"hh\:mm");
-
-                    //RECALCULER LE TARIF
-                    double updatedPrice = GestionReservations.GetPiecePriceByTime(selectedPiece.Play_id, timeOfDay);
-
-                    // Afficher le tarif actualisé pour la représentation
-                    txtTarifReservation.Visible = true;
-                    txtTarifReservation.Text = updatedPrice.ToString("C");
+                    price *= nbPlace;
                 }
+
+                txtTarifReservation.Visible = true;
+                txtTarifReservation.Text = price.ToString("C");
             }
             else
             {
-                txtTarifPlace.Text = "Veuillez sélectionner une pièce.";
+                txtTarifReservation.Visible = false;
             }
+        }
+
+        private void cmbPiece_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateTotalPrice();
+        }
+        private void txtNbPlace_TextChanged(object sender, EventArgs e)
+        {
+            UpdateTotalPrice();
         }
 
         private void cmbRepresentation_SelectedIndexChanged(object sender, EventArgs e)
@@ -240,6 +241,10 @@ namespace GestionFestival
             {
                 string timeOfDay = selectedRepresentation.Rep_time.ToString(@"hh\:mm");
                 double price = GestionReservations.GetPiecePriceByTime(selectedPiece.Play_id, timeOfDay);
+                if (int.TryParse(txtNbPlace.Text, out int nbPlace) && nbPlace > 0)
+                {
+                    price *= nbPlace;
+                }
 
                 txtTarifReservation.Visible = true;
                 txtTarifReservation.Text = price.ToString("C");

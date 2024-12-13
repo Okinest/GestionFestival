@@ -58,10 +58,9 @@ namespace GestionFestival
             // 
             this.lblReservation.AutoSize = true;
             this.lblReservation.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Underline);
-            this.lblReservation.Location = new System.Drawing.Point(185, 75);
-            this.lblReservation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblReservation.Location = new System.Drawing.Point(247, 92);
             this.lblReservation.Name = "lblReservation";
-            this.lblReservation.Size = new System.Drawing.Size(446, 46);
+            this.lblReservation.Size = new System.Drawing.Size(563, 58);
             this.lblReservation.TabIndex = 2;
             this.lblReservation.Text = "Modifier une réservation";
             this.lblReservation.Click += new System.EventHandler(this.lblReservation_Click);
@@ -77,9 +76,11 @@ namespace GestionFestival
             this.grpDetails.Controls.Add(this.label2);
             this.grpDetails.Controls.Add(this.lblPiece);
             this.grpDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpDetails.Location = new System.Drawing.Point(94, 220);
+            this.grpDetails.Location = new System.Drawing.Point(125, 271);
+            this.grpDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpDetails.Name = "grpDetails";
-            this.grpDetails.Size = new System.Drawing.Size(592, 107);
+            this.grpDetails.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpDetails.Size = new System.Drawing.Size(789, 132);
             this.grpDetails.TabIndex = 31;
             this.grpDetails.TabStop = false;
             this.grpDetails.Text = "Détails :";
@@ -87,45 +88,49 @@ namespace GestionFestival
             // cmbRepresentation
             // 
             this.cmbRepresentation.FormattingEnabled = true;
-            this.cmbRepresentation.Location = new System.Drawing.Point(446, 27);
+            this.cmbRepresentation.Location = new System.Drawing.Point(595, 33);
+            this.cmbRepresentation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbRepresentation.Name = "cmbRepresentation";
-            this.cmbRepresentation.Size = new System.Drawing.Size(121, 21);
+            this.cmbRepresentation.Size = new System.Drawing.Size(160, 25);
             this.cmbRepresentation.TabIndex = 23;
             this.cmbRepresentation.SelectedIndexChanged += new System.EventHandler(this.cmbRepresentation_SelectedIndexChanged);
             // 
             // cmbPiece
             // 
             this.cmbPiece.FormattingEnabled = true;
-            this.cmbPiece.Location = new System.Drawing.Point(126, 27);
+            this.cmbPiece.Location = new System.Drawing.Point(168, 33);
+            this.cmbPiece.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbPiece.Name = "cmbPiece";
-            this.cmbPiece.Size = new System.Drawing.Size(121, 21);
+            this.cmbPiece.Size = new System.Drawing.Size(160, 25);
             this.cmbPiece.TabIndex = 22;
             this.cmbPiece.SelectedIndexChanged += new System.EventHandler(this.cmbPiece_SelectedIndexChanged);
             // 
             // txtTarifReservation
             // 
-            this.txtTarifReservation.Location = new System.Drawing.Point(453, 62);
+            this.txtTarifReservation.Location = new System.Drawing.Point(604, 76);
+            this.txtTarifReservation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTarifReservation.Name = "txtTarifReservation";
             this.txtTarifReservation.ReadOnly = true;
-            this.txtTarifReservation.Size = new System.Drawing.Size(100, 20);
+            this.txtTarifReservation.Size = new System.Drawing.Size(132, 23);
             this.txtTarifReservation.TabIndex = 21;
-            this.txtTarifReservation.TextChanged += new System.EventHandler(this.txtTarifReservation_TextChanged);
             // 
             // txtTarifPlace
             // 
-            this.txtTarifPlace.Location = new System.Drawing.Point(139, 62);
+            this.txtTarifPlace.Location = new System.Drawing.Point(185, 76);
+            this.txtTarifPlace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTarifPlace.Name = "txtTarifPlace";
             this.txtTarifPlace.ReadOnly = true;
-            this.txtTarifPlace.Size = new System.Drawing.Size(100, 20);
+            this.txtTarifPlace.Size = new System.Drawing.Size(132, 23);
             this.txtTarifPlace.TabIndex = 19;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(362, 65);
+            this.label4.Location = new System.Drawing.Point(483, 80);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 13);
+            this.label4.Size = new System.Drawing.Size(120, 17);
             this.label4.TabIndex = 17;
             this.label4.Text = "Tarif réservation :";
             // 
@@ -133,9 +138,10 @@ namespace GestionFestival
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(362, 30);
+            this.label3.Location = new System.Drawing.Point(483, 37);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 13);
+            this.label3.Size = new System.Drawing.Size(113, 17);
             this.label3.TabIndex = 16;
             this.label3.Text = "Représentation :";
             // 
@@ -143,9 +149,10 @@ namespace GestionFestival
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(52, 65);
+            this.label2.Location = new System.Drawing.Point(69, 80);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
+            this.label2.Size = new System.Drawing.Size(108, 17);
             this.label2.TabIndex = 15;
             this.label2.Text = "Tarif par place :";
             // 
@@ -153,18 +160,19 @@ namespace GestionFestival
             // 
             this.lblPiece.AutoSize = true;
             this.lblPiece.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPiece.Location = new System.Drawing.Point(52, 30);
+            this.lblPiece.Location = new System.Drawing.Point(69, 37);
+            this.lblPiece.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPiece.Name = "lblPiece";
-            this.lblPiece.Size = new System.Drawing.Size(40, 13);
+            this.lblPiece.Size = new System.Drawing.Size(51, 17);
             this.lblPiece.TabIndex = 14;
             this.lblPiece.Text = "Pièce :";
             // 
             // btnRetour
             // 
-            this.btnRetour.Location = new System.Drawing.Point(323, 384);
-            this.btnRetour.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRetour.Location = new System.Drawing.Point(431, 473);
+            this.btnRetour.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRetour.Name = "btnRetour";
-            this.btnRetour.Size = new System.Drawing.Size(133, 38);
+            this.btnRetour.Size = new System.Drawing.Size(177, 47);
             this.btnRetour.TabIndex = 20;
             this.btnRetour.Text = "Revenir en arrière";
             this.btnRetour.UseVisualStyleBackColor = true;
@@ -172,10 +180,10 @@ namespace GestionFestival
             // 
             // btnModif
             // 
-            this.btnModif.Location = new System.Drawing.Point(323, 332);
-            this.btnModif.Margin = new System.Windows.Forms.Padding(2);
+            this.btnModif.Location = new System.Drawing.Point(431, 409);
+            this.btnModif.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnModif.Name = "btnModif";
-            this.btnModif.Size = new System.Drawing.Size(133, 38);
+            this.btnModif.Size = new System.Drawing.Size(177, 47);
             this.btnModif.TabIndex = 19;
             this.btnModif.Text = "Modifier";
             this.btnModif.UseVisualStyleBackColor = true;
@@ -185,9 +193,10 @@ namespace GestionFestival
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(610, 146);
+            this.label1.Location = new System.Drawing.Point(813, 180);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 17);
+            this.label1.Size = new System.Drawing.Size(115, 22);
             this.label1.TabIndex = 33;
             this.label1.Text = "Nb de places";
             // 
@@ -195,9 +204,10 @@ namespace GestionFestival
             // 
             this.lblTelephone.AutoSize = true;
             this.lblTelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelephone.Location = new System.Drawing.Point(515, 146);
+            this.lblTelephone.Location = new System.Drawing.Point(687, 180);
+            this.lblTelephone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTelephone.Name = "lblTelephone";
-            this.lblTelephone.Size = new System.Drawing.Size(48, 17);
+            this.lblTelephone.Size = new System.Drawing.Size(61, 22);
             this.lblTelephone.TabIndex = 32;
             this.lblTelephone.Text = "N° Tel";
             // 
@@ -205,9 +215,10 @@ namespace GestionFestival
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(365, 146);
+            this.lblEmail.Location = new System.Drawing.Point(487, 180);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(42, 17);
+            this.lblEmail.Size = new System.Drawing.Size(54, 22);
             this.lblEmail.TabIndex = 31;
             this.lblEmail.Text = "Email";
             // 
@@ -215,9 +226,10 @@ namespace GestionFestival
             // 
             this.lblPrenom.AutoSize = true;
             this.lblPrenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrenom.Location = new System.Drawing.Point(198, 146);
+            this.lblPrenom.Location = new System.Drawing.Point(264, 180);
+            this.lblPrenom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrenom.Name = "lblPrenom";
-            this.lblPrenom.Size = new System.Drawing.Size(57, 17);
+            this.lblPrenom.Size = new System.Drawing.Size(72, 22);
             this.lblPrenom.TabIndex = 30;
             this.lblPrenom.Text = "Prénom";
             // 
@@ -225,57 +237,58 @@ namespace GestionFestival
             // 
             this.lblNom.AutoSize = true;
             this.lblNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNom.Location = new System.Drawing.Point(91, 146);
+            this.lblNom.Location = new System.Drawing.Point(121, 180);
+            this.lblNom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(37, 17);
+            this.lblNom.Size = new System.Drawing.Size(47, 22);
             this.lblNom.TabIndex = 29;
             this.lblNom.Text = "Nom";
             // 
             // txtNbPlace
             // 
-            this.txtNbPlace.Location = new System.Drawing.Point(596, 165);
-            this.txtNbPlace.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNbPlace.Location = new System.Drawing.Point(795, 203);
+            this.txtNbPlace.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNbPlace.Name = "txtNbPlace";
-            this.txtNbPlace.Size = new System.Drawing.Size(130, 20);
+            this.txtNbPlace.Size = new System.Drawing.Size(172, 22);
             this.txtNbPlace.TabIndex = 28;
             // 
             // txtTelephone
             // 
-            this.txtTelephone.Location = new System.Drawing.Point(497, 165);
-            this.txtTelephone.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTelephone.Location = new System.Drawing.Point(663, 203);
+            this.txtTelephone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTelephone.Name = "txtTelephone";
-            this.txtTelephone.Size = new System.Drawing.Size(86, 20);
+            this.txtTelephone.Size = new System.Drawing.Size(113, 22);
             this.txtTelephone.TabIndex = 27;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(290, 165);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
+            this.txtEmail.Location = new System.Drawing.Point(387, 203);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(193, 20);
+            this.txtEmail.Size = new System.Drawing.Size(256, 22);
             this.txtEmail.TabIndex = 26;
             // 
             // txtPrenom
             // 
-            this.txtPrenom.Location = new System.Drawing.Point(174, 165);
-            this.txtPrenom.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPrenom.Location = new System.Drawing.Point(232, 203);
+            this.txtPrenom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPrenom.Name = "txtPrenom";
-            this.txtPrenom.Size = new System.Drawing.Size(101, 20);
+            this.txtPrenom.Size = new System.Drawing.Size(133, 22);
             this.txtPrenom.TabIndex = 25;
             // 
             // txtNom
             // 
-            this.txtNom.Location = new System.Drawing.Point(58, 165);
-            this.txtNom.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNom.Location = new System.Drawing.Point(77, 203);
+            this.txtNom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(102, 20);
+            this.txtNom.Size = new System.Drawing.Size(135, 22);
             this.txtNom.TabIndex = 24;
             // 
             // FrmModifierReservation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grpDetails);
             this.Controls.Add(this.lblTelephone);
@@ -290,9 +303,9 @@ namespace GestionFestival
             this.Controls.Add(this.txtNom);
             this.Controls.Add(this.txtTelephone);
             this.Controls.Add(this.txtPrenom);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmModifierReservation";
             this.Text = "Modifier une réservation";
-            this.Load += new System.EventHandler(this.FrmModifierReservation_Load);
             this.grpDetails.ResumeLayout(false);
             this.grpDetails.PerformLayout();
             this.ResumeLayout(false);
