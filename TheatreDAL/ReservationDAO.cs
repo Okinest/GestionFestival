@@ -199,7 +199,7 @@ namespace TheatreDAL
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Erreur lors de la récupération du nombre de place total disponible");
+                Console.WriteLine("Erreur lors de la récupération du nombre de place total disponible " +ex.Message);
             }
             return TotalPlace;
         }
