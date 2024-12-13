@@ -9,6 +9,10 @@
         private System.Windows.Forms.Button BtnSupprimer;
         private System.Windows.Forms.Button BtnRetour;
         private System.Windows.Forms.DataGridView dtgRepresentations;
+        private System.Windows.Forms.DateTimePicker dtpStartDate;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.TextBox txtSearchPiece;
+        private System.Windows.Forms.Button btnFilter;
 
         protected override void Dispose(bool disposing)
         {
@@ -36,6 +40,43 @@
             this.SuspendLayout();
             // 
             // BtnAjout
+            // Ajouter le contrôle DateTimePicker pour la date de début
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpStartDate.Location = new System.Drawing.Point(31, 95);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(150, 22);
+            this.dtpStartDate.TabIndex = 5;
+
+            // Ajouter le contrôle DateTimePicker pour la date de fin
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpEndDate.Location = new System.Drawing.Point(200, 95);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(150, 22);
+            this.dtpEndDate.TabIndex = 6;
+
+            // Ajouter le TextBox pour la recherche par pièce de théâtre
+            this.txtSearchPiece = new System.Windows.Forms.TextBox();
+            this.txtSearchPiece.Location = new System.Drawing.Point(375, 95);
+            this.txtSearchPiece.Name = "txtSearchPiece";
+            this.txtSearchPiece.Size = new System.Drawing.Size(150, 22);
+            this.txtSearchPiece.TabIndex = 7;
+
+            // Ajouter le bouton de filtrage
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.btnFilter.Location = new System.Drawing.Point(550, 94);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(100, 23);
+            this.btnFilter.TabIndex = 8;
+            this.btnFilter.Text = "Filtrer";
+            this.btnFilter.Click += new System.EventHandler(this.BtnFilter_Click);
+
+            // Ajouter ces nouveaux contrôles au formulaire
+            this.Controls.Add(this.dtpStartDate);
+            this.Controls.Add(this.dtpEndDate);
+            this.Controls.Add(this.txtSearchPiece);
+            this.Controls.Add(this.btnFilter);
             // 
             this.BtnAjout.Location = new System.Drawing.Point(175, 337);
             this.BtnAjout.Name = "BtnAjout";
