@@ -33,5 +33,31 @@ namespace TheatreBLL
             return ReservationDAO.SupprimerReservation(cusId, repId);
         }
 
+        public static int AjoutReservation(Reservation res)
+        {
+            return ReservationDAO.AjoutReservation(res);
+        }
+
+        public static int ModifierReservation(Reservation res) 
+        {
+            return ReservationDAO.ModifierReservation(res);
+        }
+
+        public int GetMaxPlacesForRepresentation(int repId)
+        {
+            return ReservationDAO.GetMaxPlacesForRepresentation(repId);
+        }
+
+        public static double GetPiecePrice(int pieceId)
+        {
+            double price = ReservationDAO.GetPriceForSelectedPiece(pieceId);
+            return price;
+        }
+
+        public static double GetPiecePriceByTime(int playId, string timeOfDay)
+        {
+            return ReservationDAO.GetPiecePriceByTime(playId,timeOfDay);
+        }
+
     }
 }

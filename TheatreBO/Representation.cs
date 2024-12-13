@@ -50,5 +50,13 @@ namespace TheatreBO
         public string Rate_period => rate != null ? rate.Rate_period : string.Empty; // Expose la valeur du tarif
 
         //public int Rep_id => rep !=null ? rep.Rep_id : int.Empty; 
+
+        public string DateTimeFormatted
+        {
+            get
+            {
+                return $"{Rep_date:dd/MM/yyyy} {Rep_time:hh\\:mm}";
+            }
+        }
     }
 }

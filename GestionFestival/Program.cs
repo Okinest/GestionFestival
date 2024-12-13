@@ -16,7 +16,10 @@ namespace GestionFestival
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmAuthentification());
+            Application.Run(new FrmAuthentification
+            {
+                StartPosition = FormStartPosition.CenterScreen
+            });
         }
     }
 }
