@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TheatreBLL;
 using TheatreBO;
+using TheatreDAL;
 
 namespace GestionFestival
 {
@@ -84,7 +85,10 @@ namespace GestionFestival
                 isValid = false;
             }
 
-            if (!IsValidMaxPlace(txtNbPlace, GetSelectedRepresentationId())) //VALIDATION PLACE
+            int repId = GetSelectedRepresentationId();
+            int nbPlaceTotal = ReservationDAO.GetNbPlaceTotalForReservation(repId); //VALIDATION PLACE MAX
+
+            if (!IsValidMaxPlace(txtNbPlace, repId, nbPlaceTotal))
             {
                 isValid = false;
             }
@@ -105,7 +109,7 @@ namespace GestionFestival
         }
 
         //POUR VERIFIER LE NOMBRE DE PLACE MAXIMUM
-        private bool IsValidMaxPlace(TextBox txtNbPlace, int repId)
+        private bool IsValidMaxPlace(TextBox txtNbPlace, int repId, int nbPlaceTotal)
         {
             bool isValid = true;
 
@@ -116,14 +120,25 @@ namespace GestionFestival
             }
             else
             {
-                //RECUPERER DU NOMBRE DE PLACE MAXIMUM
-                int MaxnbPlaces = gestionReservations.GetMaxPlacesForRepresentation(repId);
+                int totalPlacesReservees = gestionReservations.GetNbPlaceTotal(repId);
+                int maxPlacesPossible = gestionReservations.GetMaxPlacesForRepresentation(repId);  
+                int placesRestantes = maxPlacesPossible - totalPlacesReservees;//CALCUL RESTANT PLACE                    
 
-                //COMPARER MAX PERSONNE PAR RAPPORT AU NOMBRE DE PLACE
-                if (nbPlace > MaxnbPlaces)
+                if (nbPlace > maxPlacesPossible)
                 {
-                    errorProvider.SetError(txtNbPlace, $"Le nombre de places ne peut pas dépasser {MaxnbPlaces}.");
+                    errorProvider.SetError(txtNbPlace, $"Le nombre de places ne peut pas dépasser {maxPlacesPossible}.");
                     isValid = false;
+                }
+                //SI PLACE DEPASSE LE NOMBRE DE PLACE
+                else if (nbPlace > placesRestantes)
+                {
+                    errorProvider.SetError(txtNbPlace, $"Le nombre de places dépasse les places restantes. Places restantes : {placesRestantes}.");
+                    isValid = false;
+                }
+                else
+                {
+                    // Si tout est valide, aucune erreur
+                    errorProvider.SetError(txtNbPlace, string.Empty);
                 }
             }
 
