@@ -92,7 +92,10 @@ namespace GestionFestival
 
         private void btnSynthese_Click(object sender, EventArgs e)
         {
-            // Logique pour accéder à la synthèse (si nécessaire)
+            FrmSynthèse frmSynthèse = new FrmSynthèse();
+            this.Hide();
+            frmSynthèse.StartPosition = FormStartPosition.CenterScreen;
+            frmSynthèse.Show();
         }
 
         private void btnDeconnexion_Click(object sender, EventArgs e)

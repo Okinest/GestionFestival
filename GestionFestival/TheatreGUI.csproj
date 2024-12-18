@@ -114,6 +114,12 @@
     <Compile Include="FrmModifierPièce.Designer.cs">
       <DependentUpon>FrmModifierPièce.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSynthèse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSynthèse.Designer.cs">
+      <DependentUpon>FrmSynthèse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAjoutPièce.resx">
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmModifierPièce.resx">
       <DependentUpon>FrmModifierPièce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSynthèse.resx">
+      <DependentUpon>FrmSynthèse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

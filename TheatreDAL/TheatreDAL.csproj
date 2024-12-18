@@ -44,6 +44,7 @@
     <Compile Include="PiecesDAO.cs" />
     <Compile Include="RepresentationDAO.cs" />
     <Compile Include="ReservationDAO.cs" />
+    <Compile Include="SyntheseDAO.cs" />
     <Compile Include="UtilisateurDAO.cs" />
     <Compile Include="ConnexionBD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
