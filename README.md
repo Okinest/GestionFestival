@@ -44,6 +44,6 @@ Un guide d’utilisation de l’application doit être fourni au client.
   - [x] Cahier de recette = Myriam
 
 **Sprint 5** :
-  - [ ] Module statistiques = ??
-  - [ ] Cahier de recette = ??
-  - [ ] Documentation utilisateur = ??
+  - [x] Module statistiques = Théo
+  - [x] Cahier de recette = Adrien
+  - [x] Documentation utilisateur = Myriam
