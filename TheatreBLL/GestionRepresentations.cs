@@ -10,6 +10,7 @@ namespace TheatreBLL
         private static GestionRepresentations uneGestionRepresentation;
         private List<Representation> listeRepresentations = new List<Representation>();
         private List<Rate> listeRates = new List<Rate>();
+        private List<Place> listePlaces = new List<Place>();
 
         // Accesseur pour obtenir une instance unique de GestionRepresentations
         public static GestionRepresentations GetRepresentations()
@@ -52,6 +53,12 @@ namespace TheatreBLL
         {
             listeRates = RepresentationDAO.GetRates();
             return listeRates;
-        }   
+        }
+
+        public List<Place> GetListePlaces()
+        {
+            listePlaces = RepresentationDAO.GetPlaces();
+            return listePlaces;
+        }
     }
 }

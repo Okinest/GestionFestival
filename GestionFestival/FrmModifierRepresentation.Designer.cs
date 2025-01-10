@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txtLieu = new System.Windows.Forms.TextBox();
             this.txtSeat = new System.Windows.Forms.TextBox();
             this.cmbPieces = new System.Windows.Forms.ComboBox();
             this.cmbRates = new System.Windows.Forms.ComboBox();
@@ -43,6 +42,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtHeure = new System.Windows.Forms.TextBox();
+            this.cmbLieu = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -55,14 +55,6 @@
             this.label1.Size = new System.Drawing.Size(608, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "Modification d\'une représentation";
-            // 
-            // txtLieu
-            // 
-            this.txtLieu.Location = new System.Drawing.Point(379, 166);
-            this.txtLieu.Margin = new System.Windows.Forms.Padding(2);
-            this.txtLieu.Name = "txtLieu";
-            this.txtLieu.Size = new System.Drawing.Size(86, 20);
-            this.txtLieu.TabIndex = 1;
             // 
             // txtSeat
             // 
@@ -190,11 +182,21 @@
             this.txtHeure.Size = new System.Drawing.Size(86, 20);
             this.txtHeure.TabIndex = 15;
             // 
+            // cmbLieu
+            // 
+            this.cmbLieu.FormattingEnabled = true;
+            this.cmbLieu.Location = new System.Drawing.Point(377, 166);
+            this.cmbLieu.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbLieu.Name = "cmbLieu";
+            this.cmbLieu.Size = new System.Drawing.Size(92, 21);
+            this.cmbLieu.TabIndex = 17;
+            // 
             // FrmModifierRepresentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cmbLieu);
             this.Controls.Add(this.txtHeure);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -208,7 +210,6 @@
             this.Controls.Add(this.cmbRates);
             this.Controls.Add(this.cmbPieces);
             this.Controls.Add(this.txtSeat);
-            this.Controls.Add(this.txtLieu);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmModifierRepresentation";
@@ -222,7 +223,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtLieu;
         private System.Windows.Forms.TextBox txtSeat;
         private System.Windows.Forms.ComboBox cmbPieces;
         private System.Windows.Forms.ComboBox cmbRates;
@@ -236,5 +236,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtHeure;
+        private System.Windows.Forms.ComboBox cmbLieu;
     }
 }

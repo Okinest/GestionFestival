@@ -18,6 +18,7 @@ namespace TheatreDAL
                            "JOIN REPRESENTATION ON RESERVER.rep_id = REPRESENTATION.rep_id " +
                            "JOIN PLAY ON REPRESENTATION.play_id = PLAY.play_id " +
                            "JOIN RATE ON REPRESENTATION.rate_id = RATE.rate_id " +
+                           "JOIN LIEU ON REPRESENTATION.place_id = LIEU.id " +
                            "JOIN THEME ON PLAY.theme_id = THEME.theme_id " +
                            "JOIN AUTHOR ON PLAY.auth_id = AUTHOR.auth_id " +
                            "JOIN AUDIENCE ON PLAY.aud_id = AUDIENCE.aud_id;";
@@ -40,7 +41,11 @@ namespace TheatreDAL
                             (int)reader["rep_id"],
                             (DateTime)reader["rep_date"],
                             (TimeSpan)reader["rep_time"],
-                            (string)reader["rep_lieu"],
+                            new Place(
+                            (int)reader["id"],
+                            (string)reader["name"],
+                            (int)reader["range"]
+                            ),
                             (int)reader["rep_max_seats"],
                             new Pieces(
                                 (int)reader["play_id"],

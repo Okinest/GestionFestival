@@ -39,6 +39,13 @@ namespace GestionFestival
             cmbRates.DisplayMember = "Rate_period";
             cmbRates.ValueMember = "Rate_id";
             cmbRates.SelectedIndex = -1;// Désactiver la sélection initiale
+
+            //RECUPERATION DES DIFFÉRENTS LIEUX
+            List<Place> placeList = uneGestionRepresentation.GetListePlaces();
+            cmbLieu.DataSource = placeList;
+            cmbLieu.DisplayMember = "name";
+            cmbLieu.ValueMember = "id";
+            cmbLieu.SelectedIndex = -1;// Désactiver la sélection initiale
         }
 
         private void btnAjout_Click(object sender, EventArgs e)
@@ -54,7 +61,7 @@ namespace GestionFestival
                         Representation rep = new Representation(
                             dtpDate.Value.Date,
                             repTime,
-                            txtLieu.Text,
+                            (Place)cmbLieu.SelectedItem,
                             int.Parse(txtSeat.Text),
                             (Pieces)cmbPieces.SelectedItem,
                             (Rate)cmbRates.SelectedItem
@@ -108,9 +115,9 @@ namespace GestionFestival
                 isValid = false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtLieu.Text))
+            if (string.IsNullOrWhiteSpace(cmbLieu.Text))
             {
-                errorProvider.SetError(txtLieu, "Veuillez entrer un lieu.");
+                errorProvider.SetError(cmbLieu, "Veuillez selectionner un lieu."); //ERREUR PROVIDER SELECTION D'UN LIEU
                 isValid = false;
             }
 
@@ -138,6 +145,23 @@ namespace GestionFestival
         private void dtpDate_ValueChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void cmbLieu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbLieu.SelectedIndex != -1)
+            {
+                // Récupérer l'objet Place sélectionné
+                var selectedPlace = (Place)cmbLieu.SelectedItem;
+
+                // Affiche le range dans lblPlace
+                lblPlace.Text = $"Situé à {selectedPlace.Range} Km de Paris";
+            }
+            else
+            {
+                // Efface le texte si rien n'est sélectionné
+                lblPlace.Text = string.Empty;
+            }
         }
     }
 }

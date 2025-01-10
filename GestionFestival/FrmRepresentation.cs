@@ -46,7 +46,7 @@ namespace GestionFestival
 
             // Création d'une en-tête de colonne pour la colonne Lieu
             DataGridViewTextBoxColumn Lieu_column = new DataGridViewTextBoxColumn();
-            Lieu_column.DataPropertyName = "Rep_lieu";  // Lier à Rep_lieu
+            Lieu_column.DataPropertyName = "Place_name";  // Lier à Rep_lieu
             Lieu_column.HeaderText = "Lieu";
 
             // Création d'une en-tête de colonne pour la colonne Rate_period

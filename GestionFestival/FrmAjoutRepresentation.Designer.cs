@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txtLieu = new System.Windows.Forms.TextBox();
             this.txtSeat = new System.Windows.Forms.TextBox();
             this.cmbPieces = new System.Windows.Forms.ComboBox();
             this.cmbRates = new System.Windows.Forms.ComboBox();
@@ -43,6 +42,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtHeure = new System.Windows.Forms.TextBox();
+            this.cmbLieu = new System.Windows.Forms.ComboBox();
+            this.lblDistance = new System.Windows.Forms.Label();
+            this.lblPlace = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -55,14 +57,6 @@
             this.label1.Size = new System.Drawing.Size(486, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "Ajout d\'une représentation";
-            // 
-            // txtLieu
-            // 
-            this.txtLieu.Location = new System.Drawing.Point(374, 170);
-            this.txtLieu.Margin = new System.Windows.Forms.Padding(2);
-            this.txtLieu.Name = "txtLieu";
-            this.txtLieu.Size = new System.Drawing.Size(86, 20);
-            this.txtLieu.TabIndex = 1;
             // 
             // txtSeat
             // 
@@ -192,11 +186,41 @@
             this.txtHeure.Size = new System.Drawing.Size(86, 20);
             this.txtHeure.TabIndex = 15;
             // 
+            // cmbLieu
+            // 
+            this.cmbLieu.FormattingEnabled = true;
+            this.cmbLieu.Location = new System.Drawing.Point(371, 170);
+            this.cmbLieu.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbLieu.Name = "cmbLieu";
+            this.cmbLieu.Size = new System.Drawing.Size(92, 21);
+            this.cmbLieu.TabIndex = 16;
+            this.cmbLieu.SelectedIndexChanged += new System.EventHandler(this.cmbLieu_SelectedIndexChanged);
+            // 
+            // lblDistance
+            // 
+            this.lblDistance.AutoSize = true;
+            this.lblDistance.Location = new System.Drawing.Point(401, 202);
+            this.lblDistance.Name = "lblDistance";
+            this.lblDistance.Size = new System.Drawing.Size(0, 13);
+            this.lblDistance.TabIndex = 17;
+            // 
+            // lblPlace
+            // 
+            this.lblPlace.AutoSize = true;
+            this.lblPlace.Location = new System.Drawing.Point(359, 202);
+            this.lblPlace.Name = "lblPlace";
+            this.lblPlace.Size = new System.Drawing.Size(117, 13);
+            this.lblPlace.TabIndex = 18;
+            this.lblPlace.Text = "Aucun lieu sélectionner";
+            // 
             // FrmAjoutRepresentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblPlace);
+            this.Controls.Add(this.lblDistance);
+            this.Controls.Add(this.cmbLieu);
             this.Controls.Add(this.txtHeure);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -210,7 +234,6 @@
             this.Controls.Add(this.cmbRates);
             this.Controls.Add(this.cmbPieces);
             this.Controls.Add(this.txtSeat);
-            this.Controls.Add(this.txtLieu);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmAjoutRepresentation";
@@ -224,7 +247,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtLieu;
         private System.Windows.Forms.TextBox txtSeat;
         private System.Windows.Forms.ComboBox cmbPieces;
         private System.Windows.Forms.ComboBox cmbRates;
@@ -238,5 +260,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtHeure;
+        private System.Windows.Forms.ComboBox cmbLieu;
+        private System.Windows.Forms.Label lblDistance;
+        private System.Windows.Forms.Label lblPlace;
     }
 }

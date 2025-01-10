@@ -14,6 +14,7 @@ namespace TheatreDAL
             string query = "SELECT * FROM REPRESENTATION " +
                            "JOIN PLAY ON REPRESENTATION.play_id = PLAY.play_id " +
                            "JOIN RATE ON REPRESENTATION.rate_id = RATE.rate_id " +
+                           "JOIN LIEU ON REPRESENTATION.place_id = LIEU.id " +
                            "JOIN THEME ON PLAY.theme_id = THEME.theme_id " +
                            "JOIN AUTHOR ON PLAY.auth_id = AUTHOR.auth_id " +
                            "JOIN AUDIENCE ON PLAY.aud_id = AUDIENCE.aud_id;";
@@ -30,7 +31,11 @@ namespace TheatreDAL
                         (int)reader["rep_id"],
                         (DateTime)reader["rep_date"],
                         (TimeSpan)reader["rep_time"],
-                        (string)reader["rep_lieu"],
+                        new Place( //AJOUT DE L'OBJET PLACE
+                            (int)reader["id"],
+                            (string)reader["name"],
+                            (int)reader["range"]
+                            ),
                         (int)reader["rep_max_seats"],
                         new Pieces(
                             (int)reader["play_id"],
@@ -52,7 +57,7 @@ namespace TheatreDAL
                             (int)reader["rate_id"],
                             (string)reader["rate_period"],
                             (int)reader["rate_value"])
-                        );
+                        ); ;
                     representations.Add(representation);
                 }
 
@@ -61,13 +66,14 @@ namespace TheatreDAL
 
             return representations;
         }
+
         public static int AjoutRepresentation(Representation rep)
         {
             int result = 0;
             using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
             {
-                string query = "INSERT INTO REPRESENTATION (rep_date, rep_time, rep_max_seats, play_id, rate_id, rep_lieu) " +
-                               "VALUES (@rep_date, @rep_time, @rep_max_seats, @play_id, @rate_id, @rep_lieu)";
+                string query = "INSERT INTO REPRESENTATION (rep_date, rep_time, rep_max_seats, play_id, rate_id, place_id) " + //AJOUT AVEC LIEU
+                               "VALUES (@rep_date, @rep_time, @rep_max_seats, @play_id, @rate_id, @place_id)";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 
@@ -76,7 +82,7 @@ namespace TheatreDAL
                 command.Parameters.AddWithValue("@rep_max_seats", rep.Rep_max_seats);
                 command.Parameters.AddWithValue("@play_id", rep.Piece.Play_id);
                 command.Parameters.AddWithValue("@rate_id", rep.Rate.Rate_id);
-                command.Parameters.AddWithValue("@rep_lieu", rep.Rep_lieu);
+                command.Parameters.AddWithValue("@place_id", rep.Place.Id);
                 
                 result = command.ExecuteNonQuery();
             }
@@ -88,7 +94,7 @@ namespace TheatreDAL
             int result = 0;
             using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
             {
-                string query = "UPDATE REPRESENTATION SET rep_date = @rep_date, rep_time = @rep_time, rep_max_seats = @rep_max_seats, play_id = @play_id, rate_id = @rate_id, rep_lieu = @rep_lieu " +
+                string query = "UPDATE REPRESENTATION SET rep_date = @rep_date, rep_time = @rep_time, rep_max_seats = @rep_max_seats, play_id = @play_id, rate_id = @rate_id, place_id = @place_id " +
                                "WHERE rep_id = @rep_id";
 
                 SqlCommand command = new SqlCommand(query, connection);
@@ -98,7 +104,7 @@ namespace TheatreDAL
                 command.Parameters.AddWithValue("@rep_max_seats", rep.Rep_max_seats);
                 command.Parameters.AddWithValue("@play_id", rep.Piece.Play_id);
                 command.Parameters.AddWithValue("@rate_id", rep.Rate.Rate_id);
-                command.Parameters.AddWithValue("@rep_lieu", rep.Rep_lieu);
+                command.Parameters.AddWithValue("@place_id", rep.Place.Id);
                 command.Parameters.AddWithValue("@rep_id", rep.Rep_id);
                 
                 result = command.ExecuteNonQuery();
@@ -125,6 +131,28 @@ namespace TheatreDAL
                 reader.Close();
             }
             return rates;
+        }
+
+        //METHODE POUR AFFICHER LES LIEUX
+        public static List<Place> GetPlaces()
+        {
+            List<Place> places = new List<Place>();
+            string query = "SELECT * FROM LIEU";
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Place place = new Place(reader.GetInt32(0),
+                        reader.GetString(1), // ADRESSE DU LIEU
+                        reader.GetInt32(2) // DISTANCE
+                        );
+                    places.Add(place);
+                }
+                reader.Close();
+            }
+            return places;
         }
 
 
