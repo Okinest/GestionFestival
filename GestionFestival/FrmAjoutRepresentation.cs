@@ -39,6 +39,27 @@ namespace GestionFestival
             cmbRates.DisplayMember = "Rate_period";
             cmbRates.ValueMember = "Rate_id";
             cmbRates.SelectedIndex = -1;// Désactiver la sélection initiale
+
+            List<Place> placeList = uneGestionRepresentation.GetListePlaces();
+            cmbPlaces.DataSource = placeList;
+            cmbPlaces.DisplayMember = "PlaceName";
+            cmbPlaces.ValueMember = "PlaceId";
+            cmbPlaces.SelectedIndex = -1;// Désactiver la sélection initiale
+
+            // Evenement pour mettre a jour les lieux en fonction de la distance
+            cmbPlaces.SelectedIndexChanged += CmbPlaces_SelectedIndexChanged;
+        }
+
+        private void CmbPlaces_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPlaces.SelectedItem is Place selectedPlace)
+            {
+                lblDistance.Text = $"Distance de Paris : {selectedPlace.PlaceDistanceParis} km";
+            }
+            else
+            {
+                lblDistance.Text = string.Empty;
+            }
         }
 
         private void btnAjout_Click(object sender, EventArgs e)
@@ -54,7 +75,7 @@ namespace GestionFestival
                         Representation rep = new Representation(
                             dtpDate.Value.Date,
                             repTime,
-                            txtLieu.Text,
+                            (Place)cmbPlaces.SelectedItem,
                             int.Parse(txtSeat.Text),
                             (Pieces)cmbPieces.SelectedItem,
                             (Rate)cmbRates.SelectedItem
@@ -108,9 +129,9 @@ namespace GestionFestival
                 isValid = false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtLieu.Text))
+            if (cmbPlaces.SelectedIndex == -1)
             {
-                errorProvider.SetError(txtLieu, "Veuillez entrer un lieu.");
+                errorProvider.SetError(cmbPlaces, "Veuillez entrer un lieu.");
                 isValid = false;
             }
 
@@ -128,16 +149,6 @@ namespace GestionFestival
             }
 
             return isValid;
-        }
-
-        private void cmbRates_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtpDate_ValueChanged(object sender, EventArgs e)
-        {
-            
         }
     }
 }

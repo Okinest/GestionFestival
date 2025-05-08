@@ -47,19 +47,25 @@ namespace GestionFestival
             cmbRates.DataSource = rateList;
             cmbRates.DisplayMember = "Rate_period";
             cmbRates.ValueMember = "Rate_id";
+
+            List<Place> placeList = uneGestionRepresentation.GetListePlaces();
+            cmbPlaces.DataSource = placeList;
+            cmbPlaces.DisplayMember = "PlaceName";
+            cmbPlaces.ValueMember = "PlaceId";
+            cmbPlaces.SelectedIndex = -1;// Désactiver la sélection initiale
         }
 
         private void LoadData()
         {
             // Vérification et assignation du lieu
-            if (string.IsNullOrWhiteSpace(currentRep.Rep_lieu))
+            if (currentRep.Place != null)
             {
-                errorProvider.SetError(txtLieu, "Le lieu ne peut pas être vide.");
+                errorProvider.SetError(cmbPlaces, "Le lieu ne peut pas être vide.");
             }
             else
             {
-                txtLieu.Text = currentRep.Rep_lieu;
-                errorProvider.SetError(txtLieu, string.Empty);
+                cmbPlaces.SelectedValue = currentRep.Place;
+                errorProvider.SetError(cmbPlaces, string.Empty);
             }
 
             // Vérification et assignation du nombre de sièges
@@ -137,7 +143,8 @@ namespace GestionFestival
                     {
                         Representation rep = new Representation(currentRep.Rep_id,
                             dtpDate.Value.Date,
-                            repTime,txtLieu.Text,
+                            repTime,
+                            (Place)cmbPlaces.SelectedItem,
                             int.Parse(txtSeat.Text),
                             (Pieces)cmbPieces.SelectedItem,
                             (Rate)cmbRates.SelectedItem);
@@ -192,9 +199,9 @@ namespace GestionFestival
                 isValid = false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtLieu.Text))
+            if (cmbPlaces.SelectedIndex == -1)
             {
-                errorProvider.SetError(txtLieu, "Veuillez entrer un lieu.");
+                errorProvider.SetError(cmbPlaces, "Veuillez entrer un lieu.");
                 isValid = false;
             }
 

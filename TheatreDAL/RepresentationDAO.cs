@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 using TheatreBO;
 
 namespace TheatreDAL
@@ -14,6 +15,7 @@ namespace TheatreDAL
             string query = "SELECT * FROM REPRESENTATION " +
                            "JOIN PLAY ON REPRESENTATION.play_id = PLAY.play_id " +
                            "JOIN RATE ON REPRESENTATION.rate_id = RATE.rate_id " +
+                           "JOIN PLACE ON REPRESENTATION.rep_lieu = PLACE.place_id " + // AJOUT DE LA JOINTURE VERS PLACE
                            "JOIN THEME ON PLAY.theme_id = THEME.theme_id " +
                            "JOIN AUTHOR ON PLAY.auth_id = AUTHOR.auth_id " +
                            "JOIN AUDIENCE ON PLAY.aud_id = AUDIENCE.aud_id;";
@@ -30,7 +32,11 @@ namespace TheatreDAL
                         (int)reader["rep_id"],
                         (DateTime)reader["rep_date"],
                         (TimeSpan)reader["rep_time"],
-                        (string)reader["rep_lieu"],
+                        // AJOUT DE L'OBJET PLACE A LA REPRESENTATION
+                        new Place(
+                            (int)reader["place_id"],
+                            (string)reader["place_name"],
+                            (int)reader["place_distance_paris"]),
                         (int)reader["rep_max_seats"],
                         new Pieces(
                             (int)reader["play_id"],
@@ -76,7 +82,7 @@ namespace TheatreDAL
                 command.Parameters.AddWithValue("@rep_max_seats", rep.Rep_max_seats);
                 command.Parameters.AddWithValue("@play_id", rep.Piece.Play_id);
                 command.Parameters.AddWithValue("@rate_id", rep.Rate.Rate_id);
-                command.Parameters.AddWithValue("@rep_lieu", rep.Rep_lieu);
+                command.Parameters.AddWithValue("@rep_lieu", rep.Place.PlaceId);
                 
                 result = command.ExecuteNonQuery();
             }
@@ -98,7 +104,7 @@ namespace TheatreDAL
                 command.Parameters.AddWithValue("@rep_max_seats", rep.Rep_max_seats);
                 command.Parameters.AddWithValue("@play_id", rep.Piece.Play_id);
                 command.Parameters.AddWithValue("@rate_id", rep.Rate.Rate_id);
-                command.Parameters.AddWithValue("@rep_lieu", rep.Rep_lieu);
+                command.Parameters.AddWithValue("@rep_lieu", rep.Place.PlaceId);
                 command.Parameters.AddWithValue("@rep_id", rep.Rep_id);
                 
                 result = command.ExecuteNonQuery();
@@ -127,79 +133,26 @@ namespace TheatreDAL
             return rates;
         }
 
-
-        // Récupérer la liste des représentations avec rate_period
-        /*public static List<Representation> GetRepresentationsWithReservation()
+        public static List<Place> GetPlaces()
         {
-            List<Representation> representations = new List<Representation>();
-            string query = "SELECT * FROM REPRESENTATION " +
-                           "JOIN PLAY ON REPRESENTATION.play_id = PLAY.play_id " +
-                           "JOIN RATE ON REPRESENTATION.rate_id = RATE.rate_id " +
-                           "JOIN THEME ON PLAY.theme_id = THEME.theme_id " +
-                           "JOIN AUTHOR ON PLAY.auth_id = AUTHOR.auth_id " +
-                           "JOIN AUDIENCE ON PLAY.aud_id = AUDIENCE.aud_id" +
-                           "JOIN RESERVER ON REPRESENTATION.rep_id = RESERVER.rep_id;"; // AJOUT DE LA JOINTURE VERS RESERVER
-
+            List<Place> places = new List<Place>();
+            string query = "SELECT * FROM PLACE";
             using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 SqlDataReader reader = command.ExecuteReader();
-
                 while (reader.Read())
                 {
-                    // Créer l'objet Representation et ajouter à la liste
-                    Representation representation = new Representation((int)reader["rep_id"],
-                                                                       (DateTime)reader["rep_date"],
-                                                                       (TimeSpan)reader["rep_time"],
-                                                                       (string)reader["rep_lieu"],
-                                                                       (int)reader["rep_max_seats"],
-                                                                       new Pieces((int)reader["play_id"],
-                                                                                  (string)reader["play_name"],
-                                                                                  (string)reader["play_description"],
-                                                                                  (int)reader["play_duration"],
-                                                                                  (double)reader["play_price"],
-                                                                                  new Author((int)reader["auth_id"],
-                                                                                             (string)reader["auth_name"]),
-                                                                                  new Theme((int)reader["theme_id"],
-                                                                                            (string)reader["theme_name"]),
-                                                                                  new Audience((int)reader["aud_id"],
-                                                                                               (string)reader["aud_categ"])
-                                                                                  ),
-                                                                                  new Rate((int)reader["rate_id"],
-                                                                                           (string)reader["rate_period"],
-                                                                                           (int)reader["rate_value"]),
-                                                                                  new Reserver((int)reader["cus_id"], //AJOUT DE L'OBJET RESERVER A LA REPRESENTATION
-                                                                                            (int)reader["rep_id"],
-                                                                                            (int)reader["res_num_seats"])
-
-
-
-                                                                        );
-                    representations.Add(representation);
+                    Place place = new Place((int)reader["place_id"], // place_id
+                                    (string)reader["place_name"], // place_name
+                                    (int)reader["place_distance_paris"] // place_distance_paris
+                                    );
+                    places.Add(place);
                 }
-
                 reader.Close();
             }
-
-            return representations;
-        }*/
-
-
-
-        //METHODE QUI VA PERMETTRE DE VOIR SI REP_ID EST PRESENT DANS LA TABLE RESERVE
-        /*public static bool EstReserver(int repId)
-        {
-            string queryCheckReservation = "SELECT COUNT(*) FROM RESERVER WHERE rep_id = @rep_id";
-            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
-            {
-                SqlCommand command = new SqlCommand(queryCheckReservation, connection);
-                command.Parameters.AddWithValue("@rep_id", repId);
-
-                int reservationCount = (int)command.ExecuteScalar(); // Retourne le nombre de réservations
-                return reservationCount > 0; // Retourne true si des réservations existent
-            }
-        }*/
-
+            return places;
+        }
 
         public static int SupprimerRepresentation(int id)
         {

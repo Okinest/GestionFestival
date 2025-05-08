@@ -52,6 +52,10 @@ namespace TheatreBLL
         {
             listeRates = RepresentationDAO.GetRates();
             return listeRates;
-        }   
+        }
+        public List<Place> GetListePlaces()
+        {
+            return RepresentationDAO.GetPlaces();
+        }
     }
 }
