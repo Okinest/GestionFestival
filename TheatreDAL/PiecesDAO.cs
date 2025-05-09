@@ -48,8 +48,8 @@ namespace TheatreDAL
 
             List<Pieces> Pièces = new List<Pieces>();
             string query_pieces = "SELECT PLAY.play_id, PLAY.play_name, PLAY.play_description, PLAY.play_duration, PLAY.play_price, AUTHOR.auth_id, AUTHOR.auth_name,THEME.theme_id, THEME.theme_name," +
-                "AUDIENCE.aud_id, AUDIENCE.aud_categ FROM PLAY JOIN AUTHOR ON PLAY.auth_id = AUTHOR.auth_id JOIN THEME ON PLAY.theme_id = THEME.theme_id" +
-                " JOIN AUDIENCE ON PLAY.aud_id = AUDIENCE.aud_id";
+                "AUDIENCE.aud_id, AUDIENCE.aud_categ, COMPANIES.comp_id, COMPANIES.comp_name, COMPANIES.comp_region, DIRECTORS.dir_id, DIRECTORS.dir_name FROM PLAY JOIN AUTHOR ON PLAY.auth_id = AUTHOR.auth_id JOIN THEME ON PLAY.theme_id = THEME.theme_id" +
+                " JOIN AUDIENCE ON PLAY.aud_id = AUDIENCE.aud_id"+ " JOIN COMPANIES ON PLAY.comp_id = COMPANIES.comp_id" + " JOIN DIRECTORS ON COMPANIES.comp_artistic_director = DIRECTORS.dir_id";
             using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
             {
                 SqlCommand command = new SqlCommand(query_pieces, connection);
@@ -58,14 +58,17 @@ namespace TheatreDAL
                 {
                     //CONSTRUCTEUR CREATION D'UTILISATEUR
                     Pieces Pièce = new Pieces(
-                        reader.GetInt32(0), // play_id
-                        reader.GetString(1), // play_name
-                        reader.GetString(2), // play_description
-                        reader.GetInt32(3), // play_duration
-                        reader.GetDouble(4), // play_price
-                        new Author(reader.GetInt32(5), reader.GetString(6)),  // auth_name
-                        new Theme(reader.GetInt32(7), reader.GetString(8)),  // theme_name
-                        new Audience(reader.GetInt32(9), reader.GetString(10))  // aud_name
+                        (int)reader["play_id"], // play_id
+                        (string)reader["play_name"], // play_name
+                        (string)reader["play_description"], // play_description
+                        (int)reader["play_duration"], // play_duration
+                        (double)reader["play_price"], // play_price
+                        new Author((int)reader["auth_id"], (string)reader["auth_name"]),  // auth_name
+                        new Theme((int)reader["theme_id"], (string)reader["theme_name"]),  // theme_name
+                        new Audience((int)reader["aud_id"], (string)reader["aud_categ"]),  // aud_name
+                        new Company((int)reader["comp_id"], (string)reader["comp_name"], (string)reader["comp_region"],
+                            new Director((int)reader["dir_id"], (string)reader["dir_name"])
+                            )
                     );
                     Pièces.Add(Pièce);
                 }
@@ -76,7 +79,7 @@ namespace TheatreDAL
         public static int AjoutPieces(Pieces unePiece)
         {
             int nbr;
-            string queryAddPieces = "INSERT INTO PLAY (play_name, play_description, play_duration, play_price, auth_id, theme_id, aud_id) VALUES (@play_name, @play_description, @play_duration, @play_price, @auth_id, @theme_id, @aud_id)";
+            string queryAddPieces = "INSERT INTO PLAY (play_name, play_description, play_duration, play_price, auth_id, theme_id, aud_id, comp_id) VALUES (@play_name, @play_description, @play_duration, @play_price, @auth_id, @theme_id, @aud_id, @comp_id)";
             using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
             {
                 SqlCommand command = new SqlCommand(queryAddPieces, connection);
@@ -88,6 +91,7 @@ namespace TheatreDAL
                 command.Parameters.AddWithValue("@auth_id", unePiece.Auth.Auth_id);
                 command.Parameters.AddWithValue("@theme_id", unePiece.Theme.Theme_id);
                 command.Parameters.AddWithValue("@aud_id", unePiece.Auth.Auth_id);
+                command.Parameters.AddWithValue("@comp_id", unePiece.Comp.Comp_id);
 
 
                 nbr = command.ExecuteNonQuery();
@@ -188,6 +192,54 @@ namespace TheatreDAL
                 reader.Close();
             }
             return audiences;
+        }
+
+        // Méthode pour récupérer les directeur
+        public static List<Director> GetDirectors()
+        {
+            List<Director> directors = new List<Director>();
+            string query = "SELECT * FROM DIRECTORS";  // Requête pour récupérer les directeurs
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Director director = new Director(
+                        reader.GetInt32(0),  // Dir_id
+                        reader.GetString(1)  // Dir_name
+                    );
+                    directors.Add(director);
+                }
+                reader.Close();
+            }
+            return directors;
+        }
+
+        public static Company getCompanyByDirector(Director director)
+        {
+            Company company = null;
+            string query = "SELECT * FROM COMPANIES " +
+                           "WHERE comp_artistic_director = @dir_id";
+
+            using (SqlConnection connection = ConnexionBD.GetConnexionBD().GetSqlConnexion())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@dir_id", director.Dir_id);
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    company = new Company(
+                        (int)reader["comp_id"],  // comp_id
+                        (string)reader["comp_name"],  // comp_name
+                        (string)reader["comp_region"],  // comp_region
+                        director
+                    );
+                }
+                reader.Close();
+            }
+            return company;
         }
     }
 }

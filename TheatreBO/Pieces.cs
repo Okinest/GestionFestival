@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,13 +19,10 @@ namespace TheatreBO
         private Author auth;
         private Theme theme;
         private Audience aud;
-        //private string comp_name;
-
-
-
+        private Company comp;
         //CONSTRUCTEUR SANS ID
 
-        public Pieces(string play_name, string play_description, int play_duration, double play_price, Author auth, Theme theme, Audience aud)
+        public Pieces(string play_name, string play_description, int play_duration, double play_price, Author auth, Theme theme, Audience aud, Company comp)
         {
             this.play_name = play_name;
             this.play_description = play_description;
@@ -33,9 +31,24 @@ namespace TheatreBO
             this.auth = auth;
             this.theme = theme;
             this.aud = aud;
+            this.comp = comp;
         }
 
         //CONSTRUCTEUR AVEC ID
+        public Pieces(int play_id, string play_name, string play_description, int play_duration, double play_price, Author auth, Theme theme, Audience aud, Company comp)
+        {
+            this.play_id = play_id;
+            this.play_name = play_name;
+            this.play_description = play_description;
+            this.play_duration = play_duration;
+            this.play_price = play_price;
+            this.auth = auth;
+            this.theme = theme;
+            this.aud = aud;
+            this.comp = comp;
+        }
+
+        //CONSTRUCTEUR AVEC ID SANS COMPAGNIE
         public Pieces(int play_id, string play_name, string play_description, int play_duration, double play_price, Author auth, Theme theme, Audience aud)
         {
             this.play_id = play_id;
@@ -46,7 +59,7 @@ namespace TheatreBO
             this.auth = auth;
             this.theme = theme;
             this.aud = aud;
-        }
+        }   
 
         public int Play_id { get => play_id; set => play_id = value; }
         public string Play_name { get => play_name; set => play_name = value; }
@@ -56,11 +69,13 @@ namespace TheatreBO
         public Author Auth { get => auth; set => auth = value; }
         public Theme Theme { get => theme; set => theme = value; }
         public Audience Aud { get => aud; set => aud = value; }
+        public Company Comp { get => comp; set => comp = value; } // Expose la compagnie associée à la pièce
 
 
         public string Auth_name => auth != null ? auth.Auth_name : string.Empty; // Expose le nom de l'auteur
         public string Theme_name => theme != null ? theme.Theme_name : string.Empty; // Expose le nom du thème
         public string Aud_categ => aud != null ? aud.Aud_categ : string.Empty; // Expose la catégorie de l'audience
+        public string Dir_name => comp != null ? comp.Dir_name : string.Empty; // Expose le nom du directeur de la compagnie
 
     }
 

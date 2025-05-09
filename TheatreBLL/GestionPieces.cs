@@ -13,6 +13,7 @@ namespace TheatreBLL
         private List<Theme> listeThemes = new List<Theme>();
         private List<Audience> listeAudience = new List<Audience>();
         private List<Author> listeAuthor = new List<Author>();
+        private List<Director> listeDirectors = new List<Director>(); //Changement ajout DIRECTEUR
 
         public enum AjoutPieceResultat
         {
@@ -100,6 +101,18 @@ namespace TheatreBLL
         {
             listeAuthor = PiecesDAO.GetAuthors();
             return listeAuthor;
+        }
+
+        // Récupère la liste des directeurs
+        public List<Director> GetListeDirectors()
+        {
+            listeDirectors = PiecesDAO.GetDirectors();
+            return listeDirectors;
+        }
+
+        public Company GetCompanyByDirector(Director director)
+        {
+            return PiecesDAO.getCompanyByDirector(director);
         }
 
         // Méthode pour créer une pièce dans la base de données

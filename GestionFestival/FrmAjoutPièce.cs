@@ -31,6 +31,12 @@ namespace GestionFestival
             cmbAuteur.DataSource = authorList;
             cmbAuteur.DisplayMember = "Auth_name";
             cmbAuteur.ValueMember = "Auth_id";
+
+            // Director
+            List<Director> directorList = uneGestionPiece.GetListeDirectors(); // Changement ajout DIRECTEUR
+            cmbDirecteur.DataSource = directorList;
+            cmbDirecteur.DisplayMember = "Dir_name";
+            cmbDirecteur.ValueMember = "Dir_id";
         }
 
         private void BtnRetour_Click(object sender, EventArgs e)
@@ -101,8 +107,11 @@ namespace GestionFestival
                     Author selectedAuthor = (Author)cmbAuteur.SelectedItem;
                     Theme selectedTheme = (Theme)cmbThemes.SelectedItem;
                     Audience selectedAudience = (Audience)cmbAudience.SelectedItem;
+                    Director selectedDirector = (Director)cmbDirecteur.SelectedItem; // Changement ajout DIRECTEUR
 
-                    Pieces newPiece = new Pieces(playName, playDescription, playDurationConvert, playPriceConvert, selectedAuthor, selectedTheme, selectedAudience);
+                    Company selectedCompany = uneGestionPiece.GetCompanyByDirector(selectedDirector); // Changement ajout DIRECTEUR
+
+                    Pieces newPiece = new Pieces(playName, playDescription, playDurationConvert, playPriceConvert, selectedAuthor, selectedTheme, selectedAudience, selectedCompany);
 
                     int result = GestionPieces.CreerPieces(newPiece);
 

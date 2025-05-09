@@ -58,6 +58,10 @@ namespace GestionFestival
             Audience_column.DataPropertyName = "Aud_categ";
             Audience_column.HeaderText = "Audience";
 
+            DataGridViewTextBoxColumn Director_column = new DataGridViewTextBoxColumn();
+            Director_column.DataPropertyName = "Dir_name";
+            Director_column.HeaderText = "Directeur";
+
             //AJOUT DE CHAQUE COLUMN
             dtgPieces.Columns.Add(Nom_column);
             dtgPieces.Columns.Add(Description_column);
@@ -66,6 +70,7 @@ namespace GestionFestival
             dtgPieces.Columns.Add(Auth_column);
             dtgPieces.Columns.Add(Theme_column);
             dtgPieces.Columns.Add(Audience_column);
+            dtgPieces.Columns.Add(Director_column);
 
 
             dtgPieces.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

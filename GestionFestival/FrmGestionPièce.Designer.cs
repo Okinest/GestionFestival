@@ -40,6 +40,7 @@ namespace GestionFestival
             this.colDuree = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAudience = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAuteur = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDirecteur = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgPieces)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +49,7 @@ namespace GestionFestival
             this.BtnAjout.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.BtnAjout.FlatAppearance.BorderSize = 2;
             this.BtnAjout.Location = new System.Drawing.Point(175, 337);
-            this.BtnAjout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnAjout.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAjout.Name = "BtnAjout";
             this.BtnAjout.Size = new System.Drawing.Size(177, 47);
             this.BtnAjout.TabIndex = 0;
@@ -61,7 +62,7 @@ namespace GestionFestival
             this.BtnModifier.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.BtnModifier.FlatAppearance.BorderSize = 2;
             this.BtnModifier.Location = new System.Drawing.Point(433, 337);
-            this.BtnModifier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnModifier.Margin = new System.Windows.Forms.Padding(4);
             this.BtnModifier.Name = "BtnModifier";
             this.BtnModifier.Size = new System.Drawing.Size(177, 47);
             this.BtnModifier.TabIndex = 1;
@@ -74,7 +75,7 @@ namespace GestionFestival
             this.BtnSupprimer.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.BtnSupprimer.FlatAppearance.BorderSize = 2;
             this.BtnSupprimer.Location = new System.Drawing.Point(679, 337);
-            this.BtnSupprimer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnSupprimer.Margin = new System.Windows.Forms.Padding(4);
             this.BtnSupprimer.Name = "BtnSupprimer";
             this.BtnSupprimer.Size = new System.Drawing.Size(177, 47);
             this.BtnSupprimer.TabIndex = 2;
@@ -87,7 +88,7 @@ namespace GestionFestival
             this.BtnRetour.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.BtnRetour.FlatAppearance.BorderSize = 2;
             this.BtnRetour.Location = new System.Drawing.Point(433, 414);
-            this.BtnRetour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnRetour.Margin = new System.Windows.Forms.Padding(4);
             this.BtnRetour.Name = "BtnRetour";
             this.BtnRetour.Size = new System.Drawing.Size(177, 47);
             this.BtnRetour.TabIndex = 3;
@@ -107,9 +108,10 @@ namespace GestionFestival
             this.colTheme,
             this.colDuree,
             this.colAudience,
-            this.colAuteur});
+            this.colAuteur,
+            this.colDirecteur});
             this.dtgPieces.Location = new System.Drawing.Point(31, 144);
-            this.dtgPieces.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtgPieces.Margin = new System.Windows.Forms.Padding(4);
             this.dtgPieces.Name = "dtgPieces";
             this.dtgPieces.RowHeadersWidth = 51;
             this.dtgPieces.Size = new System.Drawing.Size(991, 164);
@@ -167,6 +169,15 @@ namespace GestionFestival
             this.colAuteur.ReadOnly = true;
             this.colAuteur.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
+            // colDirecteur
+            // 
+            this.colDirecteur.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colDirecteur.HeaderText = "Directeur";
+            this.colDirecteur.MinimumWidth = 6;
+            this.colDirecteur.Name = "colDirecteur";
+            this.colDirecteur.ReadOnly = true;
+            this.colDirecteur.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // FrmGestionPièce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -177,7 +188,7 @@ namespace GestionFestival
             this.Controls.Add(this.BtnSupprimer);
             this.Controls.Add(this.BtnModifier);
             this.Controls.Add(this.BtnAjout);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmGestionPièce";
             this.Text = "Gestion des pièces de théâtre";
             this.Load += new System.EventHandler(this.FrmGestionPièce_Load);
@@ -199,5 +210,6 @@ namespace GestionFestival
         private System.Windows.Forms.DataGridViewTextBoxColumn colDuree;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAudience;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAuteur;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDirecteur;
     }
 }

@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="Audience.cs" />
     <Compile Include="Author.cs" />
+    <Compile Include="Company.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="Director.cs" />
     <Compile Include="Place.cs" />
     <Compile Include="Rate.cs" />
     <Compile Include="Representation.cs" />

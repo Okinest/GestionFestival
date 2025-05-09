@@ -52,7 +52,14 @@ namespace TheatreDAL
                                 (string)reader["theme_name"]),
                             new Audience(
                                 (int)reader["aud_id"],
-                                (string)reader["aud_categ"])
+                                (string)reader["aud_categ"]),
+                            new Company(
+                                (int)reader["comp_id"],
+                                (string)reader["comp_name"],
+                                (string)reader["comp_region"],
+                                new Director(
+                                    (int)reader["dir_id"],
+                                    (string)reader["dir_name"])) // Ajout de la compagnie avec le directeur
                             ),
                         new Rate(
                             (int)reader["rate_id"],
